@@ -1,11 +1,13 @@
 #!/usr/bin/expect
-
+#### Basci Setting ###
 set login_ip 140.92.25.163
 set username root
 set pwd qwer
 set vmusername root
 set vmpwd root
 set programpath \/root\/linaro+libvirt
+#######################
+
 spawn ssh $username@$login_ip
 #spawn [ssh/telnet] [IP] [Port]
 
