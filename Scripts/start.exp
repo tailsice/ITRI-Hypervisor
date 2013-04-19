@@ -1,0 +1,124 @@
+#!/usr/bin/expect
+
+set login_ip 140.92.25.163
+set username root
+set pwd qwer
+set vmusername root
+set vmpwd root
+set programpath \/root\/linaro+libvirt
+spawn ssh $username@$login_ip
+#spawn [ssh/telnet] [IP] [Port]
+
+# login
+set tip "~$"
+set timeout 10
+#send "\r"
+expect {
+  -ex "(yes/no)?" {send "yes\r"; exp_continue}
+  "assword:"     {send "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "#" 
+}
+
+set cpu1 $spawn_id
+
+spawn ssh $username@$login_ip
+#spawn [ssh/telnet] [IP] [Port]
+# login
+set tip "~$"
+set timeout 10
+#send "\r"
+expect {
+  -ex "(yes/no)?" {send "yes\r"; exp_continue}
+  "assword:"     {send "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "#" 
+}
+
+set cpu2 $spawn_id
+
+spawn ssh $username@$login_ip
+#spawn [ssh/telnet] [IP] [Port]
+# login
+set tip "~$"
+set timeout 10
+#send "\r"
+expect {
+  -ex "(yes/no)?" {send "yes\r"; exp_continue}
+  "assword:"     {send "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "#" 
+}
+
+set cpu3 $spawn_id
+
+#set spawn_id $cpu1
+
+set spawn_id $cpu1
+
+set timeout 250
+send "cd $programpath\r"
+send "\.\/start.sh\r"
+expect "root@linaro"
+
+puts "linaro start up!"
+
+send "\r"
+send "\r"
+send "\r"
+#expect "root@linaro"
+#send "cd \/root\/kvm\r"
+#expect "#"
+#send "insmod \/root\/kvm\/kvm.ko\r"
+#expect "root"
+#send "\.\/start1.sh\r"
+#expect "vm"
+#send "echo \$HOSTNAME\r"
+#expect "#"
+
+set spawn_id $cpu2
+
+send "ssh $vmusername@192.168.101.2\r"
+
+expect {
+  -ex "(yes/no)?" {send "yes\r"; exp_continue}
+  "assword:"     {send "$vmpwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "#" 
+}
+
+send "cd \/root\/kvm\r"
+expect "#"
+send "insmod \/root\/kvm\/kvm.ko\r"
+expect "#"
+send "\.\/start1.sh\r"
+expect "root@vm"
+send "echo \$HOSTNAME\r"
+expect "vm"
+
+
+set spawn_id $cpu3
+
+send "ssh $vmusername@192.168.101.2\r"
+
+expect {
+  -ex "(yes/no)?" {send "yes\r"; exp_continue}
+  "assword:"     {send "$vmpwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "#" 
+}
+send "cd kvm\r"
+expect "#"
+send "\.\/start2.sh\r"
+expect "root@vm"
+send "\/etc\/init.d\/ssh start\r"
+expect "#"
+send "mount \/dev\/pts\r"
+expect "#"
+send "echo \$HOSTNAME\r"
+expect "vm"
