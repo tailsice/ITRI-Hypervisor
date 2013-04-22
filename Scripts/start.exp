@@ -6,7 +6,25 @@ set pwd qwer
 set vmusername root
 set vmpwd root
 set programpath \/root\/linaro+libvirt
+set send_slow {1 .01}
 #######################
+
+set Componet  [lindex $argv 0]
+set Code  [lindex $argv 1]
+set Load  [lindex $argv 2]
+set Class  [lindex $argv 3]
+
+if {$Componet == "" || $Code == "" || $Load == "" || $Class =="" } {
+  puts "#######################"
+  puts "Usage:"
+  puts "expect start.exp \[Componet\] \[Code\] \[Load\] \[Class\]"
+  puts "Componet \[IOV\] \[Migra\]"
+  puts "Code \[0000\] \[0001\] \[1111\]"
+  puts "Load \[1\] \[2\] \[6\]"
+  puts "Class \[1\] \[2\]"
+  puts "#######################"
+  exit
+}
 
 spawn ssh $username@$login_ip
 #spawn [ssh/telnet] [IP] [Port]
@@ -16,8 +34,8 @@ set tip "~$"
 set timeout 10
 #send "\r"
 expect {
-  -ex "(yes/no)?" {send "yes\r"; exp_continue}
-  "assword:"     {send "$pwd\r"; exp_continue}
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
   "No route to host"      {exit; exp_continue}
   timeout         {send_user "connect fail\r"; exit}
   -ex "#" 
@@ -32,8 +50,8 @@ set tip "~$"
 set timeout 10
 #send "\r"
 expect {
-  -ex "(yes/no)?" {send "yes\r"; exp_continue}
-  "assword:"     {send "$pwd\r"; exp_continue}
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
   "No route to host"      {exit; exp_continue}
   timeout         {send_user "connect fail\r"; exit}
   -ex "#" 
@@ -48,8 +66,8 @@ set tip "~$"
 set timeout 10
 #send "\r"
 expect {
-  -ex "(yes/no)?" {send "yes\r"; exp_continue}
-  "assword:"     {send "$pwd\r"; exp_continue}
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
   "No route to host"      {exit; exp_continue}
   timeout         {send_user "connect fail\r"; exit}
   -ex "#" 
@@ -57,70 +75,221 @@ expect {
 
 set cpu3 $spawn_id
 
+spawn ssh $username@$login_ip
+#spawn [ssh/telnet] [IP] [Port]
+# login
+set tip "~$"
+set timeout 10
+#send "\r"
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "#" 
+}
+
+set cpu4 $spawn_id
+
+spawn ssh $username@$login_ip
+#spawn [ssh/telnet] [IP] [Port]
+# login
+set tip "~$"
+set timeout 10
+#send "\r"
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "#" 
+}
+
+set cpu5 $spawn_id
 #set spawn_id $cpu1
 
 set spawn_id $cpu1
 
 set timeout 250
-send "cd $programpath\r"
-send "\.\/start.sh\r"
+send -s "cd $programpath\r"
+send -s "\.\/start.sh\r"
 expect "root@linaro"
 
 puts "linaro start up!"
 
-send "\r"
-send "\r"
-send "\r"
-#expect "root@linaro"
-#send "cd \/root\/kvm\r"
-#expect "#"
-#send "insmod \/root\/kvm\/kvm.ko\r"
-#expect "root"
-#send "\.\/start1.sh\r"
-#expect "vm"
-#send "echo \$HOSTNAME\r"
-#expect "#"
-
 set spawn_id $cpu2
 
-send "ssh $vmusername@192.168.101.2\r"
+send -s "ssh $vmusername@192.168.101.2\r"
 
 expect {
-  -ex "(yes/no)?" {send "yes\r"; exp_continue}
-  "assword:"     {send "$vmpwd\r"; exp_continue}
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$vmpwd\r"; exp_continue}
   "No route to host"      {exit; exp_continue}
   timeout         {send_user "connect fail\r"; exit}
   -ex "#" 
 }
 
-send "cd \/root\/kvm\r"
+send -s "scp root@192.168.101.1:~/file_transfer.sh . \r"
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "#" 
+}
+
+send -s "scp root@192.168.101.1:~/memTest . \r"
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "#" 
+}
+
+send -s "ls -la \r"
 expect "#"
-send "insmod \/root\/kvm\/kvm.ko\r"
+
+send -s "ls -la \r"
 expect "#"
-send "\.\/start1.sh\r"
+
+
+send -s "cd \/root\/kvm\r"
+expect "#"
+send -s "insmod \/root\/kvm\/kvm.ko\r"
+expect "#"
+send -s "\.\/start1.sh\r"
 expect "root@vm"
-send "echo \$HOSTNAME\r"
+send -s "echo \$HOSTNAME\r"
 expect "vm"
+send -s "\/etc\/init.d\/ssh start\r"
+expect "#"
+send -s "mount \/dev\/pts\r"
+expect "#"
+
+if { $Load == "2" || $Load == "3" || $Load == "5" || $Load == "6" } {
+  send -s "scp 192.168.20.1:~/memTest .\r"
+  expect {
+    -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+    "assword:"     {send -s "$vmpwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex "#" 
+  }
+  send -s "\.\/memTest\r"
+}
 
 
+if { $Class == "2"} {
 set spawn_id $cpu3
 
-send "ssh $vmusername@192.168.101.2\r"
+send -s "ssh $vmusername@192.168.101.2\r"
 
 expect {
-  -ex "(yes/no)?" {send "yes\r"; exp_continue}
-  "assword:"     {send "$vmpwd\r"; exp_continue}
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$vmpwd\r"; exp_continue}
   "No route to host"      {exit; exp_continue}
   timeout         {send_user "connect fail\r"; exit}
   -ex "#" 
 }
-send "cd kvm\r"
+send -s "cd kvm\r"
 expect "#"
-send "\.\/start2.sh\r"
+send -s "\.\/start4.sh\r"
 expect "root@vm"
-send "\/etc\/init.d\/ssh start\r"
+send -s "\/etc\/init.d\/ssh start\r"
 expect "#"
-send "mount \/dev\/pts\r"
+send -s "mount \/dev\/pts\r"
 expect "#"
-send "echo \$HOSTNAME\r"
+send -s "echo \$HOSTNAME\r"
 expect "vm"
+send -s "\r"
+}
+
+if { $Load == "6" } {
+  send -s "scp 192.168.20.1:~/memTest .\r"
+  expect {
+    -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+    "assword:"     {send -s "$vmpwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex "#" 
+  }
+  send -s "\.\/memTest\r"
+}
+
+set spawn_id $cpu4
+
+send -s "ssh $vmusername@192.168.101.2\r"
+
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$vmpwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "#" 
+}
+
+#set timeout 100000
+send -s "cd kvm\r"
+expect "#"
+send -s "\.\/start3.sh\r"
+expect "root@vm"
+send -s "\/etc\/init.d\/ssh start\r"
+expect "#"
+send -s "mount \/dev\/pts\r"
+expect "#"
+send -s "echo \$HOSTNAME\r"
+expect "vm"
+send -s "netstat \-nl \r"
+expect "#"
+send -s "ifconfig\r"
+expect "#"
+
+if { $Load == "3" || $Load == "6" } {
+  send -s "scp 192.168.20.1:~/memTest .\r"
+  expect {
+    -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+    "assword:"     {send -s "$vmpwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex "#" 
+  }
+  send -s "\.\/memTest\r"
+}
+
+
+set spawn_id $cpu5
+
+send -s "ssh $vmusername@192.168.101.2\r"
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$vmpwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "#" 
+}
+
+send -s "scp root@192.168.101.1:~/file_transfer.sh . \r"
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "#" 
+}
+
+
+send -s "scp root@192.168.101.1:~/memTest . \r"
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "#" 
+}
+
+send -s "chmod +x file\_transfer.sh\r"
+expect "#"
+send -s ".\/file_transfer.sh 2 2\r"
+set timeout 100000
+expect "END"
