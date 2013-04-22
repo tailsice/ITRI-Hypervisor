@@ -147,12 +147,20 @@ expect {
   -ex "#" 
 }
 
-send -s "ls -la \r"
-expect "#"
+send -s "scp \-r root@192.168.101.1:~\/Config\/$Code\/\* \/root\/kvm\/ \r"
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "#" 
+}
 
 send -s "ls -la \r"
 expect "#"
 
+send -s "ls -la \r"
+expect "#"
 
 send -s "cd \/root\/kvm\r"
 expect "#"
@@ -203,7 +211,6 @@ expect "#"
 send -s "echo \$HOSTNAME\r"
 expect "vm"
 send -s "\r"
-}
 
 if { $Load == "6" } {
   send -s "scp 192.168.20.1:~/memTest .\r"
@@ -215,6 +222,7 @@ if { $Load == "6" } {
     -ex "#" 
   }
   send -s "\.\/memTest\r"
+}
 }
 
 set spawn_id $cpu4
