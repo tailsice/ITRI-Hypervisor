@@ -1,0 +1,3578 @@
+Started by user anonymous
+[IOV-1000] $ /bin/sh -xe /tmp/hudson3838687568304911711.sh
++ expect /srv/start.exp IOV 1000 1 1
+spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 18:27:16 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:08:09 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:08:09 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:08:10 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:08:11 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:08:12 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:08:12 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:08:13 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:08:14 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:08:14 2013 from localhost
+root@chkao:~# cd /home/chkao/hypervisor-01242013/linaro+libvirt
+root@chkao:/home/chkao/hypervisor-01242013/linaro+libvirt# ./start.sh
+pulseaudio: pa_context_connect() failed
+pulseaudio: Reason: Connection refused
+pulseaudio: Failed to initialize PA contextaudio: Could not init `pa' audio driver
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+Uncompressing Linux... done, booting the kernel.
+[    0.000000] Linux version 2.6.38.7 (alexey@66-A00327-01) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-202) ) #2 Mon Jan 14 17:42:29 CST 2013
+[    0.000000] CPU: ARMv7 Processor [410fc090] revision 0 (ARMv7), cr=10c53c7f
+[    0.000000] CPU: VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] Machine: ARM-Versatile Express
+[    0.000000] Memory policy: ECC disabled, Data cache writeback
+[    0.000000] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 178956ms
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 260096
+[    0.000000] Kernel command line: root=/dev/mmcblk0p2 rw mem=1024M raid=noautodetect console=ttyAMA0,38400n8 rootwait vmalloc=256MB devtmpfs.mount=0
+[    0.000000] PID hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.000000] Dentry cache hash table entries: 131072 (order: 7, 524288 bytes)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.000000] Memory: 1024MB = 1024MB total
+[    0.000000] Memory: 902884k/902884k available, 145692k reserved, 393216K highmem
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+[    0.000000]     DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
+[    0.000000]     vmalloc : 0xe8800000 - 0xf8000000   ( 248 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xe8000000   ( 640 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .init : 0xc0008000 - 0xc002e000   ( 152 kB)
+[    0.000000]       .text : 0xc002e000 - 0xc0526ddc   (5092 kB)
+[    0.000000]       .data : 0xc0528000 - 0xc054d180   ( 149 kB)
+[    0.000000] SLUB: Genslabs=13, HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] NR_IRQS:128
+[    0.000000] Console: colour dummy device 80x30
+[    0.128419] Calibrating delay loop... 668.46 BogoMIPS (lpj=3342336)
+[    0.367200] pid_max: default: 32768 minimum: 301
+[    0.367693] Security Framework initialized
+[    0.368922] AppArmor: AppArmor initialized
+[    0.369181] Mount-cache hash table entries: 512
+[    0.374640] CPU: Testing write buffer coherency: ok
+[    0.379061] hw perfevents: enabled with ARMv7 Cortex-A9 PMU driver, 1 counters available
+[    0.382596] devtmpfs: initialized
+[    0.392468] NET: Registered protocol family 16
+[    0.405792] hw-breakpoint: debug architecture 0x0 unsupported.
+[    0.405922] Serial: AMBA PL011 UART driver
+[    0.407479] mb:uart0: ttyAMA0 at MMIO 0x10009000 (irq = 37) is a PL011 rev1
+[    0.418961] console [ttyAMA0] enabled
+[    0.422088] mb:uart1: ttyAMA1 at MMIO 0x1000a000 (irq = 38) is a PL011 rev1
+[    0.423278] mb:uart2: ttyAMA2 at MMIO 0x1000b000 (irq = 39) is a PL011 rev1
+[    0.424432] mb:uart3: ttyAMA3 at MMIO 0x1000c000 (irq = 40) is a PL011 rev1
+[    0.469159] bio: create slab <bio-0> at 0
+[    0.473359] SCSI subsystem initialized
+[    0.475714] usbcore: registered new interface driver usbfs
+[    0.477307] usbcore: registered new interface driver hub
+[    0.478428] usbcore: registered new device driver usb
+[    0.482613] Advanced Linux Sound Architecture Driver Version 1.0.23.
+[    0.487365] NetLabel: Initializing
+[    0.487692] NetLabel:  domain hash size = 128
+[    0.487943] NetLabel:  protocols = UNLABELED CIPSOv4
+[    0.489020] NetLabel:  unlabeled traffic allowed by default
+[    0.491110] DMA-API: preallocated 4096 debug entries
+[    0.491523] DMA-API: debugging enabled by kernel config
+[    0.492030] Switching to clocksource timer3
+[    0.493207] AppArmor: AppArmor Filesystem Enabled
+[    0.540275] NET: Registered protocol family 2
+[    0.541508] IP route cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.544032] TCP established hash table entries: 131072 (order: 8, 1048576 bytes)
+[    0.548351] TCP bind hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.552627] TCP: Hash tables configured (established 131072 bind 65536)
+[    0.553152] TCP reno registered
+[    0.553404] UDP hash table entries: 512 (order: 1, 8192 bytes)
+[    0.553829] UDP-Lite hash table entries: 512 (order: 1, 8192 bytes)
+[    0.555055] NET: Registered protocol family 1
+[    0.556495] RPC: Registered udp transport module.
+[    0.557069] RPC: Registered tcp transport module.
+[    0.557393] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.560018] Trying to unpack rootfs image as initramfs...
+[    0.887896] Freeing initrd memory: 2624K
+[    0.889462] PMU: registered new PMU device of type 0
+[    0.890256] [KVM] kvm_eventfd: irqfd_module_init
+[    0.892862] audit: initializing netlink socket (disabled)
+[    0.893780] type=2000 audit(0.750:1): initialized
+[    0.897585] highmem bounce pool size: 64 pages
+[    0.932788] Installing knfsd (copyright (C) 1996 okir@monad.swb.de).
+[    0.933980] JFFS2 version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+[    0.937581] JFS: nTxBlock = 7074, nTxLock = 56594
+[    0.946486] Btrfs loaded
+[    0.946903] msgmni has been set to 1000
+[    0.950453] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+[    0.951011] io scheduler noop registered
+[    0.951303] io scheduler deadline registered (default)
+[    0.953035] clcd-pl11x ct:clcd: PL111 rev2 at 0x10020000
+[    0.956463] clcd-pl11x ct:clcd: CT-CA9X4 hardware, XVGA display
+[    0.960270] v2m_cfg_write: writing 03c8eee0 to 00110001
+[    0.987331] v2m_cfg_write: writing 00000000 to 00710000
+[    0.987355] v2m_cfg_write: writing 00000002 to 00b10000
+[    1.007185] Console: switching to colour frame buffer device 128x48
+[    1.060290] brd: module loaded
+[    1.068334] armflash-0: Found 1 x32 devices at 0x0 in 32-bit bank. Manufacturer ID 0x000000 Chip ID 0x000000
+[    1.069367] Intel/Sharp Extended Query Table at 0x0031
+[    1.070343] Using buffer write method
+[    1.073374] armflash-1: Found 1 x32 devices at 0x0 in 32-bit bank. Manufacturer ID 0x000000 Chip ID 0x000000
+[    1.074016] Intel/Sharp Extended Query Table at 0x0031
+[    1.074756] Using buffer write method
+[    1.075139] Concatenating MTD devices:
+[    1.075437] (0): "armflash-0"
+[    1.075620] (1): "armflash-1"
+[    1.075766] into device "armflash"
+ modprobe: FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+
+[    1.129768] RedBoot partition parsing not available
+ modprobe: FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+
+[    1.160753] afs partition parsing not available
+[    1.161751] PPP generic driver version 2.4.2
+[    1.163191] tun: Universal TUN/TAP device driver, 1.6
+[    1.163549] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+[    1.165181] smsc911x: Driver version 2008-10-21.
+[    1.194074] smsc911x-mdio: probed
+[    1.194784] eth0: attached PHY driver [Generic PHY] (mii_bus:phy_addr=ffffffff:01, irq=-1)
+[    1.196079] net eth0: MAC Address: 52:54:00:12:34:56
+[    1.197039] usbmon: debugfs is not available
+[    1.197950] isp1760 isp1760: NXP ISP1760 USB Host Controller
+[    1.198427] isp1760 isp1760: new USB bus registered, assigned bus number 1
+[    1.199102] isp1760 isp1760: Scratch test failed.
+[    1.199362] isp1760 isp1760: can't setup
+[    1.199699] isp1760 isp1760: USB bus 1 deregistered
+[    1.200078] isp1760: Failed to register the HCD device
+[    1.204823] mousedev: PS/2 mouse device common for all mice
+[    1.209271] rtc-pl031 mb:rtc: rtc core: registered pl031 as rtc0
+[    1.211519] device-mapper: uevent: version 1.0.3
+[    1.213393] device-mapper: ioctl: 4.19.1-ioctl (2011-01-07) initialised: dm-devel@redhat.com
+[    1.214271] device-mapper: multipath: version 1.2.0 loaded
+[    1.214667] device-mapper: multipath round-robin: version 1.0.0 loaded
+[    1.217100] mmci-pl18x mb:mmci: mmc0: PL181 manf 41 rev0 at 0x10005000 irq 41,42 (pio)
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+[    1.266352] mmc0: host does not support reading read-only switch. assuming write-enable.
+[    1.267292] mmc0: new SDHC card at address 4567
+[    1.271075] mmcblk0: mmc0:4567 QEMU! 3.00 GiB 
+[    1.280467]  mmcblk0: p1 p2
+[    1.287360] aaci-pl041 mb:aaci: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 43
+[    1.287815] aaci-pl041 mb:aaci: FIFO 512 entries
+[    1.289007] ALSA device list:
+[    1.289185]   #0: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 43
+[    1.291107] nf_conntrack version 0.5.0 (14148 buckets, 56592 max)
+[    1.294192] ip_tables: (C) 2000-2006 Netfilter Core Team
+[    1.295937] arp_tables: (C) 2002 David S. Miller
+[    1.296460] TCP cubic registered
+[    1.296719] NET: Registered protocol family 17
+[    1.297346] Bridge firewalling registered
+[    1.297691] Ebtables v2.0 registered
+[    1.298337] VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 0
+[    1.318100] input: AT Raw Set 2 keyboard as /devices/mb:kmi0/serio0/input/input0
+[    1.331536] rtc-pl031 mb:rtc: setting system clock to 2013-04-24 14:08:18 UTC (1366812498)
+ [    1.335678] Freeing init memory: 152K
+[    1.537150] input: ImExPS/2 Generic Explorer Mouse as /devices/mb:kmi1/serio1/input/input1
+Loading, please wait...
+[    1.953968] udev[521]: starting version 167
+Begin: Loading essential drivers ... done.
+Begin: Running /scripts/init-premount ... done.
+Begin: Mounting root file system ... Begin: Running /scripts/local-top ... done.
+Begin: Running /scripts/local-premount ... done.
+FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+[    7.468806] EXT4-fs (mmcblk0p2): warning: maximal mount count reached, running e2fsck is recommended
+[    7.473374] EXT4-fs (mmcblk0p2): recovery complete
+[    7.477222] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
+Begin: Running /scripts/local-bottom ... done.
+done.
+Begin: Running /scripts/init-bottom ... done.
+ [   16.138247] udev[664]: starting version 167
+modprobe: FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+
+init: ureadahead main process (597) terminated with status 5
+[   19.282508] net eth0: SMSC911x/921x identified at 0xe8cc0000, IRQ: 47
+[   22.259115] device: 'vcs5': device_add
+[   22.261242] PM: Adding info for No Bus:vcs5
+[   22.262550] device: 'vcsa5': device_add
+[   22.262768] PM: Adding info for No Bus:vcsa5
+[   22.285794] device: 'vcs4': device_add
+[   22.286185] PM: Adding info for No Bus:vcs4
+[   22.286389] device: 'vcsa4': device_add
+[   22.286604] PM: Adding info for No Bus:vcsa4
+[   22.413274] device: 'vcs2': device_add
+[   22.413585] PM: Adding info for No Bus:vcs2
+[   22.413703] device: 'vcsa2': device_add
+[   22.413925] PM: Adding info for No Bus:vcsa2
+[   22.463321] device: 'vcs3': device_add
+[   22.463782] PM: Adding info for No Bus:vcs3
+[   22.463897] device: 'vcsa3': device_add
+[   22.464109] PM: Adding info for No Bus:vcsa3
+
+[   22.563610] device: 'vcs6': device_add
+[   22.563901] PM: Adding info for No Bus:vcs6
+[   22.564024] device: 'vcsa6': device_add
+[   22.564231] PM: Adding info for No Bus:vcsa6
+[   22.586668] device: 'virbr0': device_add
+[   22.587677] PM: Adding info for No Bus:virbr0
+FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+ * Exporting directories for NFS kernel daemon...       [80G Last login: Wed Apr 24 18:33:16 CST 2013 from 192.168.101.1 on pts/6
+[74G[ OK ]
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+ * Starting NFS kernel daemon       [80G [74G[ OK ]
+root@linaro:~# linaro start up!
+ssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Wed Apr 24 22:08:46 2013
+root@linaro:~# scp root@192.168.101.1:~/file_transfer.sh . 
+root@192.168.101.1's password: 
+file_transfer.sh                                0%    0     0.0KB/s   --:-- ETAfile_transfer.sh                              100% 3560     3.5KB/s   00:00    
+root@linaro:~# scp root@192.168.101.1:~/memTest . 
+root@192.168.101.1's password: 
+memTest                                         0%    0     0.0KB/s   --:-- ETAmemTest                                       100% 5697     5.6KB/s   00:00    
+root@linaro:~# scp -r root@192.168.101.1:~/Config/1000/* /root/kvm/ 
+root@192.168.101.1's password: 
+1000                                          100%    0     0.0KB/s   00:00    
+start1.sh                                       0%    0     0.0KB/s   --:-- ETAstart1.sh                                     100%  636     0.6KB/s   00:00    
+start3.sh                                       0%    0     0.0KB/s   --:-- ETAstart3.sh                                     100%  637     0.6KB/s   00:00    
+start4.sh                                       0%    0     0.0KB/s   --:-- ETAstart4.sh                                     100%  637     0.6KB/s   00:00    
+root@linaro:~# cd /root/kvm
+root@linaro:~/kvm# insmod /root/kvm/kvm.ko
+root@linaro:~/kvm# chmod +x start1.sh
+root@linaro:~/kvm# ./start1.sh
+  *** TAP MAC 22:54:00:12:34:01
+   ***  idstr ram
+   ***  idstr cpu
+   ***  idstr sharedpage
+   ***  idstr vectors
+map addr 0x4d3d3c
+   ***  idstr virtio-net
+   ***  idstr virtio-console
+Warning: more nics requested than this machine supports; some have been ignored
+Linux version 2.6.35 (alexey@66-A00327-01) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-202) ) #3 Thu Jan 10 10:29:34 CST 2013
+CPU: ARMv6-compatible processor [0007b000] revision 0 (ARMv6TEJ), cr=00000000
+CPU: VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+Machine: KVM-ARM guest OS (realview EB target)
+Memory policy: ECC disabled, Data cache writeback
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16256
+Kernel command line: root=/dev/nfs rw  nfsroot=192.168.20.1:/root/rootfs/debian,hard ip=192.168.20.2::192.168.20.1:255.255.255.0:vm1:eth0:off clocksource=pit console=hvc0
+PID hash table entries: 256 (order: -2, 1024 bytes)
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Memory: 64MB = 64MB total
+Memory: 60164k/60164k available, 5372k reserved, 0K highmem
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+    DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
+    vmalloc : 0xc4800000 - 0xf8000000   ( 824 MB)
+    lowmem  : 0xc0000000 - 0xc4000000   (  64 MB)
+    modules : 0xbf000000 - 0xc0000000   (  16 MB)
+      .init : 0xc0008000 - 0xc001f000   (  92 kB)
+      .text : 0xc001f000 - 0xc026a000   (2348 kB)
+      .data : 0xc027e000 - 0xc0296fe0   ( 100 kB)
+Hierarchical RCU implementation.
+	RCU-based detection of stalled CPUs is disabled.
+	Verbose stalled-CPUs detection is disabled.
+NR_IRQS:228
+Console: colour dummy device 80x30
+console [hvc0] enabled
+Calibrating delay loop... 624.23 BogoMIPS (lpj=3121152)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+NET: Registered protocol family 16
+bio: create slab <bio-0> at 0
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+TCP reno registered
+UDP hash table entries: 256 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+msgmni has been set to 117
+io scheduler noop registered
+io scheduler deadline registered (default)
+virtio-mmio virtio-mmio.2: Wrong magic value 0x00000000!
+TCP cubic registered
+NET: Registered protocol family 17
+IP-Config: Complete:
+     device=eth0, addr=192.168.20.2, mask=255.255.255.0, gw=192.168.20.1,
+     host=vm1, domain=, nis-domain=(none),
+     bootserver=255.255.255.255, rootserver=192.168.20.1, rootpath=
+Looking up port of RPC 100003/2 on 192.168.20.1
+Looking up port of RPC 100005/1 on 192.168.20.1
+VFS: Mounted root (nfs filesystem) on device 0:10.
+Freeing init memory: 92K
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+INIT: version 2.88 booting
+root@vm1:/# echo $HOSTNAME
+vm1
+root@vm1:/# /etc/init.d/ssh start
+nt /dev/pts
+Starting OpenBSD Secure Shell server: sshdmodprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+.
+root@vm1:/# mount ssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Wed Apr 24 22:08:57 2013 from 192.168.101.1
+root@linaro:~# cd kvm
+root@linaro:~/kvm# chmod +x start3.sh
+root@linaro:~/kvm# ./start3.sh
+  *** TAP MAC 22:54:00:12:34:01
+   ***  idstr ram
+   ***  idstr cpu
+   ***  idstr sharedpage
+   ***  idstr vectors
+map addr 0x4d3d3c
+   ***  idstr virtio-net
+   ***  idstr virtio-console
+Warning: more nics requested than this machine supports; some have been ignored
+Linux version 2.6.35 (alexey@66-A00327-01) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-202) ) #3 Thu Jan 10 10:29:34 CST 2013
+CPU: ARMv6-compatible processor [0007b000] revision 0 (ARMv6TEJ), cr=00000000
+CPU: VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+Machine: KVM-ARM guest OS (realview EB target)
+Memory policy: ECC disabled, Data cache writeback
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16256
+Kernel command line: root=/dev/nfs rw  nfsroot=192.168.20.1:/root/rootfs/debian,hard ip=192.168.20.4::192.168.20.1:255.255.255.0:vm3:eth0:off clocksource=pit console=hvc0
+PID hash table entries: 256 (order: -2, 1024 bytes)
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Memory: 64MB = 64MB total
+Memory: 60164k/60164k available, 5372k reserved, 0K highmem
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+    DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
+    vmalloc : 0xc4800000 - 0xf8000000   ( 824 MB)
+    lowmem  : 0xc0000000 - 0xc4000000   (  64 MB)
+    modules : 0xbf000000 - 0xc0000000   (  16 MB)
+      .init : 0xc0008000 - 0xc001f000   (  92 kB)
+      .text : 0xc001f000 - 0xc026a000   (2348 kB)
+      .data : 0xc027e000 - 0xc0296fe0   ( 100 kB)
+Hierarchical RCU implementation.
+	RCU-based detection of stalled CPUs is disabled.
+	Verbose stalled-CPUs detection is disabled.
+NR_IRQS:228
+Console: colour dummy device 80x30
+console [hvc0] enabled
+Calibrating delay loop... 734.00 BogoMIPS (lpj=3670016)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+NET: Registered protocol family 16
+bio: create slab <bio-0> at 0
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+TCP reno registered
+UDP hash table entries: 256 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+msgmni has been set to 117
+io scheduler noop registered
+io scheduler deadline registered (default)
+virtio-mmio virtio-mmio.2: Wrong magic value 0x00000000!
+TCP cubic registered
+NET: Registered protocol family 17
+IP-Config: Complete:
+     device=eth0, addr=192.168.20.4, mask=255.255.255.0, gw=192.168.20.1,
+     host=vm3, domain=, nis-domain=(none),
+     bootserver=255.255.255.255, rootserver=192.168.20.1, rootpath=
+Looking up port of RPC 100003/2 on 192.168.20.1
+Looking up port of RPC 100005/1 on 192.168.20.1
+VFS: Mounted root (nfs filesystem) on device 0:10.
+Freeing init memory: 92K
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+INIT: version 2.88 booting
+root@vm3:/# /etc/init.d/ssh start
+nt /dev/pts
+Starting OpenBSD Secure Shell server: sshdmodprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+.
+root@vm3:/# mount /dev/pts
+cho $HOSTNAME
+root@vm3:/# echssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Wed Apr 24 22:09:48 2013 from 192.168.101.1
+root@linaro:~# chmod +x file_transfer.sh
+root@linaro:~# ./file_transfer.sh 10 5 IOV 1000 1 
+Loop	Elapsed time(seconds)	MD5 comparison result	Size comparison result
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB) copied, 3.15867 s, 3.3 MB/s
+Copy random_file from Host to Guest VM1
+random_file                                     0%    0     0.0KB/s   --:-- ETArandom_file                                    33% 3472KB   3.4MB/s   00:01 ETArandom_file                                    51% 5296KB   3.2MB/s   00:01 ETArandom_file                                    71% 7296KB   3.1MB/s   00:00 ETArandom_file                                    85% 8720KB   2.9MB/s   00:00 ETArandom_file                                    94% 9712KB   2.7MB/s   00:00 ETArandom_file                                   100%   10MB   1.7MB/s   00:06    
+	12	Check md5 from Host and Guest VM1:
+MD5 match	Check size from Host and Guest VM1:
+Size match
+
+1	Copy random_file from Guest VM1 to Guest VM2
+16	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	13	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+2	Copy random_file from Guest VM1 to Guest VM2
+13	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	13	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+3	Copy random_file from Guest VM1 to Guest VM2
+14	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	14	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+4	Copy random_file from Guest VM1 to Guest VM2
+16	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	13	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+5	Copy random_file from Guest VM1 to Guest VM2
+17	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	13	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Start time:
+20130424221010
+End time:
+20130424221522
+ssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Wed Apr 24 22:10:09 2013 from 192.168.101.1
+root@linaro:~# scp *.csv chkao@192.168.101.1:~/Report/
+chkao@192.168.101.1's password: 
+IOV-0000-1-20130424144807-20130424145436.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-1-20130424144807-20130424145436.csv  100%  352     0.3KB/s   00:00    
+IOV-0000-2-20130424145812-20130424152854.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-2-20130424145812-20130424152854.csv  100%  353     0.3KB/s   00:00    
+IOV-0000-3-20130424153337-20130424165111.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-3-20130424153337-20130424165111.csv  100%  362     0.4KB/s   00:00    
+IOV-0000-4-20130424170356-20130424170610.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-4-20130424170356-20130424170610.csv  100%  502     0.5KB/s   00:00    
+IOV-0000-5-20130424171006-20130424182639.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-5-20130424171006-20130424182639.csv  100%  363     0.4KB/s   00:00    
+IOV-0000-6-20130424183318-20130424213904.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-6-20130424183318-20130424213904.csv  100%  363     0.4KB/s   00:00    
+IOV-1000-1-20130424221010-20130424221522.csv    0%    0     0.0KB/s   --:-- ETAIOV-1000-1-20130424221010-20130424221522.csv  100%  352     0.3KB/s   00:00    
+root@linaro:~# ssh root@192.168.101.2 'rm *.csv'
+root@192.168.101.2's password: 
+root@chkao:~# PROGRAM END
+[IOV-1000] $ /bin/sh -xe /tmp/hudson1668984754612764468.sh
++ expect /srv/start.exp IOV 1000 2 1
+spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:08:15 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:15:52 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:15:53 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:15:54 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:15:54 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:15:55 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:15:56 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:15:57 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:15:57 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:15:58 2013 from localhost
+root@chkao:~# cd /home/chkao/hypervisor-01242013/linaro+libvirt
+root@chkao:/home/chkao/hypervisor-01242013/linaro+libvirt# ./start.sh
+pulseaudio: pa_context_connect() failed
+pulseaudio: Reason: Connection refused
+pulseaudio: Failed to initialize PA contextaudio: Could not init `pa' audio driver
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+Uncompressing Linux... done, booting the kernel.
+[    0.000000] Linux version 2.6.38.7 (alexey@66-A00327-01) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-202) ) #2 Mon Jan 14 17:42:29 CST 2013
+[    0.000000] CPU: ARMv7 Processor [410fc090] revision 0 (ARMv7), cr=10c53c7f
+[    0.000000] CPU: VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] Machine: ARM-Versatile Express
+[    0.000000] Memory policy: ECC disabled, Data cache writeback
+[    0.000000] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 178956ms
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 260096
+[    0.000000] Kernel command line: root=/dev/mmcblk0p2 rw mem=1024M raid=noautodetect console=ttyAMA0,38400n8 rootwait vmalloc=256MB devtmpfs.mount=0
+[    0.000000] PID hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.000000] Dentry cache hash table entries: 131072 (order: 7, 524288 bytes)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.000000] Memory: 1024MB = 1024MB total
+[    0.000000] Memory: 902884k/902884k available, 145692k reserved, 393216K highmem
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+[    0.000000]     DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
+[    0.000000]     vmalloc : 0xe8800000 - 0xf8000000   ( 248 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xe8000000   ( 640 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .init : 0xc0008000 - 0xc002e000   ( 152 kB)
+[    0.000000]       .text : 0xc002e000 - 0xc0526ddc   (5092 kB)
+[    0.000000]       .data : 0xc0528000 - 0xc054d180   ( 149 kB)
+[    0.000000] SLUB: Genslabs=13, HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] NR_IRQS:128
+[    0.000000] Console: colour dummy device 80x30
+[    0.128141] Calibrating delay loop... 653.72 BogoMIPS (lpj=3268608)
+[    0.356444] pid_max: default: 32768 minimum: 301
+[    0.357027] Security Framework initialized
+[    0.358271] AppArmor: AppArmor initialized
+[    0.358531] Mount-cache hash table entries: 512
+[    0.363675] CPU: Testing write buffer coherency: ok
+[    0.368194] hw perfevents: enabled with ARMv7 Cortex-A9 PMU driver, 1 counters available
+[    0.372058] devtmpfs: initialized
+[    0.381734] NET: Registered protocol family 16
+[    0.395260] hw-breakpoint: debug architecture 0x0 unsupported.
+[    0.395387] Serial: AMBA PL011 UART driver
+[    0.397284] mb:uart0: ttyAMA0 at MMIO 0x10009000 (irq = 37) is a PL011 rev1
+[    0.407961] console [ttyAMA0] enabled
+[    0.411058] mb:uart1: ttyAMA1 at MMIO 0x1000a000 (irq = 38) is a PL011 rev1
+[    0.412309] mb:uart2: ttyAMA2 at MMIO 0x1000b000 (irq = 39) is a PL011 rev1
+[    0.413566] mb:uart3: ttyAMA3 at MMIO 0x1000c000 (irq = 40) is a PL011 rev1
+[    0.453533] bio: create slab <bio-0> at 0
+[    0.458136] SCSI subsystem initialized
+[    0.460538] usbcore: registered new interface driver usbfs
+[    0.461859] usbcore: registered new interface driver hub
+[    0.462952] usbcore: registered new device driver usb
+[    0.467399] Advanced Linux Sound Architecture Driver Version 1.0.23.
+[    0.472005] NetLabel: Initializing
+[    0.472299] NetLabel:  domain hash size = 128
+[    0.472538] NetLabel:  protocols = UNLABELED CIPSOv4
+[    0.473525] NetLabel:  unlabeled traffic allowed by default
+[    0.475665] DMA-API: preallocated 4096 debug entries
+[    0.476116] DMA-API: debugging enabled by kernel config
+[    0.476724] Switching to clocksource timer3
+[    0.478009] AppArmor: AppArmor Filesystem Enabled
+[    0.524947] NET: Registered protocol family 2
+[    0.526118] IP route cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.528620] TCP established hash table entries: 131072 (order: 8, 1048576 bytes)
+[    0.532876] TCP bind hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.537331] TCP: Hash tables configured (established 131072 bind 65536)
+[    0.537959] TCP reno registered
+[    0.538221] UDP hash table entries: 512 (order: 1, 8192 bytes)
+[    0.538694] UDP-Lite hash table entries: 512 (order: 1, 8192 bytes)
+[    0.539866] NET: Registered protocol family 1
+[    0.541364] RPC: Registered udp transport module.
+[    0.541662] RPC: Registered tcp transport module.
+[    0.541965] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.544576] Trying to unpack rootfs image as initramfs...
+[    0.874810] Freeing initrd memory: 2624K
+[    0.876208] PMU: registered new PMU device of type 0
+[    0.877324] [KVM] kvm_eventfd: irqfd_module_init
+[    0.879938] audit: initializing netlink socket (disabled)
+[    0.880852] type=2000 audit(0.740:1): initialized
+[    0.884573] highmem bounce pool size: 64 pages
+[    0.920939] Installing knfsd (copyright (C) 1996 okir@monad.swb.de).
+[    0.922503] JFFS2 version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+[    0.925785] JFS: nTxBlock = 7074, nTxLock = 56594
+[    0.935430] Btrfs loaded
+[    0.935879] msgmni has been set to 1000
+[    0.939565] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+[    0.940218] io scheduler noop registered
+[    0.940436] io scheduler deadline registered (default)
+[    0.942030] clcd-pl11x ct:clcd: PL111 rev2 at 0x10020000
+[    0.945415] clcd-pl11x ct:clcd: CT-CA9X4 hardware, XVGA display
+[    0.949095] v2m_cfg_write: writing 03c8eee0 to 00110001
+[    0.977059] v2m_cfg_write: writing 00000000 to 00710000
+[    0.977083] v2m_cfg_write: writing 00000002 to 00b10000
+[    0.991700] Console: switching to colour frame buffer device 128x48
+[    1.045363] brd: module loaded
+[    1.053737] armflash-0: Found 1 x32 devices at 0x0 in 32-bit bank. Manufacturer ID 0x000000 Chip ID 0x000000
+[    1.054795] Intel/Sharp Extended Query Table at 0x0031
+[    1.055691] Using buffer write method
+[    1.058960] armflash-1: Found 1 x32 devices at 0x0 in 32-bit bank. Manufacturer ID 0x000000 Chip ID 0x000000
+[    1.059543] Intel/Sharp Extended Query Table at 0x0031
+[    1.060338] Using buffer write method
+[    1.060649] Concatenating MTD devices:
+[    1.060903] (0): "armflash-0"
+[    1.061091] (1): "armflash-1"
+[    1.061271] into device "armflash"
+ modprobe: FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+
+[    1.114603] RedBoot partition parsing not available
+ modprobe: FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+
+[    1.144837] afs partition parsing not available
+[    1.145801] PPP generic driver version 2.4.2
+[    1.147505] tun: Universal TUN/TAP device driver, 1.6
+[    1.147864] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+[    1.149539] smsc911x: Driver version 2008-10-21.
+[    1.177646] smsc911x-mdio: probed
+[    1.178494] eth0: attached PHY driver [Generic PHY] (mii_bus:phy_addr=ffffffff:01, irq=-1)
+[    1.180033] net eth0: MAC Address: 52:54:00:12:34:56
+[    1.180815] usbmon: debugfs is not available
+[    1.181835] isp1760 isp1760: NXP ISP1760 USB Host Controller
+[    1.182314] isp1760 isp1760: new USB bus registered, assigned bus number 1
+[    1.183106] isp1760 isp1760: Scratch test failed.
+[    1.183384] isp1760 isp1760: can't setup
+[    1.183753] isp1760 isp1760: USB bus 1 deregistered
+[    1.184150] isp1760: Failed to register the HCD device
+[    1.189354] mousedev: PS/2 mouse device common for all mice
+[    1.193504] rtc-pl031 mb:rtc: rtc core: registered pl031 as rtc0
+[    1.195805] device-mapper: uevent: version 1.0.3
+[    1.198201] device-mapper: ioctl: 4.19.1-ioctl (2011-01-07) initialised: dm-devel@redhat.com
+[    1.199247] device-mapper: multipath: version 1.2.0 loaded
+[    1.199786] device-mapper: multipath round-robin: version 1.0.0 loaded
+[    1.202199] mmci-pl18x mb:mmci: mmc0: PL181 manf 41 rev0 at 0x10005000 irq 41,42 (pio)
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+[    1.245386] mmc0: host does not support reading read-only switch. assuming write-enable.
+[    1.247066] mmc0: new SDHC card at address 4567
+[    1.259439] mmcblk0: mmc0:4567 QEMU! 3.00 GiB 
+[    1.269847]  mmcblk0: p1 p2
+[    1.279728] aaci-pl041 mb:aaci: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 43
+[    1.280287] aaci-pl041 mb:aaci: FIFO 512 entries
+[    1.280949] ALSA device list:
+[    1.281154]   #0: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 43
+[    1.282402] nf_conntrack version 0.5.0 (14148 buckets, 56592 max)
+[    1.285583] ip_tables: (C) 2000-2006 Netfilter Core Team
+[    1.287491] arp_tables: (C) 2002 David S. Miller
+[    1.288069] TCP cubic registered
+[    1.288254] NET: Registered protocol family 17
+[    1.288818] Bridge firewalling registered
+[    1.289301] Ebtables v2.0 registered
+[    1.289971] VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 0
+[    1.309961] input: AT Raw Set 2 keyboard as /devices/mb:kmi0/serio0/input/input0
+[    1.323236] rtc-pl031 mb:rtc: setting system clock to 2013-04-24 14:16:01 UTC (1366812961)
+ [    1.327267] Freeing init memory: 152K
+[    1.526987] input: ImExPS/2 Generic Explorer Mouse as /devices/mb:kmi1/serio1/input/input1
+Loading, please wait...
+[    1.934219] udev[521]: starting version 167
+Begin: Loading essential drivers ... done.
+Begin: Running /scripts/init-premount ... done.
+Begin: Mounting root file system ... Begin: Running /scripts/local-top ... done.
+Begin: Running /scripts/local-premount ... done.
+FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+[    4.616356] EXT4-fs (mmcblk0p2): warning: maximal mount count reached, running e2fsck is recommended
+[    4.620242] EXT4-fs (mmcblk0p2): recovery complete
+[    4.623525] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
+Begin: Running /scripts/local-bottom ... done.
+done.
+Begin: Running /scripts/init-bottom ... done.
+ [   11.641138] udev[664]: starting version 167
+[   15.253292] net eth0: SMSC911x/921x identified at 0xe8cc0000, IRQ: 47
+modprobe: FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+
+init: ureadahead main process (597) terminated with status 5
+[   17.854523] device: 'vcs4': device_add
+[   17.854947] PM: Adding info for No Bus:vcs4
+[   17.855108] device: 'vcsa4': device_add
+[   17.855300] PM: Adding info for No Bus:vcsa4
+[   17.888105] device: 'vcs5': device_add
+[   17.890237] PM: Adding info for No Bus:vcs5
+[   17.891507] device: 'vcsa5': device_add
+[   17.891754] PM: Adding info for No Bus:vcsa5
+[   18.035960] device: 'vcs2': device_add
+[   18.036278] PM: Adding info for No Bus:vcs2
+[   18.036400] device: 'vcsa2': device_add
+[   18.036755] PM: Adding info for No Bus:vcsa2
+[   18.093041] device: 'vcs3': device_add
+[   18.093561] PM: Adding info for No Bus:vcs3
+[   18.093673] device: 'vcsa3': device_add
+[   18.093894] PM: Adding info for No Bus:vcsa3
+
+[   18.194437] device: 'vcs6': device_add
+[   18.194725] PM: Adding info for No Bus:vcs6
+[   18.194847] device: 'vcsa6': device_add
+[   18.195071] PM: Adding info for No Bus:vcsa6
+[   18.225902] device: 'virbr0': device_add
+[   18.226934] PM: Adding info for No Bus:virbr0
+FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+Last login: Wed Apr 24 22:10:09 CST 2013 from 192.168.101.1 on pts/2
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+ * Exporting directories for NFS kernel daemon...       [80G [74G[ OK ]
+ * Starting NFS kernel daemon       [80G [74G[ OK ]
+root@linaro:~# linaro start up!
+ssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Wed Apr 24 22:16:25 2013
+root@linaro:~# scp root@192.168.101.1:~/file_transfer.sh . 
+root@192.168.101.1's password: 
+file_transfer.sh                                0%    0     0.0KB/s   --:-- ETAfile_transfer.sh                              100% 3560     3.5KB/s   00:00    
+root@linaro:~# scp root@192.168.101.1:~/memTest . 
+root@192.168.101.1's password: 
+memTest                                         0%    0     0.0KB/s   --:-- ETAmemTest                                       100% 5697     5.6KB/s   00:00    
+root@linaro:~# scp -r root@192.168.101.1:~/Config/1000/* /root/kvm/ 
+root@192.168.101.1's password: 
+1000                                          100%    0     0.0KB/s   00:00    
+start1.sh                                       0%    0     0.0KB/s   --:-- ETAstart1.sh                                     100%  636     0.6KB/s   00:00    
+start3.sh                                       0%    0     0.0KB/s   --:-- ETAstart3.sh                                     100%  637     0.6KB/s   00:00    
+start4.sh                                       0%    0     0.0KB/s   --:-- ETAstart4.sh                                     100%  637     0.6KB/s   00:00    
+root@linaro:~# cd /root/kvm
+root@linaro:~/kvm# insmod /root/kvm/kvm.ko
+root@linaro:~/kvm# chmod +x start1.sh
+root@linaro:~/kvm# ./start1.sh
+  *** TAP MAC 22:54:00:12:34:01
+   ***  idstr ram
+   ***  idstr cpu
+   ***  idstr sharedpage
+   ***  idstr vectors
+map addr 0x4d3d3c
+   ***  idstr virtio-net
+   ***  idstr virtio-console
+Warning: more nics requested than this machine supports; some have been ignored
+Linux version 2.6.35 (alexey@66-A00327-01) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-202) ) #3 Thu Jan 10 10:29:34 CST 2013
+CPU: ARMv6-compatible processor [0007b000] revision 0 (ARMv6TEJ), cr=00000000
+CPU: VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+Machine: KVM-ARM guest OS (realview EB target)
+Memory policy: ECC disabled, Data cache writeback
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16256
+Kernel command line: root=/dev/nfs rw  nfsroot=192.168.20.1:/root/rootfs/debian,hard ip=192.168.20.2::192.168.20.1:255.255.255.0:vm1:eth0:off clocksource=pit console=hvc0
+PID hash table entries: 256 (order: -2, 1024 bytes)
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Memory: 64MB = 64MB total
+Memory: 60164k/60164k available, 5372k reserved, 0K highmem
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+    DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
+    vmalloc : 0xc4800000 - 0xf8000000   ( 824 MB)
+    lowmem  : 0xc0000000 - 0xc4000000   (  64 MB)
+    modules : 0xbf000000 - 0xc0000000   (  16 MB)
+      .init : 0xc0008000 - 0xc001f000   (  92 kB)
+      .text : 0xc001f000 - 0xc026a000   (2348 kB)
+      .data : 0xc027e000 - 0xc0296fe0   ( 100 kB)
+Hierarchical RCU implementation.
+	RCU-based detection of stalled CPUs is disabled.
+	Verbose stalled-CPUs detection is disabled.
+NR_IRQS:228
+Console: colour dummy device 80x30
+console [hvc0] enabled
+Calibrating delay loop... 614.40 BogoMIPS (lpj=3072000)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+NET: Registered protocol family 16
+bio: create slab <bio-0> at 0
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+TCP reno registered
+UDP hash table entries: 256 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+msgmni has been set to 117
+io scheduler noop registered
+io scheduler deadline registered (default)
+virtio-mmio virtio-mmio.2: Wrong magic value 0x00000000!
+TCP cubic registered
+NET: Registered protocol family 17
+IP-Config: Complete:
+     device=eth0, addr=192.168.20.2, mask=255.255.255.0, gw=192.168.20.1,
+     host=vm1, domain=, nis-domain=(none),
+     bootserver=255.255.255.255, rootserver=192.168.20.1, rootpath=
+Looking up port of RPC 100003/2 on 192.168.20.1
+Looking up port of RPC 100005/1 on 192.168.20.1
+VFS: Mounted root (nfs filesystem) on device 0:10.
+Freeing init memory: 92K
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+INIT: version 2.88 booting
+root@vm1:/# echo $HOSTNAME
+vm1
+root@vm1:/# /etc/init.d/ssh start
+unt /dev/pts
+Starting OpenBSD Secure Shell server: sshdmodprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+.
+root@vm1:/# mountssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Wed Apr 24 22:16:35 2013 from 192.168.101.1
+root@linaro:~# cd kvm
+root@linaro:~/kvm# chmod +x start3.sh
+root@linaro:~/kvm# ./start3.sh
+  *** TAP MAC 22:54:00:12:34:01
+   ***  idstr ram
+   ***  idstr cpu
+   ***  idstr sharedpage
+   ***  idstr vectors
+map addr 0x4d3d3c
+   ***  idstr virtio-net
+   ***  idstr virtio-console
+Warning: more nics requested than this machine supports; some have been ignored
+Linux version 2.6.35 (alexey@66-A00327-01) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-202) ) #3 Thu Jan 10 10:29:34 CST 2013
+CPU: ARMv6-compatible processor [0007b000] revision 0 (ARMv6TEJ), cr=00000000
+CPU: VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+Machine: KVM-ARM guest OS (realview EB target)
+Memory policy: ECC disabled, Data cache writeback
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16256
+Kernel command line: root=/dev/nfs rw  nfsroot=192.168.20.1:/root/rootfs/debian,hard ip=192.168.20.4::192.168.20.1:255.255.255.0:vm3:eth0:off clocksource=pit console=hvc0
+PID hash table entries: 256 (order: -2, 1024 bytes)
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Memory: 64MB = 64MB total
+Memory: 60164k/60164k available, 5372k reserved, 0K highmem
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+    DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
+    vmalloc : 0xc4800000 - 0xf8000000   ( 824 MB)
+    lowmem  : 0xc0000000 - 0xc4000000   (  64 MB)
+    modules : 0xbf000000 - 0xc0000000   (  16 MB)
+      .init : 0xc0008000 - 0xc001f000   (  92 kB)
+      .text : 0xc001f000 - 0xc026a000   (2348 kB)
+      .data : 0xc027e000 - 0xc0296fe0   ( 100 kB)
+Hierarchical RCU implementation.
+	RCU-based detection of stalled CPUs is disabled.
+	Verbose stalled-CPUs detection is disabled.
+NR_IRQS:228
+Console: colour dummy device 80x30
+console [hvc0] enabled
+Calibrating delay loop... 838.86 BogoMIPS (lpj=4194304)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+NET: Registered protocol family 16
+bio: create slab <bio-0> at 0
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+TCP reno registered
+UDP hash table entries: 256 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+msgmni has been set to 117
+io scheduler noop registered
+io scheduler deadline registered (default)
+virtio-mmio virtio-mmio.2: Wrong magic value 0x00000000!
+TCP cubic registered
+NET: Registered protocol family 17
+IP-Config: Complete:
+     device=eth0, addr=192.168.20.4, mask=255.255.255.0, gw=192.168.20.1,
+     host=vm3, domain=, nis-domain=(none),
+     bootserver=255.255.255.255, rootserver=192.168.20.1, rootpath=
+Looking up port of RPC 100003/2 on 192.168.20.1
+Looking up port of RPC 100005/1 on 192.168.20.1
+VFS: Mounted root (nfs filesystem) on device 0:10.
+Freeing init memory: 92K
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+INIT: version 2.88 booting
+root@vm3:/# /etc/init.d/ssh start
+t /dev/pts
+Starting OpenBSD Secure Shell server: sshdmodprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+.
+root@vm3:/# mount /dev/pts
+echo $HOSTNAME
+root@vm3:/# echo $HOSTNAME
+ssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Wed Apr 24 22:17:28 2013 from 192.168.101.1
+root@linaro:~# 
+root@linaro:~# scp ~/memTest root@192.168.20.2:/root/memTest
+memTest                                         0%    0     0.0KB/s   --:-- ETAmemTest                                       100% 5697     5.6KB/s   00:00    
+root@linaro:~# 
+root@linaro:~# ssh root@192.168.20.2 '/root/memTest'
+ssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Wed Apr 24 22:17:48 2013 from 192.168.101.1
+root@linaro:~# chmod +x file_transfer.sh
+root@linaro:~# ./file_transfer.sh 10 5 IOV 1000 2 
+Loop	Elapsed time(seconds)	MD5 comparison result	Size comparison result
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB) copied, 3.07451 s, 3.4 MB/s
+Copy random_file from Host to Guest VM1
+random_file                                     0%    0     0.0KB/s   --:-- ETArandom_file                                    21% 2208KB   2.2MB/s   00:03 ETArandom_file                                    23% 2448KB   2.0MB/s   00:03 ETArandom_file                                    26% 2704KB   1.8MB/s   00:04 ETArandom_file                                    28% 2960KB   1.6MB/s   00:04 ETArandom_file                                    30% 3088KB   1.5MB/s   00:04 ETArandom_file                                    30% 3136KB   1.3MB/s   00:05 ETArandom_file                                    30% 3136KB   1.2MB/s   00:05 ETArandom_file                                    34% 3568KB   1.1MB/s   00:05 ETArandom_file                                    36% 3696KB   1.0MB/s   00:06 ETArandom_file                                    37% 3824KB 961.6KB/s   00:06 ETArandom_file                                    41% 4208KB 903.9KB/s   00:06 ETArandom_file                                    47% 4848KB 877.5KB/s   00:06 ETArandom_file                                    52% 5392KB 844.1KB/s   00:05 ETArandom_file                                    59% 6048KB 825.3KB/s   00:05 ETArandom_file                                    60% 6224KB 760.4KB/s   00:05 ETArandom_file                                    63% 6480KB 709.9KB/s   00:05 ETArandom_file                                    65% 6736KB 664.6KB/s   00:05 ETArandom_file                                    68% 6992KB 623.7KB/s   00:05 ETArandom_file                                    68% 7056KB 567.7KB/s   00:05 ETArandom_file                                    74% 7600KB 565.4KB/s   00:04 ETArandom_file                                    76% 7856KB 534.4KB/s   00:04 ETArandom_file                                    77% 7984KB 493.8KB/s   00:04 ETArandom_file                                    78% 8000KB 446.0KB/s   00:05 ETArandom_file                                    83% 8544KB 455.8KB/s   00:03 ETArandom_file                                    87% 8992KB 455.0KB/s   00:02 ETArandom_file                                    87% 8992KB 409.5KB/s   00:03 ETArandom_file                                    87% 8992KB 368.6KB/s   00:03 ETArandom_file                                    87% 8992KB 331.7KB/s   00:03 ETArandom_file                                    98%   10MB 408.9KB/s   00:00 ETArandom_file                                   100%   10MB 341.3KB/s   00:30    
+	74	Check md5 from Host and Guest VM1:
+MD5 match	Check size from Host and Guest VM1:
+Size match
+
+1	Copy random_file from Guest VM1 to Guest VM2
+52	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	89	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+2	Copy random_file from Guest VM1 to Guest VM2
+64	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	89	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+3	Copy random_file from Guest VM1 to Guest VM2
+56	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	130	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+4	Copy random_file from Guest VM1 to Guest VM2
+58	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	77	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+5	Copy random_file from Guest VM1 to Guest VM2
+54	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	68	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Start time:
+20130424221855
+End time:
+20130424225006
+ssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Wed Apr 24 22:18:54 2013 from 192.168.101.1
+root@linaro:~# scp *.csv chkao@192.168.101.1:~/Report/
+chkao@192.168.101.1's password: 
+IOV-0000-1-20130424144807-20130424145436.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-1-20130424144807-20130424145436.csv  100%  352     0.3KB/s   00:00    
+IOV-0000-2-20130424145812-20130424152854.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-2-20130424145812-20130424152854.csv  100%  353     0.3KB/s   00:00    
+IOV-0000-3-20130424153337-20130424165111.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-3-20130424153337-20130424165111.csv  100%  362     0.4KB/s   00:00    
+IOV-0000-4-20130424170356-20130424170610.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-4-20130424170356-20130424170610.csv  100%  502     0.5KB/s   00:00    
+IOV-0000-5-20130424171006-20130424182639.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-5-20130424171006-20130424182639.csv  100%  363     0.4KB/s   00:00    
+IOV-0000-6-20130424183318-20130424213904.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-6-20130424183318-20130424213904.csv  100%  363     0.4KB/s   00:00    
+IOV-1000-1-20130424221010-20130424221522.csv    0%    0     0.0KB/s   --:-- ETAIOV-1000-1-20130424221010-20130424221522.csv  100%  352     0.3KB/s   00:00    
+IOV-1000-2-20130424221855-20130424225006.csv    0%    0     0.0KB/s   --:-- ETAIOV-1000-2-20130424221855-20130424225006.csv  100%  353     0.3KB/s   00:00    
+root@linaro:~# ssh root@192.168.101.2 'rm *.csv'
+root@192.168.101.2's password: 
+root@chkao:~# PROGRAM END
+[IOV-1000] $ /bin/sh -xe /tmp/hudson3039258962470619995.sh
++ expect /srv/start.exp IOV 1000 3 1
+spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:15:59 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:50:39 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:50:39 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:50:40 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:50:41 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:50:41 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:50:42 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:50:43 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:50:44 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:50:44 2013 from localhost
+root@chkao:~# cd /home/chkao/hypervisor-01242013/linaro+libvirt
+root@chkao:/home/chkao/hypervisor-01242013/linaro+libvirt# ./start.sh
+pulseaudio: pa_context_connect() failed
+pulseaudio: Reason: Connection refused
+pulseaudio: Failed to initialize PA contextaudio: Could not init `pa' audio driver
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+Uncompressing Linux... done, booting the kernel.
+[    0.000000] Linux version 2.6.38.7 (alexey@66-A00327-01) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-202) ) #2 Mon Jan 14 17:42:29 CST 2013
+[    0.000000] CPU: ARMv7 Processor [410fc090] revision 0 (ARMv7), cr=10c53c7f
+[    0.000000] CPU: VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] Machine: ARM-Versatile Express
+[    0.000000] Memory policy: ECC disabled, Data cache writeback
+[    0.000000] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 178956ms
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 260096
+[    0.000000] Kernel command line: root=/dev/mmcblk0p2 rw mem=1024M raid=noautodetect console=ttyAMA0,38400n8 rootwait vmalloc=256MB devtmpfs.mount=0
+[    0.000000] PID hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.000000] Dentry cache hash table entries: 131072 (order: 7, 524288 bytes)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.000000] Memory: 1024MB = 1024MB total
+[    0.000000] Memory: 902884k/902884k available, 145692k reserved, 393216K highmem
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+[    0.000000]     DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
+[    0.000000]     vmalloc : 0xe8800000 - 0xf8000000   ( 248 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xe8000000   ( 640 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .init : 0xc0008000 - 0xc002e000   ( 152 kB)
+[    0.000000]       .text : 0xc002e000 - 0xc0526ddc   (5092 kB)
+[    0.000000]       .data : 0xc0528000 - 0xc054d180   ( 149 kB)
+[    0.000000] SLUB: Genslabs=13, HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] NR_IRQS:128
+[    0.000000] Console: colour dummy device 80x30
+[    0.128588] Calibrating delay loop... 671.74 BogoMIPS (lpj=3358720)
+[    0.357254] pid_max: default: 32768 minimum: 301
+[    0.357747] Security Framework initialized
+[    0.358981] AppArmor: AppArmor initialized
+[    0.359242] Mount-cache hash table entries: 512
+[    0.364389] CPU: Testing write buffer coherency: ok
+[    0.369209] hw perfevents: enabled with ARMv7 Cortex-A9 PMU driver, 1 counters available
+[    0.372821] devtmpfs: initialized
+[    0.382414] NET: Registered protocol family 16
+[    0.396054] hw-breakpoint: debug architecture 0x0 unsupported.
+[    0.396185] Serial: AMBA PL011 UART driver
+[    0.397730] mb:uart0: ttyAMA0 at MMIO 0x10009000 (irq = 37) is a PL011 rev1
+[    0.407324] console [ttyAMA0] enabled
+[    0.410305] mb:uart1: ttyAMA1 at MMIO 0x1000a000 (irq = 38) is a PL011 rev1
+[    0.411162] mb:uart2: ttyAMA2 at MMIO 0x1000b000 (irq = 39) is a PL011 rev1
+[    0.411953] mb:uart3: ttyAMA3 at MMIO 0x1000c000 (irq = 40) is a PL011 rev1
+[    0.451308] bio: create slab <bio-0> at 0
+[    0.455550] SCSI subsystem initialized
+[    0.458150] usbcore: registered new interface driver usbfs
+[    0.459406] usbcore: registered new interface driver hub
+[    0.460486] usbcore: registered new device driver usb
+[    0.464538] Advanced Linux Sound Architecture Driver Version 1.0.23.
+[    0.469366] NetLabel: Initializing
+[    0.469669] NetLabel:  domain hash size = 128
+[    0.469909] NetLabel:  protocols = UNLABELED CIPSOv4
+[    0.470873] NetLabel:  unlabeled traffic allowed by default
+[    0.472970] DMA-API: preallocated 4096 debug entries
+[    0.473316] DMA-API: debugging enabled by kernel config
+[    0.473785] Switching to clocksource timer3
+[    0.475071] AppArmor: AppArmor Filesystem Enabled
+[    0.522444] NET: Registered protocol family 2
+[    0.523676] IP route cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.526142] TCP established hash table entries: 131072 (order: 8, 1048576 bytes)
+[    0.530450] TCP bind hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.534788] TCP: Hash tables configured (established 131072 bind 65536)
+[    0.535305] TCP reno registered
+[    0.535568] UDP hash table entries: 512 (order: 1, 8192 bytes)
+[    0.536076] UDP-Lite hash table entries: 512 (order: 1, 8192 bytes)
+[    0.537387] NET: Registered protocol family 1
+[    0.538876] RPC: Registered udp transport module.
+[    0.539227] RPC: Registered tcp transport module.
+[    0.539518] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.542403] Trying to unpack rootfs image as initramfs...
+[    0.874403] Freeing initrd memory: 2624K
+[    0.875918] PMU: registered new PMU device of type 0
+[    0.876757] [KVM] kvm_eventfd: irqfd_module_init
+[    0.879568] audit: initializing netlink socket (disabled)
+[    0.881418] type=2000 audit(0.740:1): initialized
+[    0.885455] highmem bounce pool size: 64 pages
+[    0.922099] Installing knfsd (copyright (C) 1996 okir@monad.swb.de).
+[    0.923307] JFFS2 version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+[    0.926485] JFS: nTxBlock = 7074, nTxLock = 56594
+[    0.935422] Btrfs loaded
+[    0.935861] msgmni has been set to 1000
+[    0.939367] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+[    0.939992] io scheduler noop registered
+[    0.940341] io scheduler deadline registered (default)
+[    0.941981] clcd-pl11x ct:clcd: PL111 rev2 at 0x10020000
+[    0.945232] clcd-pl11x ct:clcd: CT-CA9X4 hardware, XVGA display
+[    0.948724] v2m_cfg_write: writing 03c8eee0 to 00110001
+[    0.977464] v2m_cfg_write: writing 00000000 to 00710000
+[    0.977488] v2m_cfg_write: writing 00000002 to 00b10000
+[    0.996934] Console: switching to colour frame buffer device 128x48
+[    1.050843] brd: module loaded
+[    1.059298] armflash-0: Found 1 x32 devices at 0x0 in 32-bit bank. Manufacturer ID 0x000000 Chip ID 0x000000
+[    1.060334] Intel/Sharp Extended Query Table at 0x0031
+[    1.061352] Using buffer write method
+[    1.064476] armflash-1: Found 1 x32 devices at 0x0 in 32-bit bank. Manufacturer ID 0x000000 Chip ID 0x000000
+[    1.065018] Intel/Sharp Extended Query Table at 0x0031
+[    1.065869] Using buffer write method
+[    1.066191] Concatenating MTD devices:
+[    1.066466] (0): "armflash-0"
+[    1.066611] (1): "armflash-1"
+[    1.066756] into device "armflash"
+ modprobe: FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+
+[    1.128379] RedBoot partition parsing not available
+ modprobe: FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+
+[    1.160111] afs partition parsing not available
+[    1.161119] PPP generic driver version 2.4.2
+[    1.162474] tun: Universal TUN/TAP device driver, 1.6
+[    1.162767] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+[    1.164377] smsc911x: Driver version 2008-10-21.
+[    1.193006] smsc911x-mdio: probed
+[    1.193717] eth0: attached PHY driver [Generic PHY] (mii_bus:phy_addr=ffffffff:01, irq=-1)
+[    1.194978] net eth0: MAC Address: 52:54:00:12:34:56
+[    1.195661] usbmon: debugfs is not available
+[    1.196509] isp1760 isp1760: NXP ISP1760 USB Host Controller
+[    1.196927] isp1760 isp1760: new USB bus registered, assigned bus number 1
+[    1.197934] isp1760 isp1760: Scratch test failed.
+[    1.198206] isp1760 isp1760: can't setup
+[    1.198580] isp1760 isp1760: USB bus 1 deregistered
+[    1.198955] isp1760: Failed to register the HCD device
+[    1.203765] mousedev: PS/2 mouse device common for all mice
+[    1.208562] rtc-pl031 mb:rtc: rtc core: registered pl031 as rtc0
+[    1.210985] device-mapper: uevent: version 1.0.3
+[    1.212925] device-mapper: ioctl: 4.19.1-ioctl (2011-01-07) initialised: dm-devel@redhat.com
+[    1.213853] device-mapper: multipath: version 1.2.0 loaded
+[    1.214266] device-mapper: multipath round-robin: version 1.0.0 loaded
+[    1.216913] mmci-pl18x mb:mmci: mmc0: PL181 manf 41 rev0 at 0x10005000 irq 41,42 (pio)
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+[    1.265818] mmc0: host does not support reading read-only switch. assuming write-enable.
+[    1.266965] mmc0: new SDHC card at address 4567
+[    1.272581] mmcblk0: mmc0:4567 QEMU! 3.00 GiB 
+[    1.281146]  mmcblk0: p1 p2
+[    1.288213] aaci-pl041 mb:aaci: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 43
+[    1.288934] aaci-pl041 mb:aaci: FIFO 512 entries
+[    1.290287] ALSA device list:
+[    1.290585]   #0: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 43
+[    1.292736] nf_conntrack version 0.5.0 (14148 buckets, 56592 max)
+[    1.296432] ip_tables: (C) 2000-2006 Netfilter Core Team
+[    1.298429] arp_tables: (C) 2002 David S. Miller
+[    1.299097] TCP cubic registered
+[    1.299471] NET: Registered protocol family 17
+[    1.300304] Bridge firewalling registered
+[    1.300837] Ebtables v2.0 registered
+[    1.301636] VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 0
+[    1.322382] input: AT Raw Set 2 keyboard as /devices/mb:kmi0/serio0/input/input0
+[    1.336142] rtc-pl031 mb:rtc: setting system clock to 2013-04-24 14:50:48 UTC (1366815048)
+ [    1.340625] Freeing init memory: 152K
+[    1.529826] input: ImExPS/2 Generic Explorer Mouse as /devices/mb:kmi1/serio1/input/input1
+Loading, please wait...
+[    1.967711] udev[521]: starting version 167
+Begin: Loading essential drivers ... done.
+Begin: Running /scripts/init-premount ... done.
+Begin: Mounting root file system ... Begin: Running /scripts/local-top ... done.
+Begin: Running /scripts/local-premount ... done.
+FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+[    4.840236] EXT4-fs (mmcblk0p2): warning: maximal mount count reached, running e2fsck is recommended
+[    4.845798] EXT4-fs (mmcblk0p2): recovery complete
+[    4.851027] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
+Begin: Running /scripts/local-bottom ... done.
+done.
+Begin: Running /scripts/init-bottom ... done.
+ [   12.221501] udev[664]: starting version 167
+[   15.516179] net eth0: SMSC911x/921x identified at 0xe8cc0000, IRQ: 47
+modprobe: FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+
+init: ureadahead main process (597) terminated with status 5
+[   18.454602] device: 'vcs4': device_add
+[   18.455039] PM: Adding info for No Bus:vcs4
+[   18.455197] device: 'vcsa4': device_add
+[   18.455403] PM: Adding info for No Bus:vcsa4
+[   18.527543] device: 'vcs5': device_add
+[   18.527816] PM: Adding info for No Bus:vcs5
+[   18.527924] device: 'vcsa5': device_add
+[   18.528138] PM: Adding info for No Bus:vcsa5
+[   18.645215] device: 'vcs2': device_add
+[   18.647449] PM: Adding info for No Bus:vcs2
+[   18.648690] device: 'vcsa2': device_add
+[   18.648926] PM: Adding info for No Bus:vcsa2
+[   18.685690] device: 'vcs3': device_add
+[   18.686184] PM: Adding info for No Bus:vcs3
+[   18.686299] device: 'vcsa3': device_add
+[   18.686513] PM: Adding info for No Bus:vcsa3
+
+[   18.794029] device: 'vcs6': device_add
+[   18.794333] PM: Adding info for No Bus:vcs6
+[   18.794455] device: 'vcsa6': device_add
+[   18.794673] PM: Adding info for No Bus:vcsa6
+[   18.817714] device: 'virbr0': device_add
+[   18.818576] PM: Adding info for No Bus:virbr0
+FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+ * Exporting directories for NFS kernel daemon...       Last login: Wed Apr 24 22:18:54 CST 2013 from 192.168.101.1 on pts/3
+[80G Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+[74G[ OK ]
+ * Starting NFS kernel daemon       [80G [74G[ OK ]
+root@linaro:~# linaro start up!
+ssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Wed Apr 24 22:51:12 2013
+root@linaro:~# scp root@192.168.101.1:~/file_transfer.sh . 
+root@192.168.101.1's password: 
+file_transfer.sh                                0%    0     0.0KB/s   --:-- ETAfile_transfer.sh                              100% 3560     3.5KB/s   00:00    
+root@linaro:~# scp root@192.168.101.1:~/memTest . 
+root@192.168.101.1's password: 
+memTest                                         0%    0     0.0KB/s   --:-- ETAmemTest                                       100% 5697     5.6KB/s   00:00    
+root@linaro:~# scp -r root@192.168.101.1:~/Config/1000/* /root/kvm/ 
+root@192.168.101.1's password: 
+1000                                          100%    0     0.0KB/s   00:00    
+start1.sh                                       0%    0     0.0KB/s   --:-- ETAstart1.sh                                     100%  636     0.6KB/s   00:00    
+start3.sh                                       0%    0     0.0KB/s   --:-- ETAstart3.sh                                     100%  637     0.6KB/s   00:00    
+start4.sh                                       0%    0     0.0KB/s   --:-- ETAstart4.sh                                     100%  637     0.6KB/s   00:00    
+root@linaro:~# cd /root/kvm
+root@linaro:~/kvm# insmod /root/kvm/kvm.ko
+root@linaro:~/kvm# chmod +x start1.sh
+root@linaro:~/kvm# ./start1.sh
+  *** TAP MAC 22:54:00:12:34:01
+   ***  idstr ram
+   ***  idstr cpu
+   ***  idstr sharedpage
+   ***  idstr vectors
+map addr 0x4d3d3c
+   ***  idstr virtio-net
+   ***  idstr virtio-console
+Warning: more nics requested than this machine supports; some have been ignored
+Linux version 2.6.35 (alexey@66-A00327-01) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-202) ) #3 Thu Jan 10 10:29:34 CST 2013
+CPU: ARMv6-compatible processor [0007b000] revision 0 (ARMv6TEJ), cr=00000000
+CPU: VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+Machine: KVM-ARM guest OS (realview EB target)
+Memory policy: ECC disabled, Data cache writeback
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16256
+Kernel command line: root=/dev/nfs rw  nfsroot=192.168.20.1:/root/rootfs/debian,hard ip=192.168.20.2::192.168.20.1:255.255.255.0:vm1:eth0:off clocksource=pit console=hvc0
+PID hash table entries: 256 (order: -2, 1024 bytes)
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Memory: 64MB = 64MB total
+Memory: 60164k/60164k available, 5372k reserved, 0K highmem
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+    DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
+    vmalloc : 0xc4800000 - 0xf8000000   ( 824 MB)
+    lowmem  : 0xc0000000 - 0xc4000000   (  64 MB)
+    modules : 0xbf000000 - 0xc0000000   (  16 MB)
+      .init : 0xc0008000 - 0xc001f000   (  92 kB)
+      .text : 0xc001f000 - 0xc026a000   (2348 kB)
+      .data : 0xc027e000 - 0xc0296fe0   ( 100 kB)
+Hierarchical RCU implementation.
+	RCU-based detection of stalled CPUs is disabled.
+	Verbose stalled-CPUs detection is disabled.
+NR_IRQS:228
+Console: colour dummy device 80x30
+console [hvc0] enabled
+Calibrating delay loop... 655.36 BogoMIPS (lpj=3276800)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+NET: Registered protocol family 16
+bio: create slab <bio-0> at 0
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+TCP reno registered
+UDP hash table entries: 256 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+msgmni has been set to 117
+io scheduler noop registered
+io scheduler deadline registered (default)
+virtio-mmio virtio-mmio.2: Wrong magic value 0x00000000!
+TCP cubic registered
+NET: Registered protocol family 17
+IP-Config: Complete:
+     device=eth0, addr=192.168.20.2, mask=255.255.255.0, gw=192.168.20.1,
+     host=vm1, domain=, nis-domain=(none),
+     bootserver=255.255.255.255, rootserver=192.168.20.1, rootpath=
+Looking up port of RPC 100003/2 on 192.168.20.1
+Looking up port of RPC 100005/1 on 192.168.20.1
+VFS: Mounted root (nfs filesystem) on device 0:10.
+Freeing init memory: 92K
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+INIT: version 2.88 booting
+root@vm1:/# echo $HOSTNAME
+vm1
+root@vm1:/# /etc/init.d/ssh start
+mount /dev/pts
+Starting OpenBSD Secure Shell server: sshdmodprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+.
+root@vm1:/# mounssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Wed Apr 24 22:51:23 2013 from 192.168.101.1
+root@linaro:~# cd kvm
+root@linaro:~/kvm# chmod +x start3.sh
+root@linaro:~/kvm# ./start3.sh
+  *** TAP MAC 22:54:00:12:34:01
+   ***  idstr ram
+   ***  idstr cpu
+   ***  idstr sharedpage
+   ***  idstr vectors
+map addr 0x4d3d3c
+   ***  idstr virtio-net
+   ***  idstr virtio-console
+Warning: more nics requested than this machine supports; some have been ignored
+Linux version 2.6.35 (alexey@66-A00327-01) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-202) ) #3 Thu Jan 10 10:29:34 CST 2013
+CPU: ARMv6-compatible processor [0007b000] revision 0 (ARMv6TEJ), cr=00000000
+CPU: VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+Machine: KVM-ARM guest OS (realview EB target)
+Memory policy: ECC disabled, Data cache writeback
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16256
+Kernel command line: root=/dev/nfs rw  nfsroot=192.168.20.1:/root/rootfs/debian,hard ip=192.168.20.4::192.168.20.1:255.255.255.0:vm3:eth0:off clocksource=pit console=hvc0
+PID hash table entries: 256 (order: -2, 1024 bytes)
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Memory: 64MB = 64MB total
+Memory: 60164k/60164k available, 5372k reserved, 0K highmem
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+    DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
+    vmalloc : 0xc4800000 - 0xf8000000   ( 824 MB)
+    lowmem  : 0xc0000000 - 0xc4000000   (  64 MB)
+    modules : 0xbf000000 - 0xc0000000   (  16 MB)
+      .init : 0xc0008000 - 0xc001f000   (  92 kB)
+      .text : 0xc001f000 - 0xc026a000   (2348 kB)
+      .data : 0xc027e000 - 0xc0296fe0   ( 100 kB)
+Hierarchical RCU implementation.
+	RCU-based detection of stalled CPUs is disabled.
+	Verbose stalled-CPUs detection is disabled.
+NR_IRQS:228
+Console: colour dummy device 80x30
+console [hvc0] enabled
+Calibrating delay loop... 838.86 BogoMIPS (lpj=4194304)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+NET: Registered protocol family 16
+bio: create slab <bio-0> at 0
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+TCP reno registered
+UDP hash table entries: 256 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+msgmni has been set to 117
+io scheduler noop registered
+io scheduler deadline registered (default)
+virtio-mmio virtio-mmio.2: Wrong magic value 0x00000000!
+TCP cubic registered
+NET: Registered protocol family 17
+IP-Config: Complete:
+     device=eth0, addr=192.168.20.4, mask=255.255.255.0, gw=192.168.20.1,
+     host=vm3, domain=, nis-domain=(none),
+     bootserver=255.255.255.255, rootserver=192.168.20.1, rootpath=
+Looking up port of RPC 100003/2 on 192.168.20.1
+Looking up port of RPC 100005/1 on 192.168.20.1
+VFS: Mounted root (nfs filesystem) on device 0:10.
+Freeing init memory: 92K
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+INIT: version 2.88 booting
+root@vm3:/# /etc/init.d/ssh start
+Starting OpenBSD Secure Shell server: sshdmodprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+.
+root@vm3:/# mount /dev/pts
+echo $HOSTNAME
+root@vm3:/# echo $HOSTssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Wed Apr 24 22:52:13 2013 from 192.168.101.1
+root@linaro:~# 
+root@linaro:~# scp ~/memTest root@192.168.20.2:/root/memTest
+memTest                                         0%    0     0.0KB/s   --:-- ETAmemTest                                       100% 5697     5.6KB/s   00:00    
+root@linaro:~# 
+root@linaro:~# ssh root@192.168.20.2 '/root/memTest'
+ssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Wed Apr 24 22:52:34 2013 from 192.168.101.1
+root@linaro:~# 
+root@linaro:~# scp ~/memTest root@192.168.20.4:/root/memTest
+memTest                                         0%    0     0.0KB/s   --:-- ETAmemTest                                       100% 5697     5.6KB/s   00:00    
+root@linaro:~# 
+root@linaro:~# ssh root@192.168.20.4 '/root/memTest'
+ssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Wed Apr 24 22:53:40 2013 from 192.168.101.1
+root@linaro:~# chmod +x file_transfer.sh
+root@linaro:~# ./file_transfer.sh 10 5 IOV 1000 3 
+Loop	Elapsed time(seconds)	MD5 comparison result	Size comparison result
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB) copied, 3.00428 s, 3.5 MB/s
+Copy random_file from Host to Guest VM1
+random_file                                     0%    0     0.0KB/s   --:-- ETArandom_file                                    20% 2112KB   2.1MB/s   00:03 ETArandom_file                                    22% 2320KB   1.9MB/s   00:04 ETArandom_file                                    26% 2704KB   1.7MB/s   00:04 ETArandom_file                                    27% 2832KB   1.6MB/s   00:04 ETArandom_file                                    28% 2960KB   1.4MB/s   00:04 ETArandom_file                                    32% 3344KB   1.3MB/s   00:05 ETArandom_file                                    33% 3472KB   1.2MB/s   00:05 ETArandom_file                                    33% 3472KB   1.1MB/s   00:06 ETArandom_file                                    36% 3696KB   1.0MB/s   00:06 ETArandom_file                                    36% 3696KB 914.6KB/s   00:07 ETArandom_file                                    44% 4592KB 912.7KB/s   00:06 ETArandom_file                                    46% 4720KB 834.3KB/s   00:06 ETArandom_file                                    47% 4848KB 763.6KB/s   00:07 ETArandom_file                                    49% 5104KB 712.9KB/s   00:07 ETArandom_file                                    51% 5232KB 654.4KB/s   00:07 ETArandom_file                                    53% 5488KB 614.5KB/s   00:07 ETArandom_file                                    56% 5744KB 578.7KB/s   00:07 ETArandom_file                                    61% 6256KB 572.0KB/s   00:06 ETArandom_file                                    64% 6640KB 553.2KB/s   00:06 ETArandom_file                                    67% 6896KB 523.5KB/s   00:06 ETArandom_file                                    68% 7024KB 484.0KB/s   00:06 ETArandom_file                                    69% 7152KB 448.4KB/s   00:06 ETArandom_file                                    71% 7280KB 416.3KB/s   00:07 ETArandom_file                                    72% 7408KB 387.5KB/s   00:07 ETArandom_file                                    76% 7792KB 387.1KB/s   00:06 ETArandom_file                                    76% 7792KB 348.4KB/s   00:07 ETArandom_file                                    78% 8048KB 339.2KB/s   00:06 ETArandom_file                                    80% 8288KB 329.3KB/s   00:05 ETArandom_file                                    84% 8656KB 333.1KB/s   00:04 ETArandom_file                                    84% 8656KB 299.8KB/s   00:05 ETArandom_file                                    85% 8784KB 282.6KB/s   00:05 ETArandom_file                                    87% 8912KB 267.2KB/s   00:04 ETArandom_file                                    89% 9168KB 266.1KB/s   00:04 ETArandom_file                                    92% 9424KB 265.1KB/s   00:03 ETArandom_file                                    92% 9424KB 238.5KB/s   00:03 ETArandom_file                                    94% 9680KB 240.3KB/s   00:02 ETArandom_file                                    95% 9808KB 229.1KB/s   00:01 ETArandom_file                                    95% 9808KB 206.2KB/s   00:02 ETArandom_file                                    97% 9936KB 198.3KB/s   00:01 ETArandom_file                                    99%   10MB 204.1KB/s   00:00 ETArandom_file                                   100%   10MB 249.8KB/s   00:41    
+	90	Check md5 from Host and Guest VM1:
+MD5 match	Check size from Host and Guest VM1:
+Size match
+
+1	Copy random_file from Guest VM1 to Guest VM2
+210	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	187	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+2	Copy random_file from Guest VM1 to Guest VM2
+243	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	193	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+3	Copy random_file from Guest VM1 to Guest VM2
+181	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	179	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+4	Copy random_file from Guest VM1 to Guest VM2
+202	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	172	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+5	Copy random_file from Guest VM1 to Guest VM2
+210	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	169	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Start time:
+20130424225447
+End time:
+20130424235851
+ssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Wed Apr 24 22:54:46 2013 from 192.168.101.1
+root@linaro:~# scp *.csv chkao@192.168.101.1:~/Report/
+chkao@192.168.101.1's password: 
+IOV-0000-1-20130424144807-20130424145436.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-1-20130424144807-20130424145436.csv  100%  352     0.3KB/s   00:00    
+IOV-0000-2-20130424145812-20130424152854.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-2-20130424145812-20130424152854.csv  100%  353     0.3KB/s   00:00    
+IOV-0000-3-20130424153337-20130424165111.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-3-20130424153337-20130424165111.csv  100%  362     0.4KB/s   00:00    
+IOV-0000-4-20130424170356-20130424170610.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-4-20130424170356-20130424170610.csv  100%  502     0.5KB/s   00:00    
+IOV-0000-5-20130424171006-20130424182639.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-5-20130424171006-20130424182639.csv  100%  363     0.4KB/s   00:00    
+IOV-0000-6-20130424183318-20130424213904.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-6-20130424183318-20130424213904.csv  100%  363     0.4KB/s   00:00    
+IOV-1000-1-20130424221010-20130424221522.csv    0%    0     0.0KB/s   --:-- ETAIOV-1000-1-20130424221010-20130424221522.csv  100%  352     0.3KB/s   00:00    
+IOV-1000-2-20130424221855-20130424225006.csv    0%    0     0.0KB/s   --:-- ETAIOV-1000-2-20130424221855-20130424225006.csv  100%  353     0.3KB/s   00:00    
+IOV-1000-3-20130424225447-20130424235851.csv    0%    0     0.0KB/s   --:-- ETAIOV-1000-3-20130424225447-20130424235851.csv  100%  362     0.4KB/s   00:00    
+root@linaro:~# ssh root@192.168.101.2 'rm *.csv'
+root@192.168.101.2's password: 
+root@chkao:~# PROGRAM END
+[IOV-1000] $ /bin/sh -xe /tmp/hudson439799510879386371.sh
++ expect /srv/start.exp IOV 1000 4 2
+spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 22:50:45 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 23:59:24 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 23:59:25 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 23:59:25 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 23:59:26 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 23:59:27 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 23:59:27 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 23:59:28 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 23:59:29 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 23:59:30 2013 from localhost
+root@chkao:~# cd /home/chkao/hypervisor-01242013/linaro+libvirt
+root@chkao:/home/chkao/hypervisor-01242013/linaro+libvirt# ./start.sh
+pulseaudio: pa_context_connect() failed
+pulseaudio: Reason: Connection refused
+pulseaudio: Failed to initialize PA contextaudio: Could not init `pa' audio driver
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+Uncompressing Linux... done, booting the kernel.
+[    0.000000] Linux version 2.6.38.7 (alexey@66-A00327-01) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-202) ) #2 Mon Jan 14 17:42:29 CST 2013
+[    0.000000] CPU: ARMv7 Processor [410fc090] revision 0 (ARMv7), cr=10c53c7f
+[    0.000000] CPU: VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] Machine: ARM-Versatile Express
+[    0.000000] Memory policy: ECC disabled, Data cache writeback
+[    0.000000] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 178956ms
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 260096
+[    0.000000] Kernel command line: root=/dev/mmcblk0p2 rw mem=1024M raid=noautodetect console=ttyAMA0,38400n8 rootwait vmalloc=256MB devtmpfs.mount=0
+[    0.000000] PID hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.000000] Dentry cache hash table entries: 131072 (order: 7, 524288 bytes)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.000000] Memory: 1024MB = 1024MB total
+[    0.000000] Memory: 902884k/902884k available, 145692k reserved, 393216K highmem
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+[    0.000000]     DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
+[    0.000000]     vmalloc : 0xe8800000 - 0xf8000000   ( 248 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xe8000000   ( 640 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .init : 0xc0008000 - 0xc002e000   ( 152 kB)
+[    0.000000]       .text : 0xc002e000 - 0xc0526ddc   (5092 kB)
+[    0.000000]       .data : 0xc0528000 - 0xc054d180   ( 149 kB)
+[    0.000000] SLUB: Genslabs=13, HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] NR_IRQS:128
+[    0.000000] Console: colour dummy device 80x30
+[    0.128143] Calibrating delay loop... 668.46 BogoMIPS (lpj=3342336)
+[    0.366937] pid_max: default: 32768 minimum: 301
+[    0.367430] Security Framework initialized
+[    0.368672] AppArmor: AppArmor initialized
+[    0.368932] Mount-cache hash table entries: 512
+[    0.374317] CPU: Testing write buffer coherency: ok
+[    0.378936] hw perfevents: enabled with ARMv7 Cortex-A9 PMU driver, 1 counters available
+[    0.382491] devtmpfs: initialized
+[    0.392080] NET: Registered protocol family 16
+[    0.405405] hw-breakpoint: debug architecture 0x0 unsupported.
+[    0.405536] Serial: AMBA PL011 UART driver
+[    0.407077] mb:uart0: ttyAMA0 at MMIO 0x10009000 (irq = 37) is a PL011 rev1
+[    0.418297] console [ttyAMA0] enabled
+[    0.421382] mb:uart1: ttyAMA1 at MMIO 0x1000a000 (irq = 38) is a PL011 rev1
+[    0.422518] mb:uart2: ttyAMA2 at MMIO 0x1000b000 (irq = 39) is a PL011 rev1
+[    0.423621] mb:uart3: ttyAMA3 at MMIO 0x1000c000 (irq = 40) is a PL011 rev1
+[    0.462508] bio: create slab <bio-0> at 0
+[    0.467234] SCSI subsystem initialized
+[    0.469624] usbcore: registered new interface driver usbfs
+[    0.470868] usbcore: registered new interface driver hub
+[    0.472056] usbcore: registered new device driver usb
+[    0.476100] Advanced Linux Sound Architecture Driver Version 1.0.23.
+[    0.480952] NetLabel: Initializing
+[    0.481181] NetLabel:  domain hash size = 128
+[    0.481434] NetLabel:  protocols = UNLABELED CIPSOv4
+[    0.482399] NetLabel:  unlabeled traffic allowed by default
+[    0.484582] DMA-API: preallocated 4096 debug entries
+[    0.484903] DMA-API: debugging enabled by kernel config
+[    0.485377] Switching to clocksource timer3
+[    0.486724] AppArmor: AppArmor Filesystem Enabled
+[    0.533713] NET: Registered protocol family 2
+[    0.534850] IP route cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.537585] TCP established hash table entries: 131072 (order: 8, 1048576 bytes)
+[    0.541963] TCP bind hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.546163] TCP: Hash tables configured (established 131072 bind 65536)
+[    0.546788] TCP reno registered
+[    0.547136] UDP hash table entries: 512 (order: 1, 8192 bytes)
+[    0.547638] UDP-Lite hash table entries: 512 (order: 1, 8192 bytes)
+[    0.548864] NET: Registered protocol family 1
+[    0.550324] RPC: Registered udp transport module.
+[    0.550647] RPC: Registered tcp transport module.
+[    0.550917] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.553584] Trying to unpack rootfs image as initramfs...
+[    0.883109] Freeing initrd memory: 2624K
+[    0.884500] PMU: registered new PMU device of type 0
+[    0.885400] [KVM] kvm_eventfd: irqfd_module_init
+[    0.888249] audit: initializing netlink socket (disabled)
+[    0.889075] type=2000 audit(0.750:1): initialized
+[    0.892611] highmem bounce pool size: 64 pages
+[    0.929042] Installing knfsd (copyright (C) 1996 okir@monad.swb.de).
+[    0.930411] JFFS2 version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+[    0.933776] JFS: nTxBlock = 7074, nTxLock = 56594
+[    0.942921] Btrfs loaded
+[    0.943404] msgmni has been set to 1000
+[    0.947099] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+[    0.947655] io scheduler noop registered
+[    0.947901] io scheduler deadline registered (default)
+[    0.949523] clcd-pl11x ct:clcd: PL111 rev2 at 0x10020000
+[    0.952898] clcd-pl11x ct:clcd: CT-CA9X4 hardware, XVGA display
+[    0.956176] v2m_cfg_write: writing 03c8eee0 to 00110001
+[    0.976852] v2m_cfg_write: writing 00000000 to 00710000
+[    0.976876] v2m_cfg_write: writing 00000002 to 00b10000
+[    0.996674] Console: switching to colour frame buffer device 128x48
+[    1.049427] brd: module loaded
+[    1.057408] armflash-0: Found 1 x32 devices at 0x0 in 32-bit bank. Manufacturer ID 0x000000 Chip ID 0x000000
+[    1.058425] Intel/Sharp Extended Query Table at 0x0031
+[    1.059452] Using buffer write method
+[    1.062499] armflash-1: Found 1 x32 devices at 0x0 in 32-bit bank. Manufacturer ID 0x000000 Chip ID 0x000000
+[    1.063296] Intel/Sharp Extended Query Table at 0x0031
+[    1.064101] Using buffer write method
+[    1.064411] Concatenating MTD devices:
+[    1.064668] (0): "armflash-0"
+[    1.064830] (1): "armflash-1"
+[    1.064975] into device "armflash"
+ modprobe: FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+
+[    1.120254] RedBoot partition parsing not available
+ modprobe: FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+
+[    1.151442] afs partition parsing not available
+[    1.152423] PPP generic driver version 2.4.2
+[    1.153798] tun: Universal TUN/TAP device driver, 1.6
+[    1.154124] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+[    1.155836] smsc911x: Driver version 2008-10-21.
+[    1.184490] smsc911x-mdio: probed
+[    1.185281] eth0: attached PHY driver [Generic PHY] (mii_bus:phy_addr=ffffffff:01, irq=-1)
+[    1.186532] net eth0: MAC Address: 52:54:00:12:34:56
+[    1.187432] usbmon: debugfs is not available
+[    1.188432] isp1760 isp1760: NXP ISP1760 USB Host Controller
+[    1.188857] isp1760 isp1760: new USB bus registered, assigned bus number 1
+[    1.189616] isp1760 isp1760: Scratch test failed.
+[    1.189883] isp1760 isp1760: can't setup
+[    1.190252] isp1760 isp1760: USB bus 1 deregistered
+[    1.190663] isp1760: Failed to register the HCD device
+[    1.195198] mousedev: PS/2 mouse device common for all mice
+[    1.199675] rtc-pl031 mb:rtc: rtc core: registered pl031 as rtc0
+[    1.201849] device-mapper: uevent: version 1.0.3
+[    1.203625] device-mapper: ioctl: 4.19.1-ioctl (2011-01-07) initialised: dm-devel@redhat.com
+[    1.204614] device-mapper: multipath: version 1.2.0 loaded
+[    1.205006] device-mapper: multipath round-robin: version 1.0.0 loaded
+[    1.207631] mmci-pl18x mb:mmci: mmc0: PL181 manf 41 rev0 at 0x10005000 irq 41,42 (pio)
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+[    1.246260] aaci-pl041 mb:aaci: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 43
+[    1.246899] aaci-pl041 mb:aaci: FIFO 512 entries
+[    1.255888] mmc0: host does not support reading read-only switch. assuming write-enable.
+[    1.256886] mmc0: new SDHC card at address 4567
+[    1.258045] ALSA device list:
+[    1.258224]   #0: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 43
+[    1.259562] nf_conntrack version 0.5.0 (14148 buckets, 56592 max)
+[    1.263477] ip_tables: (C) 2000-2006 Netfilter Core Team
+[    1.265149] arp_tables: (C) 2002 David S. Miller
+[    1.265672] TCP cubic registered
+[    1.265880] NET: Registered protocol family 17
+[    1.266594] Bridge firewalling registered
+[    1.266963] Ebtables v2.0 registered
+[    1.267624] VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 0
+[    1.280414] mmcblk0: mmc0:4567 QEMU! 3.00 GiB 
+[    1.301458]  mmcblk0: p1 p2
+[    1.305132] input: AT Raw Set 2 keyboard as /devices/mb:kmi0/serio0/input/input0
+[    1.315683] rtc-pl031 mb:rtc: setting system clock to 2013-04-24 15:59:33 UTC (1366819173)
+ [    1.319675] Freeing init memory: 152K
+[    1.509052] input: ImExPS/2 Generic Explorer Mouse as /devices/mb:kmi1/serio1/input/input1
+Loading, please wait...
+[    1.953601] udev[521]: starting version 167
+Begin: Loading essential drivers ... done.
+Begin: Running /scripts/init-premount ... done.
+Begin: Mounting root file system ... Begin: Running /scripts/local-top ... done.
+Begin: Running /scripts/local-premount ... done.
+FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+[    4.857240] EXT4-fs (mmcblk0p2): warning: maximal mount count reached, running e2fsck is recommended
+[    4.860971] EXT4-fs (mmcblk0p2): recovery complete
+[    4.864150] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
+Begin: Running /scripts/local-bottom ... done.
+done.
+Begin: Running /scripts/init-bottom ... done.
+ [   11.915716] udev[664]: starting version 167
+[   15.317642] net eth0: SMSC911x/921x identified at 0xe8cc0000, IRQ: 47
+modprobe: FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+
+init: ureadahead main process (597) terminated with status 5
+[   18.469690] device: 'vcs4': device_add
+[   18.470079] PM: Adding info for No Bus:vcs4
+[   18.470265] device: 'vcsa4': device_add
+[   18.470452] PM: Adding info for No Bus:vcsa4
+[   18.498951] device: 'vcs5': device_add
+[   18.501291] PM: Adding info for No Bus:vcs5
+[   18.502644] device: 'vcsa5': device_add
+[   18.502871] PM: Adding info for No Bus:vcsa5
+[   18.633096] device: 'vcs2': device_add
+[   18.633423] PM: Adding info for No Bus:vcs2
+[   18.633540] device: 'vcsa2': device_add
+[   18.633755] PM: Adding info for No Bus:vcsa2
+[   18.685946] device: 'vcs3': device_add
+[   18.686401] PM: Adding info for No Bus:vcs3
+[   18.686626] device: 'vcsa3': device_add
+[   18.686827] PM: Adding info for No Bus:vcsa3
+
+[   18.777574] device: 'virbr0': device_add
+[   18.778472] PM: Adding info for No Bus:virbr0
+[   18.795040] device: 'vcs6': device_add
+[   18.795318] PM: Adding info for No Bus:vcs6
+[   18.795431] device: 'vcsa6': device_add
+[   18.795643] PM: Adding info for No Bus:vcsa6
+FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+ * Exporting directories for NFS kernel daemon...       [80GLast login: Wed Apr 24 22:54:46 CST 2013 from 192.168.101.1 on pts/4
+ [74G[ OK ]
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+ * Starting NFS kernel daemon       [80G [74G[ OK ]
+root@linaro:~# linaro start up!
+ssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Wed Apr 24 23:59:57 2013
+root@linaro:~# scp root@192.168.101.1:~/file_transfer.sh . 
+root@192.168.101.1's password: 
+file_transfer.sh                                0%    0     0.0KB/s   --:-- ETAfile_transfer.sh                              100% 3560     3.5KB/s   00:00    
+root@linaro:~# scp root@192.168.101.1:~/memTest . 
+root@192.168.101.1's password: 
+memTest                                         0%    0     0.0KB/s   --:-- ETAmemTest                                       100% 5697     5.6KB/s   00:00    
+root@linaro:~# scp -r root@192.168.101.1:~/Config/1000/* /root/kvm/ 
+root@192.168.101.1's password: 
+1000                                          100%    0     0.0KB/s   00:00    
+start1.sh                                       0%    0     0.0KB/s   --:-- ETAstart1.sh                                     100%  636     0.6KB/s   00:00    
+start3.sh                                       0%    0     0.0KB/s   --:-- ETAstart3.sh                                     100%  637     0.6KB/s   00:00    
+start4.sh                                       0%    0     0.0KB/s   --:-- ETAstart4.sh                                     100%  637     0.6KB/s   00:00    
+root@linaro:~# cd /root/kvm
+root@linaro:~/kvm# insmod /root/kvm/kvm.ko
+root@linaro:~/kvm# chmod +x start1.sh
+root@linaro:~/kvm# ./start1.sh
+  *** TAP MAC 22:54:00:12:34:01
+   ***  idstr ram
+   ***  idstr cpu
+   ***  idstr sharedpage
+   ***  idstr vectors
+map addr 0x4d3d3c
+   ***  idstr virtio-net
+   ***  idstr virtio-console
+Warning: more nics requested than this machine supports; some have been ignored
+Linux version 2.6.35 (alexey@66-A00327-01) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-202) ) #3 Thu Jan 10 10:29:34 CST 2013
+CPU: ARMv6-compatible processor [0007b000] revision 0 (ARMv6TEJ), cr=00000000
+CPU: VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+Machine: KVM-ARM guest OS (realview EB target)
+Memory policy: ECC disabled, Data cache writeback
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16256
+Kernel command line: root=/dev/nfs rw  nfsroot=192.168.20.1:/root/rootfs/debian,hard ip=192.168.20.2::192.168.20.1:255.255.255.0:vm1:eth0:off clocksource=pit console=hvc0
+PID hash table entries: 256 (order: -2, 1024 bytes)
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Memory: 64MB = 64MB total
+Memory: 60164k/60164k available, 5372k reserved, 0K highmem
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+    DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
+    vmalloc : 0xc4800000 - 0xf8000000   ( 824 MB)
+    lowmem  : 0xc0000000 - 0xc4000000   (  64 MB)
+    modules : 0xbf000000 - 0xc0000000   (  16 MB)
+      .init : 0xc0008000 - 0xc001f000   (  92 kB)
+      .text : 0xc001f000 - 0xc026a000   (2348 kB)
+      .data : 0xc027e000 - 0xc0296fe0   ( 100 kB)
+Hierarchical RCU implementation.
+	RCU-based detection of stalled CPUs is disabled.
+	Verbose stalled-CPUs detection is disabled.
+NR_IRQS:228
+Console: colour dummy device 80x30
+console [hvc0] enabled
+Calibrating delay loop... 634.06 BogoMIPS (lpj=3170304)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+NET: Registered protocol family 16
+bio: create slab <bio-0> at 0
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+TCP reno registered
+UDP hash table entries: 256 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+msgmni has been set to 117
+io scheduler noop registered
+io scheduler deadline registered (default)
+virtio-mmio virtio-mmio.2: Wrong magic value 0x00000000!
+TCP cubic registered
+NET: Registered protocol family 17
+IP-Config: Complete:
+     device=eth0, addr=192.168.20.2, mask=255.255.255.0, gw=192.168.20.1,
+     host=vm1, domain=, nis-domain=(none),
+     bootserver=255.255.255.255, rootserver=192.168.20.1, rootpath=
+Looking up port of RPC 100003/2 on 192.168.20.1
+Looking up port of RPC 100005/1 on 192.168.20.1
+VFS: Mounted root (nfs filesystem) on device 0:10.
+Freeing init memory: 92K
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+INIT: version 2.88 booting
+root@vm1:/# echo $HOSTNAME
+vm1
+root@vm1:/# /etc/init.d/ssh start
+mount /dev/pts
+Starting OpenBSD Secure Shell server: sshdmodprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+.
+root@vm1:/# mount /devssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Thu Apr 25 00:00:08 2013 from 192.168.101.1
+root@linaro:~# cd kvm
+root@linaro:~/kvm# chmod +x start4.sh
+root@linaro:~/kvm# ./start4.sh
+  *** TAP MAC 22:54:00:12:34:01
+   ***  idstr ram
+   ***  idstr cpu
+   ***  idstr sharedpage
+   ***  idstr vectors
+map addr 0x4d3d3c
+   ***  idstr virtio-net
+   ***  idstr virtio-console
+Warning: more nics requested than this machine supports; some have been ignored
+Linux version 2.6.35 (alexey@66-A00327-01) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-202) ) #3 Thu Jan 10 10:29:34 CST 2013
+CPU: ARMv6-compatible processor [0007b000] revision 0 (ARMv6TEJ), cr=00000000
+CPU: VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+Machine: KVM-ARM guest OS (realview EB target)
+Memory policy: ECC disabled, Data cache writeback
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16256
+Kernel command line: root=/dev/nfs rw  nfsroot=192.168.20.1:/root/rootfs/debian,hard ip=192.168.20.5::192.168.20.1:255.255.255.0:vm4:eth0:off clocksource=pit console=hvc0
+PID hash table entries: 256 (order: -2, 1024 bytes)
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Memory: 64MB = 64MB total
+Memory: 60164k/60164k available, 5372k reserved, 0K highmem
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+    DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
+    vmalloc : 0xc4800000 - 0xf8000000   ( 824 MB)
+    lowmem  : 0xc0000000 - 0xc4000000   (  64 MB)
+    modules : 0xbf000000 - 0xc0000000   (  16 MB)
+      .init : 0xc0008000 - 0xc001f000   (  92 kB)
+      .text : 0xc001f000 - 0xc026a000   (2348 kB)
+      .data : 0xc027e000 - 0xc0296fe0   ( 100 kB)
+Hierarchical RCU implementation.
+	RCU-based detection of stalled CPUs is disabled.
+	Verbose stalled-CPUs detection is disabled.
+NR_IRQS:228
+Console: colour dummy device 80x30
+console [hvc0] enabled
+Calibrating delay loop... 838.86 BogoMIPS (lpj=4194304)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+NET: Registered protocol family 16
+bio: create slab <bio-0> at 0
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+TCP reno registered
+UDP hash table entries: 256 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+msgmni has been set to 117
+io scheduler noop registered
+io scheduler deadline registered (default)
+virtio-mmio virtio-mmio.2: Wrong magic value 0x00000000!
+TCP cubic registered
+NET: Registered protocol family 17
+IP-Config: Complete:
+     device=eth0, addr=192.168.20.5, mask=255.255.255.0, gw=192.168.20.1,
+     host=vm4, domain=, nis-domain=(none),
+     bootserver=255.255.255.255, rootserver=192.168.20.1, rootpath=
+Looking up port of RPC 100003/2 on 192.168.20.1
+Looking up port of RPC 100005/1 on 192.168.20.1
+VFS: Mounted root (nfs filesystem) on device 0:10.
+Freeing init memory: 92K
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+INIT: version 2.88 booting
+root@vm4:/# /etc/init.d/ssh start
+nt /dev/pts
+Starting OpenBSD Secure Shell server: sshdmodprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+.
+root@vm4:/# mount /dev/pts
+cho $HOSTNAME
+root@vm4:/# echo $HOSTssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Thu Apr 25 00:00:59 2013 from 192.168.101.1
+root@linaro:~# cd kvm
+root@linaro:~/kvm# chmod +x start3.sh
+root@linaro:~/kvm# ./start3.sh
+  *** TAP MAC 22:54:00:12:34:01
+   ***  idstr ram
+   ***  idstr cpu
+   ***  idstr sharedpage
+   ***  idstr vectors
+map addr 0x4d3d3c
+   ***  idstr virtio-net
+   ***  idstr virtio-console
+Warning: more nics requested than this machine supports; some have been ignored
+Linux version 2.6.35 (alexey@66-A00327-01) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-202) ) #3 Thu Jan 10 10:29:34 CST 2013
+CPU: ARMv6-compatible processor [0007b000] revision 0 (ARMv6TEJ), cr=00000000
+CPU: VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+Machine: KVM-ARM guest OS (realview EB target)
+Memory policy: ECC disabled, Data cache writeback
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16256
+Kernel command line: root=/dev/nfs rw  nfsroot=192.168.20.1:/root/rootfs/debian,hard ip=192.168.20.4::192.168.20.1:255.255.255.0:vm3:eth0:off clocksource=pit console=hvc0
+PID hash table entries: 256 (order: -2, 1024 bytes)
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Memory: 64MB = 64MB total
+Memory: 60164k/60164k available, 5372k reserved, 0K highmem
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+    DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
+    vmalloc : 0xc4800000 - 0xf8000000   ( 824 MB)
+    lowmem  : 0xc0000000 - 0xc4000000   (  64 MB)
+    modules : 0xbf000000 - 0xc0000000   (  16 MB)
+      .init : 0xc0008000 - 0xc001f000   (  92 kB)
+      .text : 0xc001f000 - 0xc026a000   (2348 kB)
+      .data : 0xc027e000 - 0xc0296fe0   ( 100 kB)
+Hierarchical RCU implementation.
+	RCU-based detection of stalled CPUs is disabled.
+	Verbose stalled-CPUs detection is disabled.
+NR_IRQS:228
+Console: colour dummy device 80x30
+console [hvc0] enabled
+Calibrating delay loop... 627.50 BogoMIPS (lpj=3137536)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+NET: Registered protocol family 16
+bio: create slab <bio-0> at 0
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+TCP reno registered
+UDP hash table entries: 256 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+msgmni has been set to 117
+io scheduler noop registered
+io scheduler deadline registered (default)
+virtio-mmio virtio-mmio.2: Wrong magic value 0x00000000!
+TCP cubic registered
+NET: Registered protocol family 17
+IP-Config: Complete:
+     device=eth0, addr=192.168.20.4, mask=255.255.255.0, gw=192.168.20.1,
+     host=vm3, domain=, nis-domain=(none),
+     bootserver=255.255.255.255, rootserver=192.168.20.1, rootpath=
+Looking up port of RPC 100003/2 on 192.168.20.1
+Looking up port of RPC 100005/1 on 192.168.20.1
+VFS: Mounted root (nfs filesystem) on device 0:10.
+Freeing init memory: 92K
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+INIT: version 2.88 booting
+root@vm3:/# /etc/init.d/ssh start
+nt /dev/pts
+Starting OpenBSD Secure Shell server: sshdmodprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+.
+root@vm3:/# mount /dev/pts
+echo $HOSTNAME
+root@vm3:/# echo $HOSTNAssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Thu Apr 25 00:01:20 2013 from 192.168.101.1
+root@linaro:~# chmod +x file_transfer.sh
+root@linaro:~# ./file_transfer.sh 10 5 IOV 1000 4 
+Loop	Elapsed time(seconds)	MD5 comparison result	Size comparison result
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB) copied, 2.323 s, 4.5 MB/s
+Copy random_file from Host to Guest VM1
+random_file                                     0%    0     0.0KB/s   --:-- ETArandom_file                                    32% 3344KB   3.3MB/s   00:02 ETArandom_file                                    51% 5248KB   3.1MB/s   00:01 ETArandom_file                                    67% 6944KB   3.0MB/s   00:01 ETArandom_file                                    82% 8480KB   2.8MB/s   00:00 ETArandom_file                                    91% 9408KB   2.6MB/s   00:00 ETArandom_file                                   100%   10MB   1.7MB/s   00:06    
+	14	Check md5 from Host and Guest VM1:
+MD5 match	Check size from Host and Guest VM1:
+Size match
+
+1	Copy random_file from Guest VM1 to Guest VM2
+18	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	17	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+2	Copy random_file from Guest VM1 to Guest VM2
+32	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	17	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+3	Copy random_file from Guest VM1 to Guest VM2
+15	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	14	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+4	Copy random_file from Guest VM1 to Guest VM2
+14	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	14	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+5	Copy random_file from Guest VM1 to Guest VM2
+15	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	14	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Start time:
+20130425000141
+End time:
+ssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Thu Apr 25 00:01:40 2013 from 192.168.101.1
+root@linaro:~# scp *.csv chkao@192.168.101.1:~/Report/
+chkao@192.168.101.1's password: 
+IOV-0000-1-20130424144807-20130424145436.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-1-20130424144807-20130424145436.csv  100%  352     0.3KB/s   00:00    
+IOV-0000-2-20130424145812-20130424152854.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-2-20130424145812-20130424152854.csv  100%  353     0.3KB/s   00:00    
+IOV-0000-3-20130424153337-20130424165111.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-3-20130424153337-20130424165111.csv  100%  362     0.4KB/s   00:00    
+IOV-0000-4-20130424170356-20130424170610.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-4-20130424170356-20130424170610.csv  100%  502     0.5KB/s   00:00    
+IOV-0000-5-20130424171006-20130424182639.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-5-20130424171006-20130424182639.csv  100%  363     0.4KB/s   00:00    
+IOV-0000-6-20130424183318-20130424213904.csv    0%    0     0.0KB/s   --:-- ETAIOV-0000-6-20130424183318-20130424213904.csv  100%  363     0.4KB/s   00:00    
+IOV-1000-1-20130424221010-20130424221522.csv    0%    0     0.0KB/s   --:-- ETAIOV-1000-1-20130424221010-20130424221522.csv  100%  352     0.3KB/s   00:00    
+IOV-1000-2-20130424221855-20130424225006.csv    0%    0     0.0KB/s   --:-- ETAIOV-1000-2-20130424221855-20130424225006.csv  100%  353     0.3KB/s   00:00    
+IOV-1000-3-20130424225447-20130424235851.csv    0%    0     0.0KB/s   --:-- ETAIOV-1000-3-20130424225447-20130424235851.csv  100%  362     0.4KB/s   00:00    
+IOV-1000-4-20130425000141-20130425000743.csv    0%    0     0.0KB/s   --:-- ETAIOV-1000-4-20130425000141-20130425000743.csv  100%  352     0.3KB/s   00:00    
+root@linaro:~# ssh root@192.168.101.2 'rm *.csv'
+root@192.168.101.2's password: 
+root@chkao:~# PROGRAM END
+[IOV-1000] $ /bin/sh -xe /tmp/hudson4428928308120970865.sh
++ expect /srv/start.exp IOV 1000 5 2
+spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Wed Apr 24 23:59:30 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Thu Apr 25 00:08:12 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Thu Apr 25 00:08:13 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Thu Apr 25 00:08:14 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Thu Apr 25 00:08:14 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Thu Apr 25 00:08:15 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Thu Apr 25 00:08:16 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Thu Apr 25 00:08:17 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Thu Apr 25 00:08:17 2013 from localhost
+root@chkao:~# spawn ssh root@127.0.0.1
+root@127.0.0.1's password: 
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+41 packages can be updated.
+17 updates are security updates.
+
+Last login: Thu Apr 25 00:08:18 2013 from localhost
+root@chkao:~# cd /home/chkao/hypervisor-01242013/linaro+libvirt
+root@chkao:/home/chkao/hypervisor-01242013/linaro+libvirt# ./start.sh
+pulseaudio: pa_context_connect() failed
+pulseaudio: Reason: Connection refused
+pulseaudio: Failed to initialize PA contextaudio: Could not init `pa' audio driver
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+Uncompressing Linux... done, booting the kernel.
+[    0.000000] Linux version 2.6.38.7 (alexey@66-A00327-01) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-202) ) #2 Mon Jan 14 17:42:29 CST 2013
+[    0.000000] CPU: ARMv7 Processor [410fc090] revision 0 (ARMv7), cr=10c53c7f
+[    0.000000] CPU: VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] Machine: ARM-Versatile Express
+[    0.000000] Memory policy: ECC disabled, Data cache writeback
+[    0.000000] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 178956ms
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 260096
+[    0.000000] Kernel command line: root=/dev/mmcblk0p2 rw mem=1024M raid=noautodetect console=ttyAMA0,38400n8 rootwait vmalloc=256MB devtmpfs.mount=0
+[    0.000000] PID hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.000000] Dentry cache hash table entries: 131072 (order: 7, 524288 bytes)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.000000] Memory: 1024MB = 1024MB total
+[    0.000000] Memory: 902884k/902884k available, 145692k reserved, 393216K highmem
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+[    0.000000]     DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
+[    0.000000]     vmalloc : 0xe8800000 - 0xf8000000   ( 248 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xe8000000   ( 640 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .init : 0xc0008000 - 0xc002e000   ( 152 kB)
+[    0.000000]       .text : 0xc002e000 - 0xc0526ddc   (5092 kB)
+[    0.000000]       .data : 0xc0528000 - 0xc054d180   ( 149 kB)
+[    0.000000] SLUB: Genslabs=13, HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] NR_IRQS:128
+[    0.000000] Console: colour dummy device 80x30
+[    0.127915] Calibrating delay loop... 642.25 BogoMIPS (lpj=3211264)
+[    0.376690] pid_max: default: 32768 minimum: 301
+[    0.377203] Security Framework initialized
+[    0.378710] AppArmor: AppArmor initialized
+[    0.378973] Mount-cache hash table entries: 512
+[    0.383972] CPU: Testing write buffer coherency: ok
+[    0.388566] hw perfevents: enabled with ARMv7 Cortex-A9 PMU driver, 1 counters available
+[    0.392254] devtmpfs: initialized
+[    0.402257] NET: Registered protocol family 16
+[    0.416196] hw-breakpoint: debug architecture 0x0 unsupported.
+[    0.416336] Serial: AMBA PL011 UART driver
+[    0.418011] mb:uart0: ttyAMA0 at MMIO 0x10009000 (irq = 37) is a PL011 rev1
+[    0.429206] console [ttyAMA0] enabled
+[    0.432339] mb:uart1: ttyAMA1 at MMIO 0x1000a000 (irq = 38) is a PL011 rev1
+[    0.433623] mb:uart2: ttyAMA2 at MMIO 0x1000b000 (irq = 39) is a PL011 rev1
+[    0.434808] mb:uart3: ttyAMA3 at MMIO 0x1000c000 (irq = 40) is a PL011 rev1
+[    0.474717] bio: create slab <bio-0> at 0
+[    0.479381] SCSI subsystem initialized
+[    0.481757] usbcore: registered new interface driver usbfs
+[    0.482996] usbcore: registered new interface driver hub
+[    0.483973] usbcore: registered new device driver usb
+[    0.488457] Advanced Linux Sound Architecture Driver Version 1.0.23.
+[    0.492996] NetLabel: Initializing
+[    0.493269] NetLabel:  domain hash size = 128
+[    0.493629] NetLabel:  protocols = UNLABELED CIPSOv4
+[    0.494592] NetLabel:  unlabeled traffic allowed by default
+[    0.496871] DMA-API: preallocated 4096 debug entries
+[    0.497275] DMA-API: debugging enabled by kernel config
+[    0.497684] Switching to clocksource timer3
+[    0.498835] AppArmor: AppArmor Filesystem Enabled
+[    0.548696] NET: Registered protocol family 2
+[    0.549851] IP route cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.552424] TCP established hash table entries: 131072 (order: 8, 1048576 bytes)
+[    0.556380] TCP bind hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.560933] TCP: Hash tables configured (established 131072 bind 65536)
+[    0.561413] TCP reno registered
+[    0.561630] UDP hash table entries: 512 (order: 1, 8192 bytes)
+[    0.562079] UDP-Lite hash table entries: 512 (order: 1, 8192 bytes)
+[    0.563382] NET: Registered protocol family 1
+[    0.564807] RPC: Registered udp transport module.
+[    0.565151] RPC: Registered tcp transport module.
+[    0.565467] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.568455] Trying to unpack rootfs image as initramfs...
+[    0.896566] Freeing initrd memory: 2624K
+[    0.898036] PMU: registered new PMU device of type 0
+[    0.898836] [KVM] kvm_eventfd: irqfd_module_init
+[    0.901477] audit: initializing netlink socket (disabled)
+[    0.902395] type=2000 audit(0.760:1): initialized
+[    0.906207] highmem bounce pool size: 64 pages
+[    0.942785] Installing knfsd (copyright (C) 1996 okir@monad.swb.de).
+[    0.944058] JFFS2 version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+[    0.947576] JFS: nTxBlock = 7074, nTxLock = 56594
+[    0.957225] Btrfs loaded
+[    0.957695] msgmni has been set to 1000
+[    0.960988] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+[    0.961752] io scheduler noop registered
+[    0.962037] io scheduler deadline registered (default)
+[    0.963647] clcd-pl11x ct:clcd: PL111 rev2 at 0x10020000
+[    0.967069] clcd-pl11x ct:clcd: CT-CA9X4 hardware, XVGA display
+[    0.970552] v2m_cfg_write: writing 03c8eee0 to 00110001
+[    0.997003] v2m_cfg_write: writing 00000000 to 00710000
+[    0.997070] v2m_cfg_write: writing 00000002 to 00b10000
+[    1.013931] Console: switching to colour frame buffer device 128x48
+[    1.068581] brd: module loaded
+[    1.076349] armflash-0: Found 1 x32 devices at 0x0 in 32-bit bank. Manufacturer ID 0x000000 Chip ID 0x000000
+[    1.077535] Intel/Sharp Extended Query Table at 0x0031
+[    1.078463] Using buffer write method
+[    1.081520] armflash-1: Found 1 x32 devices at 0x0 in 32-bit bank. Manufacturer ID 0x000000 Chip ID 0x000000
+[    1.082182] Intel/Sharp Extended Query Table at 0x0031
+[    1.082955] Using buffer write method
+[    1.083264] Concatenating MTD devices:
+[    1.083486] (0): "armflash-0"
+[    1.083631] (1): "armflash-1"
+[    1.083778] into device "armflash"
+ modprobe: FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+
+[    1.141340] RedBoot partition parsing not available
+ modprobe: FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+
+[    1.171689] afs partition parsing not available
+[    1.172711] PPP generic driver version 2.4.2
+[    1.174036] tun: Universal TUN/TAP device driver, 1.6
+[    1.174472] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+[    1.176114] smsc911x: Driver version 2008-10-21.
+[    1.209459] smsc911x-mdio: probed
+[    1.210175] eth0: attached PHY driver [Generic PHY] (mii_bus:phy_addr=ffffffff:01, irq=-1)
+[    1.211466] net eth0: MAC Address: 52:54:00:12:34:56
+[    1.212259] usbmon: debugfs is not available
+[    1.213271] isp1760 isp1760: NXP ISP1760 USB Host Controller
+[    1.213821] isp1760 isp1760: new USB bus registered, assigned bus number 1
+[    1.214642] isp1760 isp1760: Scratch test failed.
+[    1.214904] isp1760 isp1760: can't setup
+[    1.215274] isp1760 isp1760: USB bus 1 deregistered
+[    1.215665] isp1760: Failed to register the HCD device
+[    1.220371] mousedev: PS/2 mouse device common for all mice
+[    1.224531] rtc-pl031 mb:rtc: rtc core: registered pl031 as rtc0
+[    1.226998] device-mapper: uevent: version 1.0.3
+[    1.228863] device-mapper: ioctl: 4.19.1-ioctl (2011-01-07) initialised: dm-devel@redhat.com
+[    1.229909] device-mapper: multipath: version 1.2.0 loaded
+[    1.230376] device-mapper: multipath round-robin: version 1.0.0 loaded
+[    1.232980] mmci-pl18x mb:mmci: mmc0: PL181 manf 41 rev0 at 0x10005000 irq 41,42 (pio)
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+[    1.281200] mmc0: host does not support reading read-only switch. assuming write-enable.
+[    1.282022] mmc0: new SDHC card at address 4567
+[    1.287574] mmcblk0: mmc0:4567 QEMU! 3.00 GiB 
+[    1.296303]  mmcblk0: p1 p2
+[    1.307090] aaci-pl041 mb:aaci: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 43
+[    1.307603] aaci-pl041 mb:aaci: FIFO 512 entries
+[    1.308382] ALSA device list:
+[    1.308644]   #0: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 43
+[    1.309882] nf_conntrack version 0.5.0 (14148 buckets, 56592 max)
+[    1.313097] ip_tables: (C) 2000-2006 Netfilter Core Team
+[    1.314911] arp_tables: (C) 2002 David S. Miller
+[    1.315357] TCP cubic registered
+[    1.315523] NET: Registered protocol family 17
+[    1.316088] Bridge firewalling registered
+[    1.316523] Ebtables v2.0 registered
+[    1.317217] VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 0
+[    1.337834] input: AT Raw Set 2 keyboard as /devices/mb:kmi0/serio0/input/input0
+[    1.353093] rtc-pl031 mb:rtc: setting system clock to 2013-04-24 16:08:21 UTC (1366819701)
+ [    1.357204] Freeing init memory: 152K
+[    1.554049] input: ImExPS/2 Generic Explorer Mouse as /devices/mb:kmi1/serio1/input/input1
+Loading, please wait...
+[    1.989269] udev[521]: starting version 167
+Begin: Loading essential drivers ... done.
+Begin: Running /scripts/init-premount ... done.
+Begin: Mounting root file system ... Begin: Running /scripts/local-top ... done.
+Begin: Running /scripts/local-premount ... done.
+FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+[    4.992104] EXT4-fs (mmcblk0p2): warning: maximal mount count reached, running e2fsck is recommended
+[    5.001026] EXT4-fs (mmcblk0p2): recovery complete
+[    5.004297] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
+Begin: Running /scripts/local-bottom ... done.
+done.
+Begin: Running /scripts/init-bottom ... done.
+ [   11.877711] udev[664]: starting version 167
+modprobe: FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+
+init: ureadahead main process (597) terminated with status 5
+[   15.399694] net eth0: SMSC911x/921x identified at 0xe8cc0000, IRQ: 47
+[   18.125714] device: 'vcs4': device_add
+[   18.128028] PM: Adding info for No Bus:vcs4
+[   18.129245] device: 'vcsa4': device_add
+[   18.129454] PM: Adding info for No Bus:vcsa4
+[   18.162611] device: 'vcs5': device_add
+[   18.162897] PM: Adding info for No Bus:vcs5
+[   18.163013] device: 'vcsa5': device_add
+[   18.163242] PM: Adding info for No Bus:vcsa5
+[   18.292811] device: 'vcs2': device_add
+[   18.293151] PM: Adding info for No Bus:vcs2
+[   18.293298] device: 'vcsa2': device_add
+[   18.293560] PM: Adding info for No Bus:vcsa2
+[   18.352971] device: 'vcs3': device_add
+[   18.353435] PM: Adding info for No Bus:vcs3
+[   18.353553] device: 'vcsa3': device_add
+[   18.353769] PM: Adding info for No Bus:vcsa3
+
+[   18.453092] device: 'vcs6': device_add
+[   18.453379] PM: Adding info for No Bus:vcs6
+[   18.453495] device: 'vcsa6': device_add
+[   18.453700] PM: Adding info for No Bus:vcsa6
+[   18.484551] device: 'virbr0': device_add
+[   18.485593] PM: Adding info for No Bus:virbr0
+FATAL: Could not load /lib/modules/2.6.38.7/modules.dep: No such file or directory
+ * Exporting directories for NFS kernel daemon...       [80G Last login: Thu Apr 25 00:01:40 CST 2013 from 192.168.101.1 on pts/3
+[74G[ OK ]
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+ * Starting NFS kernel daemon       [80G [74G[ OK ]
+root@linaro:~# linaro start up!
+ssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Thu Apr 25 00:08:45 2013
+root@linaro:~# scp root@192.168.101.1:~/file_transfer.sh . 
+root@192.168.101.1's password: 
+file_transfer.sh                                0%    0     0.0KB/s   --:-- ETAfile_transfer.sh                              100% 3560     3.5KB/s   00:00    
+root@linaro:~# scp root@192.168.101.1:~/memTest . 
+root@192.168.101.1's password: 
+memTest                                         0%    0     0.0KB/s   --:-- ETAmemTest                                       100% 5697     5.6KB/s   00:00    
+root@linaro:~# scp -r root@192.168.101.1:~/Config/1000/* /root/kvm/ 
+root@192.168.101.1's password: 
+1000                                          100%    0     0.0KB/s   00:00    
+start1.sh                                       0%    0     0.0KB/s   --:-- ETAstart1.sh                                     100%  636     0.6KB/s   00:00    
+start3.sh                                       0%    0     0.0KB/s   --:-- ETAstart3.sh                                     100%  637     0.6KB/s   00:00    
+start4.sh                                       0%    0     0.0KB/s   --:-- ETAstart4.sh                                     100%  637     0.6KB/s   00:00    
+root@linaro:~# cd /root/kvm
+root@linaro:~/kvm# insmod /root/kvm/kvm.ko
+root@linaro:~/kvm# chmod +x start1.sh
+root@linaro:~/kvm# ./start1.sh
+  *** TAP MAC 22:54:00:12:34:01
+   ***  idstr ram
+   ***  idstr cpu
+   ***  idstr sharedpage
+   ***  idstr vectors
+map addr 0x4d3d3c
+   ***  idstr virtio-net
+   ***  idstr virtio-console
+Warning: more nics requested than this machine supports; some have been ignored
+Linux version 2.6.35 (alexey@66-A00327-01) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-202) ) #3 Thu Jan 10 10:29:34 CST 2013
+CPU: ARMv6-compatible processor [0007b000] revision 0 (ARMv6TEJ), cr=00000000
+CPU: VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+Machine: KVM-ARM guest OS (realview EB target)
+Memory policy: ECC disabled, Data cache writeback
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16256
+Kernel command line: root=/dev/nfs rw  nfsroot=192.168.20.1:/root/rootfs/debian,hard ip=192.168.20.2::192.168.20.1:255.255.255.0:vm1:eth0:off clocksource=pit console=hvc0
+PID hash table entries: 256 (order: -2, 1024 bytes)
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Memory: 64MB = 64MB total
+Memory: 60164k/60164k available, 5372k reserved, 0K highmem
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+    DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
+    vmalloc : 0xc4800000 - 0xf8000000   ( 824 MB)
+    lowmem  : 0xc0000000 - 0xc4000000   (  64 MB)
+    modules : 0xbf000000 - 0xc0000000   (  16 MB)
+      .init : 0xc0008000 - 0xc001f000   (  92 kB)
+      .text : 0xc001f000 - 0xc026a000   (2348 kB)
+      .data : 0xc027e000 - 0xc0296fe0   ( 100 kB)
+Hierarchical RCU implementation.
+	RCU-based detection of stalled CPUs is disabled.
+	Verbose stalled-CPUs detection is disabled.
+NR_IRQS:228
+Console: colour dummy device 80x30
+console [hvc0] enabled
+Calibrating delay loop... 647.16 BogoMIPS (lpj=3235840)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+NET: Registered protocol family 16
+bio: create slab <bio-0> at 0
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+TCP reno registered
+UDP hash table entries: 256 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+msgmni has been set to 117
+io scheduler noop registered
+io scheduler deadline registered (default)
+virtio-mmio virtio-mmio.2: Wrong magic value 0x00000000!
+TCP cubic registered
+NET: Registered protocol family 17
+IP-Config: Complete:
+     device=eth0, addr=192.168.20.2, mask=255.255.255.0, gw=192.168.20.1,
+     host=vm1, domain=, nis-domain=(none),
+     bootserver=255.255.255.255, rootserver=192.168.20.1, rootpath=
+Looking up port of RPC 100003/2 on 192.168.20.1
+Looking up port of RPC 100005/1 on 192.168.20.1
+VFS: Mounted root (nfs filesystem) on device 0:10.
+Freeing init memory: 92K
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+INIT: version 2.88 booting
+root@vm1:/# echo $HOSTNAME
+vm1
+root@vm1:/# /etc/init.d/ssh start
+ /dev/pts
+Starting OpenBSD Secure Shell server: sshdmodprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+.
+root@vm1:/# mountssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Thu Apr 25 00:08:56 2013 from 192.168.101.1
+root@linaro:~# cd kvm
+root@linaro:~/kvm# chmod +x start4.sh
+root@linaro:~/kvm# ./start4.sh
+  *** TAP MAC 22:54:00:12:34:01
+   ***  idstr ram
+   ***  idstr cpu
+   ***  idstr sharedpage
+   ***  idstr vectors
+map addr 0x4d3d3c
+   ***  idstr virtio-net
+   ***  idstr virtio-console
+Warning: more nics requested than this machine supports; some have been ignored
+Linux version 2.6.35 (alexey@66-A00327-01) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-202) ) #3 Thu Jan 10 10:29:34 CST 2013
+CPU: ARMv6-compatible processor [0007b000] revision 0 (ARMv6TEJ), cr=00000000
+CPU: VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+Machine: KVM-ARM guest OS (realview EB target)
+Memory policy: ECC disabled, Data cache writeback
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16256
+Kernel command line: root=/dev/nfs rw  nfsroot=192.168.20.1:/root/rootfs/debian,hard ip=192.168.20.5::192.168.20.1:255.255.255.0:vm4:eth0:off clocksource=pit console=hvc0
+PID hash table entries: 256 (order: -2, 1024 bytes)
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Memory: 64MB = 64MB total
+Memory: 60164k/60164k available, 5372k reserved, 0K highmem
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+    DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
+    vmalloc : 0xc4800000 - 0xf8000000   ( 824 MB)
+    lowmem  : 0xc0000000 - 0xc4000000   (  64 MB)
+    modules : 0xbf000000 - 0xc0000000   (  16 MB)
+      .init : 0xc0008000 - 0xc001f000   (  92 kB)
+      .text : 0xc001f000 - 0xc026a000   (2348 kB)
+      .data : 0xc027e000 - 0xc0296fe0   ( 100 kB)
+Hierarchical RCU implementation.
+	RCU-based detection of stalled CPUs is disabled.
+	Verbose stalled-CPUs detection is disabled.
+NR_IRQS:228
+Console: colour dummy device 80x30
+console [hvc0] enabled
+Calibrating delay loop... 838.86 BogoMIPS (lpj=4194304)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+NET: Registered protocol family 16
+bio: create slab <bio-0> at 0
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+TCP reno registered
+UDP hash table entries: 256 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+msgmni has been set to 117
+io scheduler noop registered
+io scheduler deadline registered (default)
+virtio-mmio virtio-mmio.2: Wrong magic value 0x00000000!
+TCP cubic registered
+NET: Registered protocol family 17
+IP-Config: Complete:
+     device=eth0, addr=192.168.20.5, mask=255.255.255.0, gw=192.168.20.1,
+     host=vm4, domain=, nis-domain=(none),
+     bootserver=255.255.255.255, rootserver=192.168.20.1, rootpath=
+Looking up port of RPC 100003/2 on 192.168.20.1
+Looking up port of RPC 100005/1 on 192.168.20.1
+VFS: Mounted root (nfs filesystem) on device 0:10.
+Freeing init memory: 92K
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+INIT: version 2.88 booting
+root@vm4:/# /etc/init.d/ssh start
+mount /dev/pts
+Starting OpenBSD Secure Shell server: sshdmodprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+.
+root@vm4:/# mount /dev/pts
+echo $HOSTNAME
+root@vm4:/# echo $HOSTssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Thu Apr 25 00:09:47 2013 from 192.168.101.1
+root@linaro:~# cd kvm
+root@linaro:~/kvm# chmod +x start3.sh
+root@linaro:~/kvm# ./start3.sh
+  *** TAP MAC 22:54:00:12:34:01
+   ***  idstr ram
+   ***  idstr cpu
+   ***  idstr sharedpage
+   ***  idstr vectors
+map addr 0x4d3d3c
+   ***  idstr virtio-net
+   ***  idstr virtio-console
+Warning: more nics requested than this machine supports; some have been ignored
+Linux version 2.6.35 (alexey@66-A00327-01) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-202) ) #3 Thu Jan 10 10:29:34 CST 2013
+CPU: ARMv6-compatible processor [0007b000] revision 0 (ARMv6TEJ), cr=00000000
+CPU: VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+Machine: KVM-ARM guest OS (realview EB target)
+Memory policy: ECC disabled, Data cache writeback
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16256
+Kernel command line: root=/dev/nfs rw  nfsroot=192.168.20.1:/root/rootfs/debian,hard ip=192.168.20.4::192.168.20.1:255.255.255.0:vm3:eth0:off clocksource=pit console=hvc0
+PID hash table entries: 256 (order: -2, 1024 bytes)
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Memory: 64MB = 64MB total
+Memory: 60164k/60164k available, 5372k reserved, 0K highmem
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+    DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
+    vmalloc : 0xc4800000 - 0xf8000000   ( 824 MB)
+    lowmem  : 0xc0000000 - 0xc4000000   (  64 MB)
+    modules : 0xbf000000 - 0xc0000000   (  16 MB)
+      .init : 0xc0008000 - 0xc001f000   (  92 kB)
+      .text : 0xc001f000 - 0xc026a000   (2348 kB)
+      .data : 0xc027e000 - 0xc0296fe0   ( 100 kB)
+Hierarchical RCU implementation.
+	RCU-based detection of stalled CPUs is disabled.
+	Verbose stalled-CPUs detection is disabled.
+NR_IRQS:228
+Console: colour dummy device 80x30
+console [hvc0] enabled
+Calibrating delay loop... 2418.27 BogoMIPS (lpj=12091392)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+NET: Registered protocol family 16
+bio: create slab <bio-0> at 0
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+TCP reno registered
+UDP hash table entries: 256 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+msgmni has been set to 117
+io scheduler noop registered
+io scheduler deadline registered (default)
+virtio-mmio virtio-mmio.2: Wrong magic value 0x00000000!
+TCP cubic registered
+NET: Registered protocol family 17
+IP-Config: Complete:
+     device=eth0, addr=192.168.20.4, mask=255.255.255.0, gw=192.168.20.1,
+     host=vm3, domain=, nis-domain=(none),
+     bootserver=255.255.255.255, rootserver=192.168.20.1, rootpath=
+Looking up port of RPC 100003/2 on 192.168.20.1
+Looking up port of RPC 100005/1 on 192.168.20.1
+VFS: Mounted root (nfs filesystem) on device 0:10.
+Freeing init memory: 92K
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+INIT: version 2.88 booting
+root@vm3:/# /etc/init.d/ssh start
+nt /dev/pts
+Starting OpenBSD Secure Shell server: sshdmodprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+modprobe: FATAL: Could not load /lib/modules/2.6.35/modules.dep: No such file or directory
+
+.
+root@vm3:/# mount /dev/pts
+echo $HOSTNAME
+root@vm3:/# echo $HOSTNAssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Thu Apr 25 00:10:08 2013 from 192.168.101.1
+root@linaro:~# 
+root@linaro:~# scp ~/memTest root@192.168.20.2:/root/memTest
+memTest                                         0%    0     0.0KB/s   --:-- ETAmemTest                                       100% 5697     5.6KB/s   00:00    
+root@linaro:~# 
+root@linaro:~# ssh root@192.168.20.2 '/root/memTest'
+ssh root@192.168.101.2
+root@192.168.101.2's password: 
+Welcome to Ubuntu Natty (development branch) (GNU/Linux 2.6.38.7 armv7l)
+
+ * Documentation:  http://www.linaro.org
+Last login: Thu Apr 25 00:10:31 2013 from 192.168.101.1
+root@linaro:~# chmod +x file_transfer.sh
+root@linaro:~# ./file_transfer.sh 10 5 IOV 1000 5 
+Loop	Elapsed time(seconds)	MD5 comparison result	Size comparison result
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB) copied, 2.71341 s, 3.9 MB/s
+Copy random_file from Host to Guest VM1
+random_file                                     0%    0     0.0KB/s   --:-- ETArandom_file                                    21% 2208KB   2.2MB/s   00:03 ETArandom_file                                    22% 2320KB   2.0MB/s   00:03 ETArandom_file                                    23% 2448KB   1.8MB/s   00:04 ETArandom_file                                    26% 2704KB   1.6MB/s   00:04 ETArandom_file                                    32% 3312KB   1.5MB/s   00:04 ETArandom_file                                    33% 3440KB   1.4MB/s   00:04 ETArandom_file                                    37% 3792KB   1.3MB/s   00:04 ETArandom_file                                    43% 4496KB   1.2MB/s   00:04 ETArandom_file                                    46% 4752KB   1.1MB/s   00:04 ETArandom_file                                    50% 5136KB   1.0MB/s   00:04 ETArandom_file                                    52% 5392KB 987.2KB/s   00:04 ETArandom_file                                    56% 5776KB 926.8KB/s   00:04 ETArandom_file                                    60% 6160KB 872.6KB/s   00:04 ETArandom_file                                    65% 6672KB 836.5KB/s   00:04 ETArandom_file                                    67% 6928KB 778.5KB/s   00:04 ETArandom_file                                    73% 7568KB 764.6KB/s   00:03 ETArandom_file                                    79% 8096KB 740.9KB/s   00:02 ETArandom_file                                    81% 8336KB 690.9KB/s   00:02 ETArandom_file                                    85% 8720KB 660.2KB/s   00:02 ETArandom_file                                    85% 8720KB 594.1KB/s   00:02 ETArandom_file                                    86% 8848KB 547.5KB/s   00:02 ETArandom_file                                    90% 9232KB 531.2KB/s   00:01 ETArandom_file                                    90% 9232KB 478.1KB/s   00:02 ETArandom_file                                    91% 9360KB 443.1KB/s   00:01 ETArandom_file                                    92% 9488KB 411.6KB/s   00:01 ETArandom_file                                    94% 9632KB 384.8KB/s   00:01 ETArandom_file                                    96% 9872KB 370.3KB/s   00:00 ETArandom_file                                    98%   10MB 358.9KB/s   00:00 ETArandom_file                                   100%   10MB 365.7KB/s   00:28    
+	54	Check md5 from Host and Guest VM1:
+MD5 match	Check size from Host and Guest VM1:
+Size match
+
+1	Copy random_file from Guest VM1 to Guest VM2
+Connection closed by 192.168.20.4
+Connection closed by 192.168.20.4
+lost connection
+125	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size doesn't match
+
+Copy random_file from Guest VM2 to Guest VM1
+	363	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+2	Copy random_file from Guest VM1 to Guest VM2
+Connection closed by 192.168.20.4
+lost connection
+21331	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+Copy random_file from Guest VM2 to Guest VM1
+	77	Check md5 from Guest VM1 and Guest VM2:
+MD5 match	Check size from Guest VM1 and Guest VM2:
+Size match
+
+3	Copy random_file from Guest VM1 to Guest VM2
+Connection closed by 192.168.20.4
+Connection closed by 192.168.20.4
+Build was aborted
+Finished: ABORTED

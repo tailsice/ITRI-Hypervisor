@@ -1,0 +1,12 @@
+Loop	Elapsed time(seconds)	MD5 comparison result	Size comparison result
+	170	MD5 match	Size match
+1	210	MD5 match	Size match
+	256	MD5 match	Size match
+2	271	MD5 match	Size match
+	262	MD5 match	Size match
+3	256	MD5 match	Size match
+	252	MD5 match	Size match
+4	248	MD5 match	Size match
+	267	MD5 match	Size match
+5	224	MD5 match	Size match
+	239	MD5 match	Size match

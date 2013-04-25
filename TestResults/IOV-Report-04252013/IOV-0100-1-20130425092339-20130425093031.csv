@@ -1,0 +1,18 @@
+Loop	Elapsed time(seconds)	MD5 comparison result	Size comparison result
+	54	MD5 match	Size match
+1	125	MD5 match	Size doesn't match
+	363	MD5 match	Size match
+2	21331	MD5 match	Size match
+	77	MD5 match	Size match
+3	Loop	Elapsed time(seconds)	MD5 comparison result	Size comparison result
+	15	MD5 match	Size match
+1	23	MD5 match	Size match
+	21	MD5 match	Size match
+2	21	MD5 match	Size match
+	20	MD5 match	Size match
+3	20	MD5 match	Size match
+	24	MD5 match	Size match
+4	20	MD5 match	Size match
+	20	MD5 match	Size match
+5	20	MD5 match	Size match
+	32	MD5 match	Size match
