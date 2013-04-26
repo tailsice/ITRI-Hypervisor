@@ -3,7 +3,7 @@ if [ "$1" == "" ] || [ "$2" == "" ]; then
         echo "     ###################################"
         echo "     # file_transfer [Count] [Loop]    #"
         echo "     # Example: file_transfer 2 5      #"
-        echo "     # File size:2MB, Number of loop:5 #"
+        echo "     # File size:2MB, Number of loop:5 #" 
         echo "     ###################################"
 else
 echo -e "Loop\tElapsed time(seconds)\tMD5 comparison result\tSize comparison result" | tee -a /root/test.log
@@ -46,7 +46,7 @@ vm1_size=$(ssh 192.168.20.2 "du -sh random_file")
 scp_start=$(date +%s)
 ssh 192.168.20.2 "sshpass -p 'root' scp random_file root@192.168.20.4:~"
 scp_end=$(date +%s)
-#echo "Elapsed time:$(($scp_end-$scp_start)) seconds"
+#echo "Elapsed time:$(($scp_end-$scp_start)) seconds" 
 echo -n -e "$(($scp_end-$scp_start))\t" | tee -a /root/test.log
 vm2_md5=$(ssh 192.168.20.2 "sshpass -p 'root' ssh root@192.168.20.4 "md5sum random_file"")
 vm2_size=$(ssh 192.168.20.2 "sshpass -p 'root' ssh root@192.168.20.4 "du -sh random_file"")
@@ -73,7 +73,7 @@ vm2_size=$(ssh 192.168.20.2 "sshpass -p 'root' ssh root@192.168.20.4 "du -sh ran
 scp_start=$(date +%s)
 ssh 192.168.20.2 "sshpass -p 'root' scp 192.168.20.4:random_file ~"
 scp_end=$(date +%s)
-#echo "Elapsed time:$(($scp_end-$scp_start)) seconds"
+#echo "Elapsed time:$(($scp_end-$scp_start)) seconds" 
 echo -n -e "\t$(($scp_end-$scp_start))\t" | tee -a /root/test.log
 vm1_md5=$(ssh 192.168.20.2 "md5sum random_file")
 vm1_size=$(ssh 192.168.20.2 "du -sh random_file")

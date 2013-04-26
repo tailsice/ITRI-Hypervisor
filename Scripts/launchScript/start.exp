@@ -193,6 +193,18 @@ expect {
 
 set cpu9 $spawn_id
 
+spawn ssh $username@$login_ip
+set timeout 10
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $tip
+}
+
+set cpu10 $spawn_id
+
 set spawn_id $cpu1
 
 set timeout 250
@@ -420,7 +432,7 @@ if { $Load == "3" || $Load == "6" } {
 }
 
 
-if { $Load == "6" } {
+if { $Load == "4" || $Load == "5" || $Load == "6" } {
 
   set spawn_id $cpu7
   send -s "ssh $vmusername@192.168.101.2\r"
@@ -458,7 +470,7 @@ expect {
 
 send -s "chmod +x file\_transfer.sh\r"
 expect $tip
-send -s ".\/file_transfer.sh 1 1 $Componet $Code $Load \r"
+send -s ".\/file_transfer.sh 10 5 $Componet $Code $Load \r"
 set timeout 100000
 expect "End"
 
@@ -482,7 +494,14 @@ expect {
   -ex $tip 
 }
 
-send -s "rm -rf \*.csv\r"
-expect $tip
+set spawn_id $cpu10
 
+send -s "ssh $vmusername@192.168.101.2 \'rm \*.csv\'\r"
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$vmpwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $tip 
+}
 puts "PROGRAM END"
