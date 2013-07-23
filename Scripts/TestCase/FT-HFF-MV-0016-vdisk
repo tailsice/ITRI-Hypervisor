@@ -232,41 +232,6 @@ expect {
 
 sleep 5
 
-set spawn_id $cpu4
-
-send -s "\r"
-expect {
- $tip {send -s "ssh $vmusername@$hostB_ip\r"}
- timeout {FAIL;exit}
-}
-
-expect {
-  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
-  "assword:"     {send -s "$vmpwd\r"; exp_continue}
-  "No route to host"      {exit; exp_continue}
-  timeout         {send_user "connect fail\r"; exit}
-  -ex $tip
-}
-send -s "cd \/root\/kvm\r"
-expect {
- $tip { send -s "insmod \/root\/kvm\/kvm.ko\r" }
- timeout {FAIL;exit}
-}
-expect {
- $tip { send -s "mount $localMachine_ip\:\/mnt\/iso \/mnt\r" }
- timeout {FAIL;exit}
-}
-expect {
- $tip { send -s "chmod +x receive\_vm1.sh\r" }
- timeout {FAIL;exit}
-}
-expect {
- $tip { send -s "./receive\_vm1.sh\r" }
- timeout {FAIL;exit}
-}
-
-sleep 5
-
 set spawn_id $cpu6
 
 send -s "\r"
@@ -299,7 +264,7 @@ expect {
  timeout {FAIL;exit}
 }
 expect {
- $tip { send -s "ping $localMachine_ip \r"}
+ $tip { send -s "ping $localMachine_ip \r" }
  timeout {FAIL;exit}
 }
 expect {
@@ -352,45 +317,11 @@ expect {
  timeout {FAIL;exit}
 }
 
-#set spawn_id $cpu4
+set spawn_id $cpu7
 
-#send -s "\r"
-#expect {
-# $tip {send -s "ssh $vmusername@$hostB_ip\r"}
-# timeout {FAIL;exit}
-#}
-
-#expect {
-#  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
-#  "assword:"     {send -s "$vmpwd\r"; exp_continue}
-#  "No route to host"      {exit; exp_continue}
-#  timeout         {send_user "connect fail\r"; exit}
-#  -ex $tip
-#}
-#send -s "cd \/root\/kvm\r"
-#expect {
-# $tip { send -s "insmod \/root\/kvm\/kvm.ko\r" }
-# timeout {FAIL;exit}
-#}
-#expect {
-# $tip { send -s "mount $localMachine_ip\:\/mnt\/iso \/mnt\r" }
-# timeout {FAIL;exit}
-#}
-#expect {
-# $tip { send -s "chmod +x receive\_vm1.sh\r" }
-# timeout {FAIL;exit}
-#}
-#expect {
-# $tip { send -s "./receive\_vm1.sh\r" }
-# timeout {FAIL;exit}
-#}
-#
-#sleep 5
-
-set spawn_id $cpu10
 send -s "\r"
 expect {
- $tip {send -s "ssh $vmusername@$hostA_ip\r"}
+ $tip {send -s "ssh $vmusername@$hostB_ip\r"}
  timeout {FAIL;exit}
 }
 expect {
@@ -400,35 +331,13 @@ expect {
   timeout         {send_user "connect fail\r"; exit}
   -ex $tip
 }
-puts "### Start Migration ###"
-set timeout 60
-send -s "\r"
-expect {
- $tip { send -s "cd /root/kvm\r" }
+send -s "cd \/root\/kvm\r"
+expect { 
+ $tip { send -s "\.\/start3\-vdisk.sh\r"}
  timeout {FAIL;exit}
 }
 expect {
- $tip { send -s "./multimigrate\_vm.sh 4444 1 2\r"}
- timeout {FAIL;exit}
-}
-expect {
- "4444" { send -s "\r" }
- timeout {FAIL;exit}
-}
-expect {
- "qemu" { send -s "\r"}
- timeout {FAIL;exit}
-}
-expect {
- $tip {}
- timeout {FAIL;exit}
-}
-
-set spawn_id $cpu4
-set timeout 60
-send -s "\r"
-expect {
- "64" {send -s ""}
+ "root@vm" { send -s "echo \$HOSTNAME\r" }
  timeout {FAIL;exit}
 }
 PASS

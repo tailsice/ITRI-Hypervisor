@@ -2,17 +2,15 @@
 #### Basci Setting ###
 set login_ip 127.0.0.1
 set username root
-set pwd qwer
+set pwd kvmarm
 set vmusername root
 set vmpwd root
-set reporter chkao
-set reporter_pwd abc123
-set programpath /home/tailsice/install/linaro+libvirt
-set programpath2 /home/tailsice/install/migration
-set jenkins_file /srv/test.tap
-set localMachine_ip 192.168.101.1
-set hostA_ip 192.168.101.2
-set hostB_ip 192.168.101.101
+set programpath /home/hypervisor/kvm/
+set programpath2 /home/hypervisor/kvm2/
+set jenkins_file /var/lib/jenkins/jobs/TestRun/workspace/FT-HFF-MV-0008.tap
+set localMachine_ip 192.168.20.1
+set hostA_ip 192.168.20.100
+set hostB_ip 192.168.20.101
 set send_slow {1 .01}
 #######################
 
@@ -33,11 +31,7 @@ expect {
 }
 
 send -s "\r"
-expect $tip { puts "### FAIL ###"}
-send -s "\r"
-expect $tip { send -s "echo \"1..1\" \>\> $jenkins_file \r" }
-expect $tip { send -s "echo \"not ok 1 It is failed\" \>\> $jenkins_file \r" }
-expect $tip { exit}
+expect $tip { puts "##FAIL##"}
 }
 
 proc PASS {} {
@@ -57,9 +51,7 @@ expect {
 }
 
 send -s "\r"
-expect $tip { send -s "echo \"1..1\" \>\> $jenkins_file \r" }
-expect $tip { send -s "echo \"ok 1 The test is pass\" \>\> $jenkins_file \r" }
-expect $tip { puts "### PASS ###";exit}
+expect $tip { puts "##PASS##";exit}
 }
 
 
@@ -198,12 +190,11 @@ set spawn_id $cpu2
 
 set timeout 250
 send -s "cd $programpath2\r"
-send -s "\.\/start2.sh\r"
+send -s "./start2.sh\r"
 expect {
  "root@linaro" {puts "### BOOT OK ###"}
  timeout {FAIL;exit}
 }
-
 
 set spawn_id $cpu3
 
@@ -289,7 +280,7 @@ expect {
  timeout {FAIL;exit}
 }
 expect { 
- $tip { send -s "\.\/start1\-vdisk.sh\r"}
+ $tip { send -s "./start1.sh\r"}
  timeout {FAIL;exit}
 }
 expect {
@@ -322,7 +313,7 @@ expect {
 
 send -s "cd \/root\/kvm\r"
 expect { 
- $tip { send -s "\.\/start3\-vdisk.sh\r"}
+ $tip { send -s "./start3.sh\r"}
  timeout {FAIL;exit}
 }
 expect {

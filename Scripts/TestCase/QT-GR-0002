@@ -2,18 +2,62 @@
 #### Basci Setting ###
 set login_ip 127.0.0.1
 set username root
-set pwd qwer
+set pwd kvmarm
 set vmusername root
 set vmpwd root
-set reporter chkao
-set reporter_pwd abc123
-set programpath /home/tailsice/install/linaro+libvirt
-set programpath2 /home/tailsice/install/migration
-set localMachine_ip 192.168.101.1
-set hostA_ip 192.168.101.2
-set hostB_ip 192.168.101.101
+set programpath /home/hypervisor/kvm
+set programpath2 /home/hypervisor/kvm2
+set localMachine_ip 192.168.20.1
+set hostA_ip 192.168.20.100
+set hostB_ip 192.168.20.101
+set jenkins_path /var/lib/jenkins/jobs/TestRun/workspace
+set vmA_ip 192.168.20.2
 set send_slow {1 .01}
-#######################
+######################
+
+set jenkins_file [lindex $argv 0]
+
+proc FAIL {} {
+global username
+global pwd
+global login_ip
+global jenkins_path
+global jenkins_file
+spawn ssh $username@$login_ip
+set tip "#"
+set timeout 10
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $tip
+}
+send -s "\r"
+expect $tip { puts "##FAIL##"}
+send -s "\r"
+}
+
+proc PASS {} {
+global username
+global pwd
+global login_ip
+global jenkins_path
+global jenkins_file
+spawn ssh $username@$login_ip
+set tip "#"
+set timeout 10
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $tip
+}
+send -s "\r"
+expect $tip { puts "##PASS##"}
+}
+
 
 spawn ssh $username@$login_ip
 
@@ -90,6 +134,8 @@ expect {
   $tip { send -s "\r" }
   timeout { puts "Crash It"; exit }
 }
-
 send -s "\r"
-expect $tip
+expect $tip { PASS}
+
+puts "END"
+

@@ -1,4 +1,5 @@
 #!/usr/bin/expect
+
 #### Basci Setting ###
 set login_ip 127.0.0.1
 set username root
@@ -7,17 +8,19 @@ set vmusername root
 set vmpwd root
 set programpath /home/hypervisor/kvm
 set programpath2 /home/hypervisor/kvm2
-set jenkins_file /srv/test.tap
 set localMachine_ip 192.168.20.1
 set hostA_ip 192.168.20.100
 set hostB_ip 192.168.20.101
 set send_slow {1 .01}
 #######################
 
+set jenkins_file [lindex $argv 0]
+
 proc FAIL {} {
 global username
 global pwd
 global login_ip
+global jenkins_path
 global jenkins_file
 spawn ssh $username@$login_ip
 set tip "#"
@@ -29,7 +32,6 @@ expect {
   timeout         {send_user "connect fail\r"; exit}
   -ex $tip
 }
-
 send -s "\r"
 expect $tip { puts "##FAIL##"}
 }
@@ -38,6 +40,7 @@ proc PASS {} {
 global username
 global pwd
 global login_ip
+global jenkins_path
 global jenkins_file
 spawn ssh $username@$login_ip
 set tip "#"
@@ -49,11 +52,9 @@ expect {
   timeout         {send_user "connect fail\r"; exit}
   -ex $tip
 }
-
 send -s "\r"
 expect $tip { puts "##PASS##"}
 }
-
 
 spawn ssh $username@$login_ip
 
@@ -117,93 +118,26 @@ expect {
 
 set cpu5 $spawn_id
 
-spawn ssh $username@$login_ip
-set timeout 10
-expect {
-  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
-  "assword:"     {send -s "$pwd\r"; exp_continue}
-  "No route to host"      {exit; exp_continue}
-  timeout         {send_user "connect fail\r"; exit}
-  -ex $tip
-}
-
-set cpu6 $spawn_id
-
-spawn ssh $username@$login_ip
-set timeout 10
-expect {
-  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
-  "assword:"     {send -s "$pwd\r"; exp_continue}
-  "No route to host"      {exit; exp_continue}
-  timeout         {send_user "connect fail\r"; exit}
-  -ex $tip
-}
-
-set cpu7 $spawn_id
-
-spawn ssh $username@$login_ip
-set timeout 10
-expect {
-  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
-  "assword:"     {send -s "$pwd\r"; exp_continue}
-  "No route to host"      {exit; exp_continue}
-  timeout         {send_user "connect fail\r"; exit}
-  -ex $tip
-}
-
-set cpu8 $spawn_id
-
-spawn ssh $username@$login_ip
-set timeout 10
-expect {
-  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
-  "assword:"     {send -s "$pwd\r"; exp_continue}
-  "No route to host"      {exit; exp_continue}
-  timeout         {send_user "connect fail\r"; exit}
-  -ex $tip
-}
-
-set cpu9 $spawn_id
-
-spawn ssh $username@$login_ip
-set timeout 10
-expect {
-  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
-  "assword:"     {send -s "$pwd\r"; exp_continue}
-  "No route to host"      {exit; exp_continue}
-  timeout         {send_user "connect fail\r"; exit}
-  -ex $tip
-}
-
-set cpu10 $spawn_id
-
 set spawn_id $cpu1
 
 set timeout 250
 send -s "cd $programpath\r"
-expect {
- $tip { send -s "./start.sh\r"}
- timeout {FAIL;exit}
-}
+expect $tip { send -s "\.\/start.sh\r"}
+#expect "root@linaro"
+
+#puts "linaro start up!"
 
 set spawn_id $cpu2
 
 set timeout 250
 send -s "cd $programpath2\r"
 send -s "\.\/start2.sh\r"
-expect {
- "root@linaro" {puts "### BOOT OK ###"}
- timeout {FAIL;exit}
-}
-
+expect "root@linaro"
 
 set spawn_id $cpu3
 
 send -s "\r"
-expect {
- $tip {send -s "ssh $vmusername@$hostA_ip\r"}
- timeout {FAIL;exit}
-}
+expect $tip {send -s "ssh $vmusername@$hostB_ip\r"}
 
 expect {
   -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
@@ -213,32 +147,18 @@ expect {
   -ex $tip
 }
 send -s "cd \/root\/kvm\r"
-expect {
- $tip { send -s "insmod \/root\/kvm\/kvm.ko\r" }
- timeout {FAIL;exit}
-}
-expect {
- $tip { send -s "mount $localMachine_ip\:\/mnt\/iso \/mnt\r" }
- timeout {FAIL;exit}
-}
-expect {
- $tip { send -s "chmod +x receive\_vm1.sh\r" }
- timeout {FAIL;exit}
-}
-expect {
- $tip { send -s "\.\/receive\_vm1.sh\r" }
- timeout {FAIL;exit}
-}
+expect $tip { send -s "insmod \/root\/kvm\/kvm.ko\r" }
+expect $tip { send -s "mount $localMachine_ip\:\/mnt\/iso \/mnt\r" }
+expect $tip { send -s "chmod +x receive\_vm1.sh\r" }
+expect $tip { send -s "\.\/receive\_vm1.sh\r" }
 
 sleep 5
 
-set spawn_id $cpu6
+set spawn_id $cpu4
 
 send -s "\r"
-expect {
- $tip {send -s "ssh $vmusername@$hostB_ip\r"}
- timeout {FAIL;exit}
-}
+expect $tip {send -s "ssh $vmusername@$hostA_ip\r"}
+
 expect {
   -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
   "assword:"     {send -s "$vmpwd\r"; exp_continue}
@@ -247,37 +167,17 @@ expect {
   -ex $tip
 }
 send -s "cd \/root\/kvm\r"
-expect {
- $tip { send -s "insmod \/root\/kvm\/kvm.ko\r" }
- timeout {FAIL;exit}
-}
-expect {
- $tip { send -s "mount $localMachine_ip\:\/mnt\/iso \/mnt\r" }
- timeout {FAIL;exit}
-}
-expect { 
- $tip { send -s "./start1.sh\r"}
- timeout {FAIL;exit}
-}
-expect {
- "root@vm" { send -s "echo \$HOSTNAME\r" }
- timeout {FAIL;exit}
-}
-expect {
- $tip { send -s "wget http://$localMachine_ip/Test/testfile \r"}
- timeout {FAIL;exit}
-}
-expect {
- "Saving" {}
- timeout {FAIL;exit}
-}
+expect $tip { send -s "insmod \/root\/kvm\/kvm.ko\r" }
+expect $tip { send -s "mount $localMachine_ip\:\/mnt\/iso \/mnt\r" }
+expect $tip { send -s "\.\/start1\-vdisk.sh\r"}
+expect "root@vm" { send -s "echo \$HOSTNAME\r" }
+expect $tip { send -s "ping $localMachine_ip \r"}
+expect "64"
 
-set spawn_id $cpu9
+set spawn_id $cpu5
 send -s "\r"
-expect {
- $tip {send -s "ssh $vmusername@$hostB_ip\r"}
- timeout {FAIL;exit}
-}
+expect $tip {send -s "ssh $vmusername@$hostA_ip\r"}
+
 expect {
   -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
   "assword:"     {send -s "$vmpwd\r"; exp_continue}
@@ -286,35 +186,15 @@ expect {
   -ex $tip
 }
 puts "### Start Migration ###"
-set timeout 60
+set timeout 30
 send -s "\r"
-expect {
- $tip { send -s "cd \/root\/kvm\r" }
- timeout {FAIL;exit}
-}
-expect {
- $tip { send -s "\.\/migrate\_vm.sh 4444 1\r"}
- timeout {FAIL;exit}
-}
-expect {
- "4444" { send -s "\r" }
- timeout {FAIL;exit}
-}
-expect {
- "qemu" { send -s "\r"}
- timeout {FAIL;exit}
-}
-expect {
- $tip {}
- timeout {FAIL;exit}
-}
+expect $tip { send -s "nc \-U vm1.monitor\r" }
+expect "(qemu)" { send -s "migrate -d tcp:192.168.101.101:4444\r" }
+expect "(qemu)" { send -s "migrate_cancel\r" }
+expect "cancel" { puts "It's ok"}
 
 set spawn_id $cpu3
-set timeout 60
 send -s "\r"
-expect {
- $tip {}
- timeout {FAIL;exit}
-}
-PASS
+expect $tip
+sleep 5
 puts "End Program"

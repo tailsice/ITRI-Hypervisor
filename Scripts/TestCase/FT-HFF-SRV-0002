@@ -2,15 +2,15 @@
 #### Basci Setting ###
 set login_ip 127.0.0.1
 set username root
-set pwd qwer
+set pwd kvmarm
 set vmusername root
 set vmpwd root
-set programpath /home/tailsice/install/linaro+libvirt
-set programpath2 /home/tailsice/install/migration
+set programpath /home/hypervisor/kvm
+set programpath2 /home/hypervisor/kvm2
 set jenkins_file /srv/test.tap
-set localMachine_ip 192.168.101.1
-set hostA_ip 192.168.101.2
-set hostB_ip 192.168.101.101
+set localMachine_ip 192.168.20.1
+set hostA_ip 192.168.20.100
+set hostB_ip 192.168.20.101
 set send_slow {1 .01}
 #######################
 
@@ -31,11 +31,7 @@ expect {
 }
 
 send -s "\r"
-expect $tip { puts "### FAIL ###"}
-send -s "\r"
-expect $tip { send -s "echo \"1..1\" \>\> $jenkins_file \r" }
-expect $tip { send -s "echo \"not ok 1 It is failed\" \>\> $jenkins_file \r" }
-expect $tip { exit}
+expect $tip { puts "##FAIL##"}
 }
 
 proc PASS {} {
@@ -55,9 +51,7 @@ expect {
 }
 
 send -s "\r"
-expect $tip { send -s "echo \"1..1\" \>\> $jenkins_file \r" }
-expect $tip { send -s "echo \"ok 1 The test is pass\" \>\> $jenkins_file \r" }
-expect $tip { puts "### PASS ###";exit}
+expect $tip { puts "##PASS##";exit}
 }
 
 
@@ -218,11 +212,11 @@ expect {
  timeout {FAIL;exit}
 }
 expect {
- $tip { send -s "chmod +x start1\-vdisk.sh\r" }
+ $tip { send -s "chmod +x start1.sh\r" }
  timeout {FAIL;exit}
 }
 expect {
- $tip { send -s ".\/start1\-vdisk.sh\r" }
+ $tip { send -s "./start1.sh\r" }
  timeout {FAIL;exit}
 }
 expect {
@@ -261,11 +255,11 @@ expect {
 }
 send -s "cd \/root\/kvm\r"
 expect {
- $tip { send -s "chmod +x start3\-vdisk.sh\r" }
+ $tip { send -s "chmod +x start3.sh\r" }
  timeout {FAIL;exit}
 }
 expect {
- $tip { send -s "./start3\-vdisk.sh\r" }
+ $tip { send -s "./start3.sh\r" }
  timeout {FAIL;exit}
 }
 expect {
@@ -308,11 +302,11 @@ expect {
  timeout {FAIL;exit}
 }
 expect {
- $tip { send -s "chmod +x start4\-vdisk.sh\r" }
+ $tip { send -s "chmod +x start4.sh\r" }
  timeout {FAIL;exit}
 }
 expect {
- $tip { send -s "./start4\-vdisk.sh\r" }
+ $tip { send -s "./start4.sh\r" }
  timeout {FAIL;exit}
 }
 expect {
@@ -369,7 +363,7 @@ expect {
  timeout {FAIL;exit}
 }
 expect {
- $tip {set tip "root@cssi"; send -s "halt\r"}
+ $tip {set tip "root@hypervisor"; send -s "halt\r"}
  timeout {FAIL;exit}
 }
 expect {
@@ -418,7 +412,7 @@ expect {
 }
 send -s "cd \/root\/kvm\r"
 expect {
- $tip { send -s ".\/start1\-res\-vdisk.sh\r" }
+ $tip { send -s ".\/start1\-res.sh\r" }
  timeout {FAIL;exit}
 }
 expect {
@@ -447,7 +441,7 @@ expect {
 }
 send -s "cd \/root\/kvm\r"
 expect {
- $tip { send -s ".\/start3\-res\-vdisk.sh\r" }
+ $tip { send -s ".\/start3\-res.sh\r" }
  timeout {FAIL;exit}
 }
 expect {
@@ -476,7 +470,7 @@ expect {
 }
 send -s "cd \/root\/kvm\r"
 expect {
- $tip { send -s ".\/start4\-res\-vdisk.sh\r" }
+ $tip { send -s ".\/start4\-res.sh\r" }
  timeout {FAIL;exit}
 }
 expect {

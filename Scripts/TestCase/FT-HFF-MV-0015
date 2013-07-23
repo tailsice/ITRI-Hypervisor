@@ -299,11 +299,11 @@ expect {
  timeout {FAIL;exit}
 }
 expect {
- $tip { send -s "ping $localMachine_ip \r"}
+ $tip { send -s "wget http://$localMachine_ip/Test/testfile \r"}
  timeout {FAIL;exit}
 }
 expect {
- "64" {}
+ "Saving" {}
  timeout {FAIL;exit}
 }
 
@@ -348,7 +348,7 @@ set spawn_id $cpu3
 set timeout 60
 send -s "\r"
 expect {
- "64" {}
+ $tip {}
  timeout {FAIL;exit}
 }
 
@@ -428,7 +428,7 @@ set spawn_id $cpu4
 set timeout 60
 send -s "\r"
 expect {
- "64" {send -s ""}
+ $tip {send -s ""}
  timeout {FAIL;exit}
 }
 PASS

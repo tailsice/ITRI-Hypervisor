@@ -1,0 +1,69 @@
+#!/bin/sh
+
+#
+# Copyright IBM, Corp. 2010  
+#
+# Authors:
+#  Anthony Liguori <aliguori@us.ibm.com>
+#
+# This work is licensed under the terms of the GNU GPL, version 2.  See
+# the COPYING file in the top-level directory.
+
+# Set to the name of your bridge
+BRIDGE=br0
+
+# Network information
+EXTIF=`ip route list | awk '/^default / { print $5 }'`
+NETWORK=192.168.20.0
+NETMASK=255.255.255.0
+GATEWAY=192.168.20.1
+DHCPRANGE=192.168.20.2,192.168.20.254
+
+# Optionally parameters to enable PXE support
+TFTPROOT=
+BOOTP=
+
+check_bridge() {
+    if brctl show | grep "^$1" > /dev/null 2> /dev/null; then
+		return 1
+    else
+		return 0
+    fi
+}
+
+create_bridge() {
+    brctl addbr "$1"
+    brctl stp "$1" off
+    brctl setfd "$1" 0
+    ifconfig "$1" "$GATEWAY" netmask "$NETMASK" up
+}
+
+enable_ip_forward() {
+    echo 1 | dd of=/proc/sys/net/ipv4/ip_forward > /dev/null
+}
+
+add_filter_rules() {
+	iptables -t nat -A POSTROUTING -o $EXTIF -s $NETWORK/$NETMASK -j MASQUERADE
+}
+
+setup_bridge_nat() {
+    if check_bridge "$1" ; then
+		create_bridge "$1"
+		enable_ip_forward
+		add_filter_rules "$1"
+#		start_dnsmasq "$1"
+    fi
+}
+
+setup_bridge_nat "$BRIDGE"
+
+if test "$1" ; then
+    ifconfig "$1" 0.0.0.0 up
+    brctl addif "$BRIDGE" "$1"
+fi
+
+#EXTIF=eth0
+#INNET="192.168.101.0/24"
+
+#ifconfig $1 192.168.101.1 up
+#iptables -t nat -A POSTROUTING -o $EXTIF -s $INNET -j MASQUERADE

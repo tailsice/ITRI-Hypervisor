@@ -5,11 +5,14 @@ set username root
 set pwd kvmarm
 set vmusername root
 set vmpwd root
-set programpath /home/hypervisor/install/linaro+libvirt
-set programpath2 /home/hypervisor/install/migration
+set programpath /home/hypervisor/kvm
+set programpath2 /home/hypervisor/kvm2
+set jenkins_file /srv/test.tap
 set localMachine_ip 192.168.101.1
 set hostA_ip 192.168.101.2
 set hostB_ip 192.168.101.101
+set VMA_ip 192.168.20.2
+set VMC_ip 192.168.20.4
 set send_slow {1 .01}
 #######################
 
@@ -17,7 +20,6 @@ proc FAIL {} {
 global username
 global pwd
 global login_ip
-global jenkins_path
 global jenkins_file
 spawn ssh $username@$login_ip
 set tip "#"
@@ -29,6 +31,7 @@ expect {
   timeout         {send_user "connect fail\r"; exit}
   -ex $tip
 }
+
 send -s "\r"
 expect $tip { puts "##FAIL##"}
 }
@@ -37,8 +40,6 @@ proc PASS {} {
 global username
 global pwd
 global login_ip
-global jenkins_path
-global jenkins_file
 spawn ssh $username@$login_ip
 set tip "#"
 set timeout 10
@@ -49,8 +50,9 @@ expect {
   timeout         {send_user "connect fail\r"; exit}
   -ex $tip
 }
+
 send -s "\r"
-expect $tip { puts "##PASS##"}
+expect $tip { puts "##PASS##";send -s "\r"}
 }
 
 spawn ssh $username@$login_ip
@@ -79,33 +81,30 @@ expect {
 
 set cpu2 $spawn_id
 
-spawn ssh $username@$login_ip
-set timeout 10
-expect {
-  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
-  "assword:"     {send -s "$pwd\r"; exp_continue}
-  "No route to host"      {exit; exp_continue}
-  timeout         {send_user "connect fail\r"; exit}
-  -ex $tip
-}
-
-set cpu3 $spawn_id
-
 set spawn_id $cpu1
 
 set timeout 250
 send -s "\r"
-expect $tip { send -s "echo \"Run\" >> /srv/Log/RunCount\r" }
-expect $tip { send -s "cd $programpath2\r" }
-expect $tip { send -s "\.\/start2.sh\r"}
-expect "root@linaro"
-
-#puts "linaro start up!"
+expect {
+ $tip { send -s "cd $programpath2\r" }
+ timeout {FAIL;exit}
+}
+expect { 
+ $tip { send -s "\.\/start2.sh\r"}
+ timeout {FAIL;exit}
+}
+expect {
+ "root@linaro" {}
+ timeout {FAIL;exit}
+}
 
 set spawn_id $cpu2
 
 send -s "\r"
-expect $tip {send -s "ssh $vmusername@$hostB_ip\r"}
+expect {
+ $tip {send -s "ssh $vmusername@$hostB_ip\r"}
+ timeout {FAIL;exit}
+}
 
 expect {
   -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
@@ -117,65 +116,60 @@ expect {
 send -s "cd \/root\/kvm\r"
 expect {
  $tip { send -s "insmod \/root\/kvm\/kvm.ko\r" }
- timeout {FAIL}
+ timeout {FAIL;exit}
 }
 expect {
  $tip { send -s "mount $localMachine_ip\:\/mnt\/iso \/mnt\r" }
- timeout {FAIL}
+ timeout {FAIL;exit}
 }
-expect {
+expect { 
  $tip { send -s "chmod +x start1\-vdisk.sh\r" }
- timeout {FAILS}
+ timeout {FAIL;exit}
 }
 expect {
  $tip { send -s ".\/start1\-vdisk.sh\r" }
- timeout {FAIL}
+ timeout {FAIL;exit}
+}
+expect { 
+ "root@vm" { send -s "\r"}
+ timeout {FAIL;exit}
 }
 expect {
- "root@vm" { send -s "echo \$HOSTNAME\r" }
- timeout {FAIL}
+ $tip { send -s "ifconfig eth0 \r"}
+ timeout {FAIL;exit}
 }
 expect {
- "vm" { send -s "\/etc\/init.d\/ssh start\r" }
- timeout {FAIL}
+ $tip { send -s "ifconfig eth0 down \r"}
+ timeout {FAIL;exit}
 }
 expect {
- $tip { send -s "mount \/dev\/pts\r" }
- timeout {FAIL}
+ $tip { send -s "ifconfig eth0 hw ether 00 11 22 33 44 55\r"}
+ timeout {FAIL;exit}
 }
 expect {
- $tip { send -s "echo \"rm data\*\" \> rmdata.sh\r"}
- timeout {FAIL}
+ $tip { send -s "ifconfig eth0 up\r"}
+ timeout {FAIL;exit}
 }
 expect {
- $tip { send -s "chmod +x rmdata.sh\r"}
- timeout {FAIL}
-}
-for {set i 0} {$i < 5} {incr i} {
-expect $tip { send -s "dd if=/dev/zero of=data$i bs=1024k count=100\r" }
- }
-expect "No space left on device" { send -s "\r" }
-expect {
- $tip { send -s "sh rmdata.sh\r" }
- timeout {FAIL}
+ $tip { send -s "ifconfig eth0 192.168.20.2\r"}
+ timeout {FAIL;exit}
 }
 expect {
- $tip { send -s "\r" }
- timeout {FAIL}
+ $tip { send -s "ifconfig eth0 \r"}
+ timeout {FAIL;exit}
 }
 expect {
- $tip { send -s "ls\r" }
- timeout {FAIL}
+ $tip { send -s "/etc/init.d/networking restart\r"}
+ timeout {FAIL;exit}
 }
 expect {
- $tip { send -s "\r" }
- timeout {FAIL}
+ $tip { send -s "ping $localMachine_ip \r" }
+ timeout {FAIL;exit}
 }
+set timeout 10
 expect {
- $tip { send -s "df \-h\r"}
- timeout {FAIL}
+ "Network is unreachable" {FAIL;exit}
+ timeout {FAIL;exit}
+ -ex "64"
 }
-expect $tip { send -s "\r"}
-expect $tip
-sleep 5
 PASS
