@@ -1,0 +1,50 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_HOSTA ]
+set cpu2 [ LOGIN_HOSTA ]
+
+set spawn_id $cpu1
+send -s "cd /root\r"
+
+expect {
+ $HostTip { send -s "virsh define vm1.xml\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $HostTip { send -s "virsh start vm1\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $HostTip { send -s "virsh list\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ "running" { send -s "virsh stop vm1\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $HostTip { send -s "virsh list\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ "stop" { send -s "virsh resume vm1\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $HostTip { send -s "virsh list\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ "running" { send -s "virsh list\r" }
+ timeout {FAIL;exit}
+}
+
+#expect {
+# $HostTip { send -s "poweroff\r" }
+# timeout {FAIL}
+#}
+expect {
+ $HostTip {PASS}
+ timeout {FAIL}
+}

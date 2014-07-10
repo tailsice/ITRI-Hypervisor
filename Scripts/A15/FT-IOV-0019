@@ -1,0 +1,55 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_HOSTA ]
+set cpu2 [ LOGIN_HOSTA ]
+
+set spawn_id $cpu1
+START_HOSTA_VM_1
+send -s "\r"
+
+expect {
+ $VMTip { send -s "echo \"rm data\*\" \> rmdata.sh\r"}
+ timeout {FAIL}
+}
+expect {
+ $VMTip { send -s "chmod +x rmdata.sh\r"}
+ timeout {FAIL}
+}
+for {set i 0} {$i < 5} {incr i} {
+expect $VMTip { send -s "dd if=/dev/zero of=data$i bs=1024k count=100\r" }
+ }
+expect "No space left on device" { send -s "\r" }
+expect {
+ $VMTip { send -s "sh rmdata.sh\r" }
+ timeout {FAIL}
+}
+expect {
+ $VMTip { send -s "./rmdata.sh\r" }
+ timeout {FAIL}
+}
+expect {
+ $VMTip { send -s "\r" }
+ timeout {FAIL}
+}
+expect {
+ $VMTip { send -s "ls\r" }
+ timeout {FAIL}
+}
+expect {
+ $VMTip { send -s "\r" }
+ timeout {FAIL}
+}
+expect {
+ $VMTip { send -s "df \-h\r"}
+ timeout {FAIL}
+}
+
+expect {
+ $VMTip { send -s "poweroff\r" }
+ timeout {FAIL}
+}
+expect {
+ $HostTip {PASS}
+ timeout {FAIL}
+}

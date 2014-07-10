@@ -1,0 +1,16 @@
+#!/usr/bin/expect
+source /srv/A15/configure
+
+set cpu1 [ LOGIN_PHY ]
+set cpu2 [ LOGIN_HOSTA ]
+set cpu3 [ LOGIN_HOSTB ]
+
+set spawn_id $cpu2
+Clean_Environment
+
+set spawn_id $cpu3
+Clean_Environment
+
+set spawn_id $cpu1
+Check_Image
+Launch_Test

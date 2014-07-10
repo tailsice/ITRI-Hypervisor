@@ -1,0 +1,48 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_HOSTA ]
+set cpu2 [ LOGIN_HOSTA ]
+
+set spawn_id $cpu1
+START_HOSTA_VM_1
+send -s "\r"
+expect {
+ $VMTip { send -s "\r"}
+ timeout {FAIL}
+}
+expect {
+ $VMTip { send -s "ping $hostA_ip \r";sleep 3}
+ timeout {FAIL}
+}
+expect {
+ "64" { send -s ""; send -s "\r"}
+ timeout {FAIL}
+}
+expect {
+ $VMTip { send -s "poweroff\r" }
+ timeout {FAIL}
+}
+expect {
+ $VMTip { send -s "PRCID\=\`ps auxw \| grep qemu \| head \-n 1 \| cut \-d \" \" \-f 7\`\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "cd /proc/\$PRCID/ \r" }
+ timeout {FAIL;exit}
+}
+set timeout 10
+expect {
+ $VMTip { send -s "ls \-la \r" }
+ timeout {FAIL;exit}
+}
+
+expect {
+ $VMTip { send -s "poweroff\r" }
+ timeout {FAIL}
+}
+
+expect {
+ $HostTip {PASS}
+ timeout {FAIL}
+}

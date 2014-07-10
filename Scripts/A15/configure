@@ -1,0 +1,329 @@
+#### Basci Setting ###
+set login_ip 127.0.0.1
+set username root
+set pwd root
+set vmusername root
+set vmpwd root
+set vmpath /root
+set hostA_ip 140.92.26.99
+set hostB_ip 140.92.26.125
+set jenkins_path /var/lib/jenkins/jobs/
+set nfs_path /root/nfs
+set launchPath /srv/A15
+set send_slow {1 .01}
+set HostTip "root@arndale"
+set VMTip "root@vm"
+set phyTip "root@ITRI"
+set jmeter_bin /srv/jmeter
+set binary_ip 10.5.1.112
+set timeout 30
+#######################
+
+#### Jenkins Setting ###
+set SCRIPT [lindex $argv 0]
+#set jenkins_file [lindex $argv 1]
+set jenkins_summary [lindex $argv 1]
+set jenkins_file $SCRIPT.tap
+set jenkins_path /var/lib/jenkins/jobs/$jenkins_summary/workspace
+########################
+
+proc FAIL {} {
+  global username
+  global pwd
+  global login_ip
+  global phyTip
+  global jenkins_path
+  global jenkins_file  
+
+  spawn ssh $username@$login_ip
+  set timeout 30
+  expect {
+    -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+    "assword:"     {send -s "$pwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex $phyTip
+  }
+  send -s "\r"
+  expect $phyTip { send -s "echo \"1..1\" \>\> $jenkins_path/$jenkins_file \r" }
+  expect $phyTip { send -s "echo \"not ok 1 It is failed\" \>\> $jenkins_path/$jenkins_file \r" }
+  expect $phyTip { puts "### FAIL ###";exit}
+}
+
+proc PASS {} {
+  global username
+  global pwd
+  global login_ip
+  global phyTip
+  global jenkins_path
+  global jenkins_file
+
+  spawn ssh $username@$login_ip
+  set timeout 30
+  expect {
+    -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+    "assword:"     {send -s "$pwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex $phyTip
+  }
+  send -s "\r"
+  expect $phyTip { send -s "echo \"1..1\" \>\> $jenkins_path/$jenkins_file \r" }
+  expect $phyTip { send -s "echo \"ok 1 The test is pass\" \>\> $jenkins_path/$jenkins_file \r" }
+  expect $phyTip { puts "### PASS ###";exit}
+}
+
+
+proc START_HOST_A_VM_1 {} {
+  global HostTip
+  global VMTip
+  global vmusername
+  global vmpwd
+  global hostA_ip
+  global vmpath
+  send -s "\r"
+  expect {
+   $HostTip { send -s "cd $vmpath \r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "chmod \+x \*.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "./start.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+    "login" { send -s "$vmusername\r" }
+    timeout {FAIL}
+  }
+  expect {
+    "assword" { send -s "$vmpwd\r" }
+    timeout {FAIL}
+  }
+  expect {
+   $VMTip { send -s "\r"}
+   timeout {FAIL}
+  }
+}
+
+proc START_HOST_A_VM_2 {} {
+  global HostTip
+  global VMTip
+  global vmusername
+  global vmpwd
+  global hostA_ip
+  global vmpath
+  send -s "\r"
+  expect {
+   $HostTip { send -s "cd $vmpath \r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "chmod \+x \*.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "./start2.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+    "login" { send -s "$vmusername\r" }
+    timeout {FAIL}
+  }
+  expect {
+    "assword" { send -s "$vmpwd\r" }
+    timeout {FAIL}
+  }
+  expect {
+   $VMTip { send -s "\r"}
+   timeout {FAIL}
+  }
+}
+
+proc START_HOST_A_VM_3 {} {
+  global HostTip
+  global VMTip
+  global vmusername
+  global vmpwd
+  global hostA_ip
+  global vmpath
+  send -s "\r"
+  expect {
+   $HostTip { send -s "cd $vmpath \r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "chmod \+x \*.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "./start3.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+    "login" { send -s "$vmusername\r" }
+    timeout {FAIL}
+  }
+  expect {
+    "assword" { send -s "$vmpwd\r" }
+    timeout {FAIL}
+  }
+  expect {
+   $VMTip { send -s "\r"}
+   timeout {FAIL}
+  }
+}
+
+proc START_HOST_A_VM_4 {} {
+  global HostTip
+  global VMTip
+  global vmusername
+  global vmpwd
+  global hostA_ip
+  global vmpath
+
+  send -s "\r"
+  expect {
+   $HostTip { send -s "cd $vmpath \r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "chmod \+x \*.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "./start4.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+    "login" { send -s "$vmusername\r" }
+    timeout {FAIL}
+  }
+  expect {
+    "assword" { send -s "$vmpwd\r" }
+    timeout {FAIL}
+  }
+  expect {
+   $VMTip { send -s "\r"}
+   timeout {FAIL}
+  }
+}
+
+proc LOGIN_HOST_A {} {
+  global username
+  global pwd
+  global login_ip
+  global HostTip
+  global hostA_ip
+
+  spawn ssh $username@$hostA_ip
+  expect {
+    -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+    "assword:"     {send -s "$pwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex $HostTip
+  }
+  return $spawn_id
+}
+
+proc LOGIN_HOST_B {} {
+  global username
+  global pwd
+  global login_ip
+  global HostTip
+  global hostB_ip
+
+  spawn ssh $username@$hostB_ip
+  expect {
+    -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+    "assword:"     {send -s "$pwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex $HostTip
+  }
+  return $spawn_id
+}
+
+proc LOGIN_PHY {} {
+  global username
+  global pwd
+  global login_ip
+  global phyTip
+
+  spawn ssh $username@$login_ip
+  expect {
+    -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+    "assword:"     {send -s "$pwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex $phyTip
+  }
+  return $spawn_id
+}
+
+proc Check_Image {} {
+  global nfs_path
+  global phyTip
+
+  send -s "\r"
+  expect {
+    $phyTip { send -s "cd $nfs_path \r" }
+    timeout {FAIL}
+  }
+  expect {
+    $phyTip { send -s "chmod \+x fsck-all.sh \r" }
+    timeout {FAIL}
+  }
+  expect {
+    $phyTip { set timeout 300 ; send -s "./fsck-all.sh\r" }
+    timeout {FAIL}
+  }
+  expect {
+    "No such file or directory" {FAIL}
+    "Done" { send -s "\r" }
+    timeout {FAIL}
+  }
+  expect {
+    $phyTip { send -s "\r" }
+    timeout {FAIL}
+  }
+}
+
+proc Clean_Environment {} {
+  global HostTip
+
+  send -s "\r"
+  expect {
+    $HostTip { send -s "killall qemu-system-arm \r" }
+    timeout {FAIL}
+  }
+  expect {
+    $HostTip { }
+    timeout {FAIL}
+  }
+}
+
+proc Launch_Test {} {
+  global phyTip
+  global launchPath
+  global SCRIPT
+  global jenkins_file
+
+  send -s "\r"
+  expect {
+    $phyTip { send -s "cd $launchPath \r" }
+    timeout {FAIL}
+  }
+  expect {
+    $phyTip { send -s "expect $SCRIPT\r" ; set timeout -1 }
+    timeout {FAIL}
+  }
+  expect {
+   "##PASS##" {PASS}
+   "##FAIL##" {FAIL}
+   timeout {FAIL;exit}
+  }
+}

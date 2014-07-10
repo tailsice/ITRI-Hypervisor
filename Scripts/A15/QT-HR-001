@@ -1,0 +1,22 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_HOSTA ]
+set cpu2 [ LOGIN_HOSTA ]
+
+set spawn_id $cpu1
+expect $HostTip { send -s "echo \"c\" \> /proc/sysrq\-trigger\r" }
+expect {
+ $HostTip { send -s "\r" }
+ timeout { puts " ### Crash It ### ";FAIL }
+}
+
+expect {
+ $VMTip { send -s "poweroff\r" }
+ timeout {FAIL}
+}
+
+expect {
+ $HostTip {PASS}
+ timeout {FAIL}
+}

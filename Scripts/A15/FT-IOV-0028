@@ -1,0 +1,46 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_HOSTA ]
+set cpu2 [ LOGIN_HOSTA ]
+
+set spawn_id $cpu1
+START_HOSTA_VM_1
+
+set timeout 10
+send -s "\r"
+expect $VMTip { send -s "ping $hostA_ip -s 64 -i 1\r"}
+sleep 3
+expect {
+ "72" { send -s "^C"; send -s "\r"; send -s "ping $hostA_ip -s 128 -i 2\r" }
+ timeout { puts "ERROR"; exit}
+}
+sleep 3
+expect {
+ "136" { send -s "^C"; send -s "\r"; send -s "ping $hostA_ip -s 512 -i 3\r" }
+ timeout { puts "ERROR"; exit}
+}
+sleep 3
+expect {
+ "520" { send -s "^C"; send -s "\r"; send -s "ping $hostA_ip -s 1024 -i 4\r" }
+ timeout { puts "ERROR"; exit}
+}
+sleep 3
+expect {
+ "1032" { send -s "^C"; send -s "\r"; send -s "ping $hostA_ip -s 1510 -i 1\r" }
+ timeout { puts "ERROR"; exit}
+}
+sleep 3
+expect {
+ "1518" { send -s "^C"; send -s "\r"; send -s "ping $hostA_ip -s 2400 -i 1 \r" }
+ timeout { puts "ERROR"; exit}
+}
+
+expect {
+ $VMTip { send -s "poweroff\r" }
+ timeout {FAIL}
+}
+expect {
+ $HostTip {PASS}
+ timeout {FAIL}
+}

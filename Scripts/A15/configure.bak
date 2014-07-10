@@ -1,0 +1,211 @@
+#### Basci Setting ###
+set login_ip 127.0.0.1
+set username root
+set pwd root
+set vmusername root
+set vmpwd root
+set vmpath /root
+set hostA_ip 140.92.26.108
+set hostB_ip 192.168.122.101
+set jenkins_path /var/lib/jenkins/jobs/TestRun/workspace
+set send_slow {1 .01}
+set HostTip "root@arndale"
+set VMTip "root@vm"
+set binary_ip 140.92.25.110
+set timeout 6000
+#######################
+
+proc FAIL {} {
+  global username
+  global pwd
+  global login_ip
+  global jenkins_path
+  global jenkins_file
+  global HostTip
+  spawn ssh $username@$login_ip
+  #set timeout 10
+  expect {
+    -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+    "assword:"     {send -s "$pwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex $HostTip
+  }
+  send -s "\r"
+  expect $HostTip { puts "##FAIL##"}
+  exit
+}
+
+proc PASS {} {
+  global username
+  global pwd
+  global login_ip
+  global jenkins_path
+  global jenkins_file
+  global HostTip
+  spawn ssh $username@$login_ip
+  #set timeout 10
+  expect {
+    -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+    "assword:"     {send -s "$pwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex $HostTip
+  }
+  send -s "\r"
+  expect $HostTip { puts "##PASS##"}
+}
+
+
+proc START_HOSTA_VM_1 {} {
+  global HostTip
+  global VMTip
+  global vmusername
+  global vmpwd
+  global hostA_ip
+  global vmpath
+  send -s "\r"
+  expect {
+   $HostTip { send -s "cd $vmpath \r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "chmod \+x \*.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "./start.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+    "login" { send -s "$vmusername\r" }
+    timeout {FAIL}
+  }
+  expect {
+    "assword" { send -s "$vmpwd\r" }
+    timeout {FAIL}
+  }
+  expect {
+   $VMTip { send -s "\r"}
+   timeout {FAIL}
+  }
+}
+
+proc START_HOSTA_VM_2 {} {
+  global HostTip
+  global VMTip
+  global vmusername
+  global vmpwd
+  global hostA_ip
+  global vmpath
+  send -s "\r"
+  expect {
+   $HostTip { send -s "cd $vmpath \r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "chmod \+x \*.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "./start2.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+    "login" { send -s "$vmusername\r" }
+    timeout {FAIL}
+  }
+  expect {
+    "assword" { send -s "$vmpwd\r" }
+    timeout {FAIL}
+  }
+  expect {
+   $VMTip { send -s "\r"}
+   timeout {FAIL}
+  }
+}
+
+proc START_HOSTA_VM_3 {} {
+  global HostTip
+  global VMTip
+  global vmusername
+  global vmpwd
+  global hostA_ip
+  global vmpath
+  send -s "\r"
+  expect {
+   $HostTip { send -s "cd $vmpath \r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "chmod \+x \*.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "./start3.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+    "login" { send -s "$vmusername\r" }
+    timeout {FAIL}
+  }
+  expect {
+    "assword" { send -s "$vmpwd\r" }
+    timeout {FAIL}
+  }
+  expect {
+   $VMTip { send -s "\r"}
+   timeout {FAIL}
+  }
+}
+
+proc START_HOSTA_VM_4 {} {
+  global HostTip
+  global VMTip
+  global vmusername
+  global vmpwd
+  global hostA_ip
+  global vmpath
+  send -s "\r"
+  expect {
+   $HostTip { send -s "cd $vmpath \r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "chmod \+x \*.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "./start4.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+    "login" { send -s "$vmusername\r" }
+    timeout {FAIL}
+  }
+  expect {
+    "assword" { send -s "$vmpwd\r" }
+    timeout {FAIL}
+  }
+  expect {
+   $VMTip { send -s "\r"}
+   timeout {FAIL}
+  }
+}
+
+proc LOGIN_HOSTA {} {
+  global username
+  global pwd
+  global login_ip
+  global HostTip
+  global hostA_ip
+  spawn ssh $username@$hostA_ip
+  expect {
+    -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+    "assword:"     {send -s "$pwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex $HostTip
+  }
+  return $spawn_id
+}

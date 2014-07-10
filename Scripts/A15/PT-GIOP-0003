@@ -1,0 +1,61 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_HOSTA ]
+set cpu2 [ LOGIN_HOSTA ]
+
+set spawn_id $cpu1
+START_HOSTA_VM_1
+send -s "\r"
+
+expect {
+ $VMTip { send -s "wget http\://$binary_ip/Test/binary/sysbench . \r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "chmod +x sysbench\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "\r" }
+ timeout {FAIL;exit}
+}
+set timeout 2000
+for {set i 1} {$i < 10} {incr i 1} {
+  puts "### Runtime $i ###"
+  send -s "\r"
+  expect {
+   $VMTip {send -s "./sysbench \-\-test\=fileio \-\-num\-threads\=16 \-\-file\-total\-size\=100M \-\-file\-test\-mode\=rndrw prepare \r"}
+   timeout {FAIL;exit}
+  }
+  expect {
+    "Creating" {}
+    timeout {FAIL;exit}
+  }
+  expect {
+   $VMTip { send -s "./sysbench \-\-test\=fileio \-\-num\-threads\=16 \-\-file\-total\-size\=100M \-\-file\-test\-mode\=rndrw run  \r"}
+   timeout {FAIL;exit}
+  }
+  expect {
+  "Extra" {}
+  timeout {FAIL;exit}
+  }
+  expect {
+   $VMTip { send -s "sysbench \-\-test\=fileio \-\-num\-threads\=16 \-\-file\-total\-size\=100M \-\-file\-test\-mode\=rndrw cleanup\r" }
+   timeout {FAIL;exit}
+  }
+  expect {
+   $VMTip {}
+   timeout {FAIL;exit}
+  }
+}
+
+expect {
+ $VMTip { send -s "poweroff\r" }
+ timeout {FAIL}
+}
+
+expect {
+ $HostTip {PASS}
+ timeout {FAIL}
+}

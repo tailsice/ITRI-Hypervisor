@@ -1,0 +1,51 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_HOSTA ]
+set cpu2 [ LOGIN_HOSTA ]
+
+set spawn_id $cpu1
+START_HOSTA_VM_1
+send -s "\r"
+
+expect {
+ "root@vm" { send -s "apt\-get update\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ "Done" { send -s "\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "apt\-get install \-y ethtool \r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "ethtool eth0 \r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "ethtool \-i eth0 \r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "ethtool \-d eth0 \r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "ethtool \-r eth0 \r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "ethtool \-S eth0 \r" }
+ timeout {FAIL;exit}
+}
+
+expect {
+ $VMTip { send -s "poweroff\r" }
+ timeout {FAIL}
+}
+expect {
+ $HostTip {PASS}
+ timeout {FAIL}
+}

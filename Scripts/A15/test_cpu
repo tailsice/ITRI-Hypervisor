@@ -1,0 +1,320 @@
+#!/usr/bin/expect 
+source procedures
+
+#####################################################################################################
+
+set DATE [clock format [clock seconds] -format %D+%T]
+puts "********************************* CONTROLLER CLEAR ALL $DATE"
+
+set cpu0 [ LOGIN_CTL ]
+set cpu4 [ LOGIN_HOSTC ]
+set cpu5 [ LOGIN_HOSTA ]
+
+set spawn_id $cpu0
+
+send -s "cd $workspace \r"
+
+expect {
+ $CTLTip {send -s "rm -f *.log \r"}
+ timeout {FAIL}
+}
+
+# Create Test Run log in CSV format
+send -s " echo Test run description: migration with CPU workload > $workspace/report_csv_cpu.log 2>&1 \r"
+send -s " echo Number , Migration Time , Downtime , Transferred Data >> $workspace/report_csv_cpu.log 2>&1 \r"
+
+set spawn_id $cpu5
+
+send -s "\r"
+
+expect {
+ $HostTip {send -s "rm -f /var/log/sysstat/* \r"}
+ timeout {FAIL}
+}
+
+#####################################################################################################
+
+set DATE [clock format [clock seconds] -format %D+%T]
+puts "********************************* LOOP FOR TEST $DATE"
+
+for {set i 0} {$i < 20} {incr i} {
+
+  set cpu1 [ LOGIN_HOSTA ]
+  set cpu2 [ LOGIN_HOSTA ]
+  set cpu3 [ LOGIN_HOSTB ]
+
+#####################################################################################################
+
+  set Number_of_migrate [ expr $i+1 ]
+  set spawn_id $cpu0
+  send -s "\r"
+  expect {
+     $CTLTip {send -s " echo Number: $Number_of_migrate >> $workspace/log_source_cpu.log \r";
+     send -s " echo Number: $Number_of_migrate >> $workspace/log_target_cpu.log \r"}
+     timeout {FAIL}
+  }
+
+  set spawn_id $cpu2
+  send -s "\r"
+  expect {
+     $HostTip {send -s "nohup /root/log.sh >> $workspace/log_source_cpu.log 2>&1 & \r"}
+     timeout {FAIL}
+  }
+
+  expect {
+     $HostTip {send -s "\r"}
+     timeout {puts "*** log.sh run Fail on HOST A $DATE"; FAIL}
+  }
+
+  set spawn_id $cpu3
+  send -s "\r"
+  expect {
+     $HostTip {send -s "nohup /root/log.sh >> $workspace/log_target_cpu.log 2>&1 & \r"}
+     timeout {FAIL}
+  }
+
+  expect {
+     $HostTip {send -s "\r"}
+     timeout {puts "*** log.sh run Fail on HOST B $DATE"; FAIL}
+  }
+
+sleep 10
+
+#####################################################################################################
+
+  set DATE [clock format [clock seconds] -format %D+%T]
+  puts "********************************* HOST INITIALZE $DATE"
+
+#  set spawn_id $cpu2
+
+#  SYSBENCH_PREPARE $HostTip 512M /dev/null
+
+#  sleep 9
+
+#####################################################################################################
+  set DATE [clock format [clock seconds] -format %D+%T]
+  puts "********************************* VM INITIALZE $DATE"
+
+  set spawn_id $cpu1
+
+  send -s "cd $vmxmlpath \r"
+
+  START_HOSTA_VM_1 
+
+  send -s "\r"
+
+#  SYSBENCH_PREPARE $VMTip 256M /dev/null
+
+#puts "After SYSBENCH_PREPARE done, will sleep 45 seconds here."
+  puts "After HOST A VM up, sleep 45 seconds here and then start running SYSBENCH work."
+  sleep 45
+
+#####################################################################################################
+
+  for {set j 0} {$j < $i+1} {incr j} {
+
+    set DATE [clock format [clock seconds] -format %D+%T]
+    puts "********************************* SYSBENCH HOST LOOP $DATE"
+
+    set spawn_id $cpu2
+
+#    SYSBENCH_MEMORY $HostTip 512M /dev/null
+#    SYSBENCH_FILEIO $HostTip 512M /dev/null
+    SYSBENCH_CPU $HostTip 10000 /dev/null
+
+#################################################################################################
+
+    set DATE [clock format [clock seconds] -format %D+%T]
+    puts "********************************* SYSBENCH VM LOOP $DATE"
+
+    set spawn_id $cpu1
+
+#    SYSBENCH_MEMORY $VMTip 256M /dev/null
+#    SYSBENCH_FILEIO $VMTip 256M /dev/null
+    SYSBENCH_CPU $VMTip 1000 /dev/null
+
+    sleep 10
+  }
+
+
+#####################################################################################################
+
+  set DATE [clock format [clock seconds] -format %D+%T]
+  puts "********************************* PING $DATE"
+
+  set spawn_id $cpu0
+
+  send -s "\r"
+
+  PING_MACHINE $hostA_ip /dev/null
+  PING_MACHINE $hostB_ip /dev/null
+#  PING_MACHINE $hostA_ip ping_host.log
+#  PING_MACHINE $hostB_ip ping_host.log
+  PING_MACHINE $vm_ip $workspace/pingvm.log
+
+  sleep 3
+
+#####################################################################################################
+
+  set DATE [clock format [clock seconds] -format %D+%T]
+  puts "********************************* WIRESHARK $DATE"
+
+  set spawn_id $cpu4
+
+  NETIO $hostA_ip $hostB_ip 30
+
+  sleep 3
+
+#####################################################################################################
+
+  set DATE [clock format [clock seconds] -format %D+%T]
+  puts "********************************* MIGRATING NO. $i $DATE"
+
+  set spawn_id $cpu0
+
+  send -i $cpu0 -s " ~/workspace/countDownTime.sh $vm_ip >> $workspace/migrate_cpu.log 2>&1 &\r"
+
+  send -i $cpu0 -s " echo -- $i MIGRATING START/END >> $workspace/migrate_cpu.log 2>&1 \r"
+
+  send -i $cpu0 -s " date +%x_%H:%M:%S:%N >> /$workspace/migrate_cpu.log 2>&1 \r"
+
+  MIGRATE $hostB_ip
+
+  set spawn_id $cpu0
+
+  send -i $cpu0 -s " date +%x_%H:%M:%S:%N >> /$workspace/migrate_cpu.log 2>&1 \r"
+
+  puts "After Live MIGRATE run, sleep 30 seconds."
+  sleep 30
+
+#######################################################################################################
+
+  set DATE [clock format [clock seconds] -format %D+%T]
+  puts "********************************* CLEANUP $DATE"
+
+  set spawn_id $cpu0
+
+  send -s "\r"
+
+#  send -s "kill -9 \$(ps aux | grep '\[p\]ing' | awk '{pring \$2}') \r"
+
+  expect {
+   $CTLTip {send -s "ping $vm_ip -w 9\r"; sleep 3}
+   timeout { puts "*** VM ALIVE PING" }
+  }
+
+  expect {
+#   "64" {send -s "\^C"; send -s "\r"}
+   "64" {send -s ""; send -s "\r"}
+   timeout { puts "************************* VM ALIVE PING" }
+  }
+
+  sleep 30
+  # Now start to output Migrate point number, Migration time, Down time, Transferred data to csv log file
+  send -i $cpu0 -s "~/workspace/write_csv.sh $Number_of_migrate >> $workspace/report_csv_cpu.log 2>&1 \r"
+
+  set spawn_id $cpu2
+
+  set timeout 60 
+  
+  send -s "\r"
+
+#  SYSBENCH_CLEANUP $HostTip 512M
+
+  expect {
+   $HostTip {send -s "virsh list \r" }
+   timeout { puts "*** HOST A CLEANUP" }
+  }
+
+  expect {
+   "vm1" {send -s "virsh destroy vm1 \r" }
+   timeout { puts "*** HOST A CLEANUP *** HOST A not run virsh destroy vm1" }
+  }
+
+  sleep 10
+
+#  send -s "kill -9 -1 \r"
+
+  send -s "\r"
+
+  expect {
+   $HostTip {send -s "sync \r"; send -s "sync \r"; sleep 1; send -s "sync \r"}
+   timeout { puts "*** sync HOST A timeout"; FAIL}
+  }
+
+  sleep 10
+
+  expect {
+   $HostTip {send -s "reboot \r"}
+   timeout { puts "*** HOST A REBOOT"; FAIL}
+  }
+   
+  set spawn_id $cpu3
+
+  send -s "\r"
+  
+  expect {
+   $HostTip {send -s "virsh list \r" }
+   timeout { puts "*** HOST B CLEANUP" }
+  }
+
+  expect {
+   "vm1" {send -s "virsh destroy vm1 \r" }
+   timeout { puts "*** HOST B CLEANUP *** virsh destroy timeout"; FAIL}
+  }
+
+  puts "After destroy vm1 on HOST B, then sleep 60 seconds."
+  sleep 60
+
+#  send -s "kill -9 -1 \r"
+
+  expect {
+   $HostTip {send -s "sync \r"; send -s "sync \r"; sleep 1; send -s "sync \r"}
+   timeout { puts "*** sync HOST B "; FAIL}
+  }
+
+  sleep 10
+  expect {
+   $HostTip {send -s "reboot \r"}
+   timeout { puts "*** HOST B REBOOT"; FAIL}
+  }
+
+  puts "HOST B reboot and wait here for 180 seconds."
+  sleep 180
+
+  set timeout 10000 
+
+}
+
+#######################################################################################################
+
+set cpu5 [ LOGIN_HOSTA ]
+
+set spawn_id $cpu5
+
+send -s "\r"
+
+expect {
+ $HostTip {send -s "cp /var/log/sysstat/* $workspace \r"}
+ timeout {FAIL}
+}
+
+#send -s "kill -9 \$(ps aux | grep '\[p\]ing' | awk '{pring \$2}') \r"
+
+#expect {
+# $HostTip {send -s "virsh start vm1 \r"}
+# timeout {FAIL}
+#} 
+
+#sleep 30
+
+#expect {
+# $HostTip {send -s "virsh destroy vm1 \r" }
+# timeout {FAIL}
+#}
+
+expect {
+ $CTLTip {PASS}
+ $HostTip {PASS}
+ timeout {FAIL}
+}

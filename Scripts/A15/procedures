@@ -1,0 +1,324 @@
+#### Basci Setting ###
+set login_ip 10.10.103.102
+set ctlname i3tl
+set ctlpwd test542! 
+set username root 
+set pwd root
+set vmusername root
+set vmpwd root
+set wsusername i3tlws
+set wspwd test542!
+set vmpath /root
+set vmxmlpath /root/virsh
+set workspace /mnt/Data/log
+set hostA_ip 10.10.103.130
+set hostB_ip 10.10.103.131
+set hostC_ip 10.10.103.132
+set vm_ip 10.10.103.25
+set jenkins_path /var/lib/jenkins/jobs/TestRun/workspace
+set send_slow {1 .01}
+set HostTip "root@arndale"
+set VMTip "root@vm"
+set WSTip "i3tlws@i3tlws"
+set CTLTip "i3tl@Ubuntu"
+set binary_ip 10.10.103.130
+set timeout 10000
+#######################
+
+proc FAIL {} {
+  global ctlname
+  global ctlpwd
+  global login_ip
+  global jenkins_path
+  global jenkins_file
+  global CTLTip
+  spawn ssh $ctlname@$login_ip
+  #set timeout 10
+  expect {
+    -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+    "assword:"     {send -s "$ctlpwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex $CTLTip
+  }
+  send -s "\r"
+  expect $CTLTip { puts "##FAIL##"}
+  exit
+}
+
+proc PASS {} {
+  global ctlname
+  global ctlpwd
+  global login_ip
+  global jenkins_path
+  global jenkins_file
+  global CTLTip
+  spawn ssh $ctlname@$login_ip
+  #set timeout 10
+  expect {
+    -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+    "assword:"     {send -s "$ctlpwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex $CTLTip
+  }
+  send -s "\r"
+  expect $CTLTip { puts "##PASS##"}
+}
+
+
+proc START_HOSTA_VM_1 {} {
+  global HostTip
+  global VMTip
+  global vmusername
+  global vmpwd
+  global hostA_ip
+  global vmpath
+  global cpu1
+  send -s "\r"
+  expect {
+    $HostTip { send -s "virsh define vm1.xml \r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { sleep 5; send -s "virsh start vm1 \r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { sleep 10; send -s "virsh list\r"}
+   timeout {FAIL}
+  }
+  expect {
+    "running" { sleep 60; send -s "virsh console vm1 \r"}
+   timeout {FAIL}
+  }
+  expect {
+    "Escape" { sleep 1; send -s "\r"; exp_continue }
+    "vm1 login:" { sleep 1;send -s "$vmusername\r"; exp_continue }
+    "assword:" { sleep 1;send -s "$vmpwd\r"; exp_continue }
+    timeout {send_user "connect fail\r"; exit}
+    -ex $VMTip {send -s "\r"}
+  }
+}
+
+proc LOGIN_CTL {} {
+  global ctlname
+  global ctlpwd
+  global login_ip
+  global CTLTip
+  spawn ssh $ctlname@$login_ip
+  expect {
+    -ex "(yes/no)?" { sleep 1; send -s "yes\r"; exp_continue}
+    "assword:"     { sleep 1; send -s "$ctlpwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex $CTLTip
+  }
+  return $spawn_id
+}
+
+proc LOGIN_HOSTA {} {
+  global username
+  global pwd
+  global login_ip
+  global HostTip
+  global hostA_ip
+  spawn ssh $username@$hostA_ip
+  expect {
+    -ex "(yes/no)?" {sleep 1; send -s "yes\r"; exp_continue}
+    "assword:"     {sleep 1; send -s "$pwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex $HostTip
+  }
+  return $spawn_id
+}
+
+proc LOGIN_HOSTB {} {
+  global username
+  global pwd
+  global login_ip
+  global HostTip
+  global hostB_ip
+  spawn ssh $username@$hostB_ip
+  expect {
+    -ex "(yes/no)?" {sleep 1; send -s "yes\r"; exp_continue}
+    "assword:"     {sleep 1; send -s "$pwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex $HostTip
+  }
+  return $spawn_id
+}
+
+proc LOGIN_HOSTC {} {
+  global wsusername
+  global wspwd
+  global WSTip
+  global hostC_ip
+  spawn ssh $wsusername@$hostC_ip
+  expect {
+    -ex "(yes/no)?" {sleep 1; send -s "yes\r"; exp_continue}
+    "assword:"     {sleep 1; send -s "$wspwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex $WSTip    
+  }
+  return $spawn_id
+}
+
+proc PING_MACHINE {machine logfile} {
+  global HostTip
+  global CTLTip
+  global workspace
+
+  set DATE [clock format [clock seconds] -format %D+%T];
+
+  send -s " echo -- PING START/END >> $logfile 2>&1 \r"
+
+  expect {
+   $CTLTip {send -s "nohup ping $machine -r -w 180 >> $logfile 2>&1 &\r"}
+   timeout {FAIL}
+  }
+
+  send -s "\r"
+}
+
+proc NETIO {src {dst} duration} {
+  global HostTip
+  global WSTip
+  global workspace
+
+  send -s "\r"
+
+  expect {
+   $WSTip { send -s "nohup tshark src host $src and dst host $dst -i 1 -a duration:$duration -w /dev/null >> $workspace/netio.log 2>&1 & \r" }
+  timeout {FAIL}
+  }
+
+  send -s "\r"
+}
+
+
+proc SYSBENCH_MEMORY {tip {msize} logfile} {
+  global HostTip
+  global CTLTip
+
+  set DATE [clock format [clock seconds] -format %D+%T];
+  
+  expect { 
+   $tip { sleep 1; send -s "nohup sysbench \-\-test=memory \-\-max\-time\=20 \-\-memory\-block\-size\=1K \-\-memory\-total\-size\=$msize run >> $logfile & \r"}
+   timeout {set DATE [clock format [clock seconds] -format %D+%T]; puts "*** MEMORY $DATE"; FAIL}
+  }
+
+  send -s "\r"
+}
+
+proc SYSBENCH_FILEIO {tip {fsize} logfile} {
+  global HostTip
+  global CTLTip
+
+  set DATE [clock format [clock seconds] -format %D+%T];
+  
+  expect {
+   $tip { sleep 1; send -s "nohup sysbench \-\-test\=fileio \-\-max\-time\=20 \-\-num\-threads\=8 \-\-file\-total\-size\=$fsize \-\-file\-test\-mode\=rndrw run >> $logfile & \r"}
+   timeout { puts "*** SYSBENCH FILEIO FAIL $DATE"; FAIL }
+  }
+
+  send -s "\r"
+}
+
+proc SYSBENCH_CPU {tip {prime} logfile} {
+  global HostTip
+  global CTLTip
+
+  set DATE [clock format [clock seconds] -format %D+%T];
+  
+  expect {
+   $tip { sleep 1; send -s "nohup sysbench \-\-test=cpu \-\-max\-time\=20 \-\-cpu\-max\-prime\=$prime run >> $logfile & \r"}
+   timeout { puts "*** SYSBENCH CPU FAIL $DATE"; FAIL}
+  }
+
+  send -s "\r"
+}
+
+proc SYSBENCH_PREPARE {tip {fsize} logfile} {
+  global HostTip
+  global CTLTip
+  global workspace
+
+  set DATE [clock format [clock seconds] -format %D+%T];
+  
+  send -s "cd /tmp \r"
+
+  expect {
+   $tip {send -s "rm -f test* \r"}
+   timeout {FAIL;exit}
+  }
+
+  expect {
+   $tip {send -s "sysbench \-\-test\=fileio \-\-file\-total\-size\=$fsize prepare >> $logfile\r"}
+   timeout { puts "*** SYSBENCH PREPARE FAIL $DATE"; FAIL}
+  }
+
+  send -s "\r"
+}
+
+proc SYSBENCH_CLEANUP {tip fsize} {
+  global HostTip
+  global CTLTip
+  global workspace
+
+  set DATE [clock format [clock seconds] -format %D+%T];
+  
+  send -s "cd /tmp \r"
+
+  expect {
+   $tip {send -s "sysbench \-\-test\=fileio \-\-file\-total\-size\=$fsize cleanup\r"}
+   timeout { puts "*** SYSBENCH CLEANUP FAIL $DATE"; FAIL}
+  }
+
+  send -s "\r"
+}
+
+proc MIGRATE {target} {
+  global HostTip
+  global CTLTip
+  global workspace
+  global cpu2
+  global cpu0
+
+  set spawn_id $cpu2
+
+  send -s "\r"
+
+  expect {
+   $HostTip { send -s "virsh migrate --live vm1 qemu+ssh://root@$target/system \r"}
+   timeout {puts "############################# MIGRAT TIMEOUT #########################"}
+  }
+
+  sleep 1
+
+  send -s "\r"
+}
+
+proc GET_LOG {user {ip} userpwd} {
+  global HostTip
+  global CTLTip
+  global workspace
+
+  expect {
+   $CTLTip {sleep 1; send -s "sftp $user@$ip \r"}
+   timeout {FAIL;exit}
+  }
+
+  expect {
+   -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+   "assword:"      {send -s "$userpwd\r"; exp_continue}
+   "sftp>"      {send -s "pwd \r"; send -s "cd $workspace \r"; send -s "get *.log \r"; send -s "bye \r"}
+   timeout         {send_user "connect fail\r"; exit}
+  }
+
+  send -s "\r"
+}
+
