@@ -1,0 +1,48 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_LOCAL ]
+set cpu2 [ LOGIN_LOCAL ]
+set cpu3 [ LOGIN_LOCAL ]
+set cpu4 [ LOGIN_LOCAL ]
+set cpu5 [ LOGIN_LOCAL ]
+
+set spawn_id $cpu1
+send -s "\r"
+START_HOST_1
+
+set spawn_id $cpu2
+START_HOSTA_VM_1
+send -s "\r"
+expect {
+ $VMTip { send -s "dd if=/dev/zero of=data bs=1024k count=1000\r" }
+ timeout {FAIL}
+}
+sleep 5
+
+set spawn_id $cpu1
+
+send -s "\r"
+expect {
+ $HostTip { send -s "killall qemu-system-arm\r"}
+ timeout {FAIL}
+}
+expect $HostTip
+sleep 5
+
+set spawn_id $cpu3
+send -s "\r"
+expect $HostTip { send -s "killall qemu-system-arm \r"}
+sleep 5
+
+START_HOST_2
+
+set spawn_id $cpu4
+START_HOSTB_VM_1
+send -s "\r"
+expect {
+ $VMTip { send -s "ls -la data\r" }
+ timeout {FAIL}
+}
+expect $VMTip { send -s "\r" }
+PASS

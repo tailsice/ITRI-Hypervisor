@@ -1,0 +1,56 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_LOCAL ]
+set cpu2 [ LOGIN_LOCAL ]
+set cpu3 [ LOGIN_LOCAL ]
+
+set spawn_id $cpu1
+START_HOST_1
+
+set spawn_id $cpu2
+START_HOSTA_VM_1
+
+set spawn_id $cpu3
+puts "### CHANGE NEW TERMINAL ###"
+send -s "\r"
+expect {
+ $LocalTip {send -s "/etc/init\.d/nfs\-kernel\-server stop\r"}
+ timeout {FAIL;exit}
+}
+expect {
+ "Stopping" {}
+ timeout {FAIL;exit}
+}
+expect {
+ "OK" {}
+ timeout {FAIL;exit}
+}
+
+set spawn_id $cpu2
+send -s "ping 168.95.1.1\r"
+#expect "64"
+sleep 30
+
+set spawn_id $cpu3
+send -s "\r"
+expect {
+ $LocalTip {send -s "/etc/init\.d/nfs\-kernel\-server restart\r"}
+ timeout {FAIL;exit}
+}
+expect {
+ "Starting" {}
+ timeout {FAIL;exit}
+}
+expect {
+ "OK" {}
+ timeout {FAIL;exit}
+}
+
+set spawn_id $cpu2
+send -s ""
+send -s "\r"
+expect {
+ $VMTip {PASS}
+ timeout {FAIL}
+}

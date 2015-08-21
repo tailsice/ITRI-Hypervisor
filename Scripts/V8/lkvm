@@ -1,0 +1,30 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_LOCAL ]
+set cpu2 [ LOGIN_LOCAL ]
+
+set spawn_id $cpu1
+START_HOST_1
+send -s "\r"
+expect {
+ $HostTip { send -s "cd $vmpath\r"}
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "./lkvm list\r" }
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "./lkvm version\r"}
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "./lkvm help\r"}
+ timeout {FAIL}
+}
+expect {
+ $HostTip {PASS}
+ timeout {FAIL}
+}
+puts "END"

@@ -1,0 +1,102 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_LOCAL ]
+set cpu2 [ LOGIN_LOCAL ]
+set cpu3 [ LOGIN_LOCAL ]
+set cpu4 [ LOGIN_LOCAL ]
+
+set spawn_id $cpu1
+START_HOST_1
+
+set spawn_id $cpu2
+START_HOSTA_VM_1
+expect {
+ $VMTip { send -s "ping $localMachine_ip\r" }
+ timeout {FAIL}
+}
+expect {
+ "64" {}
+ timeout {FAIL}
+}
+
+set spawn_id $cpu3
+START_HOSTA_VM_2
+expect {
+ $VMTip { send -s "ping $localMachine_ip\r" }
+ timeout {FAIL}
+}
+expect {
+ "64" {}
+ timeout {FAIL}
+}
+
+set spawn_id $cpu1
+send -s "\r"
+expect {
+ $HostTip { send -s "cd $vmpath\r" }
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "./save.sh\r" }
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "./save2.sh\r" }
+ timeout {FAIL}
+}
+expect {
+ $HostTip {}
+ timeout {FAIL}
+}
+
+set spawn_id $cpu3
+expect {
+ "Info: Migration completed." {}
+ timeout {FAIL}
+}
+
+set spawn_id $cpu1
+send -s "\r"
+expect {
+ $HostTip { send -s "./stop.sh\r" }
+ timeout {FAIL}
+}
+expect {
+ "disabled state" { send -s "\r" }
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "./stop2.sh\r" }
+ timeout {FAIL}
+}
+expect {
+ "disabled state" { send -s "\r" }
+ timeout {FAIL}
+}
+expect {
+ $HostTip { sleep 30 }
+ timeout {FAIL}
+}
+
+set spawn_id $cpu2
+send -s "\r"
+expect {
+ $HostTip { send -s "./restore.sh\r" }
+ timeout {FAIL}
+}
+expect {
+ "64" {}
+ timeout {FAIL}
+}
+
+set spawn_id $cpu3
+send -s "\r"
+expect {
+ $HostTip { send -s "./restore2.sh\r" }
+ timeout {FAIL}
+}
+expect {
+ "64" {PASS}
+ timeout {FAIL}
+}

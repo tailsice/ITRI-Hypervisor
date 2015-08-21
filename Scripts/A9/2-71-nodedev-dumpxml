@@ -1,0 +1,149 @@
+#!/usr/bin/expect
+#### Basci Setting ###
+set login_ip 127.0.0.1
+set username root
+set pwd qwer
+set vmusername root
+set vmpwd root
+set programpath /home/tailsice/kvm
+set programpath2 /home/tailsice/kvm2
+set localMachine_ip 192.168.20.1
+set hostA_ip 192.168.20.100
+set hostB_ip 192.168.20.101
+set jenkins_path /var/lib/jenkins/jobs/TestRun/workspace
+set vmA_ip 192.168.20.2
+set send_slow {1 .01}
+######################
+
+set jenkins_file [lindex $argv 0]
+
+proc FAIL {} {
+global username
+global pwd
+global login_ip
+global jenkins_path
+global jenkins_file
+spawn ssh $username@$login_ip
+set tip "#"
+set timeout 10
+expect {
+  -ex "(yes/no)?" {sleep 1; send -s "yes\r"; exp_continue}
+  "assword:"     {sleep 1; send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {sleep 1; send_user "connect fail\r"; exit}
+  -ex $tip
+}
+send -s "\r"
+expect $tip { sleep 1; puts "##FAIL##"}
+}
+
+proc PASS {} {
+global username
+global pwd
+global login_ip
+global jenkins_path
+global jenkins_file
+spawn ssh $username@$login_ip
+set tip "#"
+set timeout 10
+expect {
+  -ex "(yes/no)?" {sleep 1; send -s "yes\r"; exp_continue}
+  "assword:"     {sleep 1; send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {sleep 1; send_user "connect fail\r"; exit}
+  -ex $tip
+}
+send -s "\r"
+expect $tip { sleep 1; puts "##PASS##"}
+}
+
+spawn ssh $username@$login_ip
+
+set tip "#"
+set timeout 10
+expect {
+  -ex "(yes/no)?" {sleep 1; send -s "yes\r"; exp_continue}
+  "assword:"     {sleep 1; send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {sleep 1; send_user "connect fail\r"; exit}
+  -ex $tip
+}
+
+set cpu1 $spawn_id
+
+#spawn ssh $username@$login_ip
+#set timeout 10
+#expect {
+#  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+#  "assword:"     {send -s "$pwd\r"; exp_continue}
+#  "No route to host"      {exit; exp_continue}
+#  timeout         {send_user "connect fail\r"; exit}
+#  -ex $tip 
+#}
+
+#set cpu2 $spawn_id
+
+#set spawn_id $cpu1
+
+set timeout 250
+send -s "\r"
+expect {
+ $tip { sleep 1; send -s "cd /mnt/iso\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $tip { sleep 1; send -s "./fsck-all.sh\r"}
+ timeout {FAIL;exit}
+}
+expect {
+ $tip { sleep 1; send -s "cd $programpath\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $tip { sleep 1; send -s "./start.sh\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ #"root@linaro" {puts "### BOOT OK ###"}
+  "root@linaro" {sleep 1; send -s "### BOOT OK ###\r"}
+ timeout {FAIL;exit}
+}
+
+#set spawn_id $cpu2
+
+#expect {
+# $tip {send -s "ssh $vmusername@$hostA_ip\r"}
+# timeout {FAIL;exit}
+#}
+set timeout 250
+#expect {
+#  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+#  "assword:"     {send -s "$vmpwd\r"; exp_continue}
+#  "No route to host"      {exit; exp_continue}
+#  timeout         {send_user "connect fail\r"; exit}
+#  -ex $tip
+#}
+send -s "\r"
+
+set tip "root@linaro:~#"
+#expect {
+#  "root@linaro" {sleep 2; send -s "cd /root/kvm\r"; exp_continue}
+#  -ex $tip
+#}
+expect {
+ $tip { sleep 10; send -s "insmod /root/kvm/kvm.ko\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $tip { sleep 5; send -s "virsh nodedev-dumpxml /dev/null\r" }
+ timeout {FAIL;exit}
+}
+set timeout 25
+expect {
+ "error: this function is not supported by the connection driver: virNodeDeviceLookupByName" { FAIL; exit}
+ timeout {FAIL;exit}
+}
+
+
+PASS
+puts "End Program"

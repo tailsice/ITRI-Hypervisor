@@ -1,0 +1,35 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_LOCAL ]
+set cpu2 [ LOGIN_LOCAL ]
+
+set spawn_id $cpu1
+
+send -s "\r"
+START_HOST_1
+
+set spawn_id $cpu2
+START_HOSTA_VM_1
+send -s "\r"
+expect {
+ $VMTip { send -s "\r"}
+ timeout {FAIL}
+}
+expect {
+ $VMTip { send -s "ping $hostA_ip \r";sleep 3}
+ timeout {FAIL}
+}
+expect {
+ "64" { send -s "";send -s "ping $localMachine_ip\r";sleep 3}
+ timeout {FAIL}
+}
+expect {
+ "64" { send -s ""; send -s "\r"}
+ timeout {FAIL}
+}
+expect {
+ $VMTip {PASS}
+ timeout {FAIL}
+}
+puts "END"

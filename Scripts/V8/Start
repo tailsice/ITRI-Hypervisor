@@ -1,0 +1,94 @@
+#!/usr/bin/expect
+#### Basci Setting ###
+set login_ip 127.0.0.1
+set username root
+set pwd qwer
+set launchPath /srv/ITRI/V8
+set send_slow {1 .01}
+set LocalTip "root@cssi-System-Product-Name"
+#######################
+
+set SCRIPT [lindex $argv 0]
+set jenkins_file [lindex $argv 1]
+set jenkins_summary [lindex $argv 2]
+set jenkins_file $jenkins_file.tap
+set jenkins_path /var/lib/jenkins/jobs/$jenkins_summary/workspace
+
+proc FAIL {} {
+global username
+global pwd
+global login_ip
+global jenkins_path
+global jenkins_file
+spawn ssh $username@$login_ip
+set timeout 500
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $LocalTip
+}
+
+send -s "\r"
+expect $LocalTip { puts "### FAIL ###"}
+send -s "\r"
+expect $LocalTip { send -s "echo \"1..1\" \>\> $jenkins_path/$jenkins_file \r" }
+expect $LocalTip { send -s "echo \"not ok 1 It is failed\" \>\> $jenkins_path/$jenkins_file \r" }
+expect $LocalTip { exit}
+}
+
+proc PASS {} {
+global username
+global pwd
+global login_ip
+global jenkins_path
+global jenkins_file
+spawn ssh $username@$login_ip
+set LocalTip "#"
+set timeout 500
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $LocalTip
+}
+
+send -s "\r"
+expect $LocalTip { send -s "echo \"1..1\" \>\> $jenkins_path/$jenkins_file \r" }
+expect $LocalTip { send -s "echo \"ok 1 The test is pass\" \>\> $jenkins_path/$jenkins_file \r" }
+expect $LocalTip { puts "### PASS ###";exit}
+}
+
+
+set timeout 2000
+
+spawn ssh $username@$login_ip
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $LocalTip 
+}
+
+set cpu1 $spawn_id
+
+send -s "\r"
+expect {
+ $LocalTip { send -s "cd $launchPath\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $LocalTip { send -s "expect $SCRIPT $jenkins_file\r" }
+ timeout {FAIL;exit}
+}
+
+set timeout -1
+
+expect {
+ "##PASS##" {PASS}
+ "##FAIL##" {FAIL}
+ timeout {FAIL;exit}
+}

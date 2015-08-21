@@ -1,0 +1,82 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_LOCAL ]
+set cpu2 [ LOGIN_LOCAL ]
+set cpu3 [ LOGIN_LOCAL ]
+set cpu4 [ LOGIN_LOCAL ]
+set cpu5 [ LOGIN_LOCAL ]
+
+set spawn_id $cpu1
+
+set timeout 250
+START_HOST_1
+
+set spawn_id $cpu2
+START_HOST_2
+send -s "\r"
+expect {
+ $HostTip { send -s "cd $vmpath\r" }
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "./recv.sh\r" }
+ timeout {FAIL}
+}
+expect {
+ "0x200@0x400:34" {}
+ timeout {FAIL}
+}
+
+set spawn_id $cpu3
+send -s "\r"
+expect {
+ $LocalTip { send -s "ssh root@$hostA_ip\r" }
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "cd $vmpath\r" }
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "./start.sh\r" }
+ timeout {FAIL}
+}
+expect {
+ $VMTip { send -s "ping $localMachine_ip\r"}
+ timeout {FAIL}
+}
+expect {
+ "64" {}
+ timeout {FAIL}
+}
+
+set spawn_id $cpu1
+send -s "\r"
+expect {
+ $HostTip { send -s "cd $vmpath\r" }
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "./migrate.sh\r"}
+ timeout {FAIL}
+}
+expect {
+ $HostTip {}
+ timeout {FAIL}
+}
+
+set spawn_id $cpu2
+set timeout 250
+expect {
+ "64" {}
+ timeout {FAIL}
+}
+
+set spawn_id $cpu5
+START_HOSTB_VM_2
+send -s "\r"
+expect {
+ $VMTip {PASS}
+ timeout {FAIL}
+}

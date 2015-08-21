@@ -1,0 +1,34 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_LOCAL ]
+set cpu2 [ LOGIN_LOCAL ]
+set cpu3 [ LOGIN_LOCAL ]
+
+set spawn_id $cpu1
+START_HOST_1
+
+set spawn_id $cpu2
+START_HOSTA_VM_1
+
+set spawn_id $cpu3
+START_HOSTA_VM_2
+
+set spawn_id $cpu1
+send -s "\r"
+expect {
+ $HostTip { send -s "wget http://$localMachine_ip/Test/file\_transfer.sh \r" }
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "chmod \+x file\_transfer.sh\r"}
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "./file\_transfer.sh 1 3\r"; puts "RUN FILE TRANSFER ###"}
+ timeout {FAIL}
+}
+expect {
+ "END" {PASS}
+ timeout {FAIL}
+}

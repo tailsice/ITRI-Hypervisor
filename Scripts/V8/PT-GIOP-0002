@@ -1,0 +1,59 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_LOCAL ]
+set cpu2 [ LOGIN_LOCAL ]
+
+set spawn_id $cpu1
+START_HOST_1
+send -s "\r"
+expect {
+ $HostTip { send -s "wget http://$localMachine_ip/Test/binary/iperf\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $HostTip { send -s "chmod +x iperf\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $HostTip { send -s "\r"}
+ timeout {FAIL;exit}
+}
+expect {
+ $HostTip { send -s "./iperf \-s \r"}
+ timeout {FAIL;exit}
+}
+expect {
+ "erver" {}
+ timeout {FAIL;exit}
+}
+
+set spawn_id $cpu2
+START_HOSTA_VM_1
+send -s "\r"
+expect {
+ $VMTip { send -s "wget http://$localMachine_ip/Test/binary/iperf\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "chmod +x iperf\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "./iperf \-c $hostA_ip \-w 100M \-t 120 \-i 10\r"}
+ timeout {FAIL;exit}
+}
+expect {
+ "Mbits" {}
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "\r" }
+ timeout {FAIL;exit}
+}
+
+PASS

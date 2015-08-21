@@ -1,0 +1,255 @@
+#!/usr/bin/expect
+#### Basci Setting ###
+set login_ip 127.0.0.1
+set username root
+set pwd kvmarm
+set vmusername root
+set vmpwd root
+set programpath /home/hypervisor/kvm
+set programpath2 /home/hypervisor/kvm2
+set jenkins_file /srv/test.tap
+set localMachine_ip 192.168.20.1
+set hostA_ip 192.168.20.100
+set hostB_ip 192.168.20.101
+set VMA_ip 192.168.20.2
+set VMC_ip 192.168.20.4
+set send_slow {1 .01}
+#######################
+
+proc Fail {} {
+global username
+global pwd
+global login_ip
+global jenkins_file
+spawn ssh $username@$login_ip
+set tip "#"
+set timeout 10
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $tip
+}
+
+send -s "\r"
+expect $tip { puts "### FAIL ###"}
+send -s "\r"
+expect $tip { send -s "echo \"1..1\" \>\> $jenkins_file \r" }
+expect $tip { send -s "echo \"not ok 1 It is failed\" \>\> $jenkins_file \r" }
+expect $tip { exit}
+}
+
+proc PASS {} {
+global username
+global pwd
+global login_ip
+spawn ssh $username@$login_ip
+set tip "#"
+set timeout 10
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $tip
+}
+
+send -s "\r"
+expect $tip { puts "### PASS ###"}
+expect $tip { send -s "echo \"1..1\" \>\> $jenkins_file \r" }
+expect $tip { send -s "echo \"ok 1 The test is pass\" \>\> $jenkins_file \r" }
+expect $tip { exit}
+}
+
+spawn ssh $username@$login_ip
+
+set tip "#"
+set timeout 10
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $tip 
+}
+
+set cpu1 $spawn_id
+
+spawn ssh $username@$login_ip
+set timeout 10
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $tip
+}
+
+set cpu2 $spawn_id
+
+spawn ssh $username@$login_ip
+set timeout 10
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $tip
+}
+
+set cpu3 $spawn_id
+
+spawn ssh $username@$login_ip
+set timeout 10
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $tip
+}
+
+set cpu4 $spawn_id
+
+set spawn_id $cpu1
+
+set timeout 250
+send -s "\r"
+expect {
+ $tip { send -s "cd $programpath2\r" }
+ timeout {Fail;exit}
+}
+expect { 
+ $tip { send -s "./start2.sh\r"}
+ timeout {Fail;exit}
+}
+expect {
+ "root@linaro" {}
+ timeout {Fail;exit}
+}
+
+set spawn_id $cpu2
+
+send -s "\r"
+expect {
+ $tip {send -s "ssh $vmusername@$hostB_ip\r"}
+ timeout {Fail;exit}
+}
+
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$vmpwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $tip
+}
+send -s "cd \/root\/kvm\r"
+expect {
+ $tip { send -s "insmod \/root\/kvm\/kvm.ko\r" }
+ timeout {Fail;exit}
+}
+expect {
+ $tip { send -s "mount $localMachine_ip\:\/mnt\/iso \/mnt\r" }
+ timeout {Fail;exit}
+}
+expect { 
+ $tip { send -s "chmod +x start1\-vdisk.sh\r" }
+ timeout {Fail;exit}
+}
+expect {
+ $tip { send -s ".\/start1\-vdisk.sh\r" }
+ timeout {Fail;exit}
+}
+expect {
+ "vm" { send -s "/etc/init.d/ssh start\r" }
+ timeout {Fail;exit}
+}
+expect {
+ "vm" { send -s "mount /dev/pts\r" }
+ timeout {Fail;exit}
+}
+expect { 
+ $tip { send -s "\r"}
+ timeout {Fail;exit}
+}
+expect {
+ $tip {}
+ timeout {Fail;exit}
+}
+sleep 5
+
+send -s "\r"
+expect {
+ $tip { send -s "dd if=/dev/zero of=data bs=1024k count=100\r" }
+ timeout {Fail;exit}
+}
+expect {
+ $tip { send -s "scp data $vmusername@$localMachine_ip\:\/tmp\r" }
+ timeout {Fail;exit}
+}
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  "Connection refused"      {Fail;exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "ETA"
+}
+sleep 2
+send -s "\r"
+send -s ""
+expect {
+ $tip { send -s "ifconfig eth0 down\r" }
+ timeout {Fail;exit}
+}
+#expect {
+# $tip { send -s "fg\r" }
+# timeout {Fail;exit}
+#}
+#expect {
+# "data" {sleep 10}
+# timeout {Fail;exit}
+#}
+expect {
+ $tip { send -s "scp data $vmusername@$localMachine_ip\:\/tmp\r" }
+ timeout {Fail;exit}
+}
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  "Connection refused"      {Fail;exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "Network is unreachable"
+}
+
+send -s ""
+sleep 2
+expect {
+ $tip { send -s "ifconfig eth0 up\r" }
+ timeout {Fail;exit}
+}
+sleep 10
+#expect {
+# $tip { send -s "fg\r" }
+# timeout {Fail;exit}
+#}
+send -s "\r"
+expect {
+ $tip { send -s "scp data $vmusername@$localMachine_ip\:\/tmp\r" }
+ timeout {Fail;exit}
+}
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  "Connection refused"      {Fail;exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "ETA"
+}
+set timeout -1
+expect {
+ $tip { puts "### SUCCESS ###"}
+ timeout {Fail;exit}
+}

@@ -1,0 +1,176 @@
+#!/usr/bin/expect
+#### Basci Setting ###
+set login_ip 127.0.0.1
+set username root
+set pwd qwer
+set vmusername root
+set vmpwd root
+set programpath /home/tailsice/kvm
+set programpath2 /home/tailsice/kvm2
+set localMachine_ip 192.168.20.1
+set hostA_ip 192.168.20.100
+set hostB_ip 192.168.20.101
+set jenkins_path /var/lib/jenkins/jobs/TestRun/workspace
+set vmA_ip 192.168.20.2
+set send_slow {1 .01}
+######################
+
+set jenkins_file [lindex $argv 0]
+
+proc FAIL {} {
+global username
+global pwd
+global login_ip
+global jenkins_path
+global jenkins_file
+spawn ssh $username@$login_ip
+set tip "#"
+set timeout 10
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $tip
+}
+send -s "\r"
+expect $tip { puts "##FAIL##"}
+}
+
+proc PASS {} {
+global username
+global pwd
+global login_ip
+global jenkins_path
+global jenkins_file
+spawn ssh $username@$login_ip
+set tip "#"
+set timeout 10
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $tip
+}
+send -s "\r"
+expect $tip { puts "##PASS##"}
+}
+
+spawn ssh $username@$login_ip
+
+set tip "#"
+set timeout 10
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $tip 
+}
+
+set cpu1 $spawn_id
+
+spawn ssh $username@$login_ip
+set timeout 10
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $tip
+}
+
+set cpu2 $spawn_id
+
+set spawn_id $cpu1
+
+set timeout 250
+send -s "\r"
+expect {
+ $tip { send -s "cd /mnt/iso\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $tip { send -s "./fsck-all.sh\r"}
+ timeout {FAIL;exit}
+}
+expect {
+ $tip { send -s "cd $programpath\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $tip { send -s "./start.sh\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ "root@linaro" {puts "### BOOT OK ###"}
+ timeout {FAIL;exit}
+}
+
+
+set spawn_id $cpu2
+
+send -s "\r"
+expect {
+ $tip {send -s "ssh $vmusername@$hostA_ip\r"}
+ timeout {FAIL;exit}
+}
+
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$vmpwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex $tip
+}
+set tip "root@linaro"
+send -s "cd /root/kvm\r"
+expect {
+ $tip { send -s "insmod /root/kvm/kvm.ko\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $tip { send -s "mount $localMachine_ip\:\/mnt\/iso \/mnt\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $tip { send -s "cd /root/libvirt\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $tip { send -s "cp /mnt/vm1.xml .\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $tip { send -s "virsh define vm1.xml \r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $tip  { send -s "virsh start vm1 \r"}
+ timeout {FAIL;exit}
+}
+expect {
+ "Domain vm1 started"  { send -s "virsh net-info vnet0\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ "error: Network not found: no network with matching name" { FAIL;exit}
+ timeout {FAIL;exit}
+}
+#expect {
+# "Removed managedsave image for domain vm1" { send -s "virsh list\r" }
+# timeout {FAIL;exit}
+#}
+#expect {
+# "#" { send -s "virsh list\r" }
+# timeout {FAIL;exit}
+#}
+#expect {
+# "running" { send -s "virsh list\r" }
+# timeout {FAIL;exit}
+#}
+
+
+PASS
+puts "End Program"

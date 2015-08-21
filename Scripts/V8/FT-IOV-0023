@@ -1,0 +1,75 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_LOCAL ]
+set cpu2 [ LOGIN_LOCAL ]
+
+set spawn_id $cpu1
+START_HOST_1
+
+set spawn_id $cpu2
+START_HOSTA_VM_1
+sleep 5
+
+send -s "\r"
+expect {
+ $VMTip { send -s "dd if=/dev/zero of=data bs=1024k count=100\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "scp data $vmusername@$localMachine_ip\:\/tmp\r" }
+ timeout {FAIL;exit}
+}
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  "Connection refused"      {FAIL;exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "ETA"
+}
+sleep 2
+send -s "\r"
+send -s ""
+expect {
+ $VMTip { send -s "ifconfig eth0 down\r" }
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "scp data $vmusername@$localMachine_ip\:\/tmp\r" }
+ timeout {FAIL;exit}
+}
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  "Connection refused"      {FAIL;exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "Network is unreachable"
+}
+
+send -s ""
+sleep 2
+expect {
+ $VMTip { send -s "ifconfig eth0 up\r" }
+ timeout {FAIL;exit}
+}
+sleep 10
+send -s "\r"
+expect {
+ $VMTip { send -s "scp data $vmusername@$localMachine_ip\:\/tmp\r" }
+ timeout {FAIL;exit}
+}
+expect {
+  -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+  "assword:"     {send -s "$pwd\r"; exp_continue}
+  "No route to host"      {exit; exp_continue}
+  "Connection refused"      {FAIL;exit; exp_continue}
+  timeout         {send_user "connect fail\r"; exit}
+  -ex "ETA"
+}
+expect {
+ $VMTip { PASS }
+ "Resource" { PASS }
+ timeout {FAIL;exit}
+}

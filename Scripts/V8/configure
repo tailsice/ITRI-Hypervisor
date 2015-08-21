@@ -1,0 +1,335 @@
+#!/usr/bin/expect
+#### Basci Setting ###
+set login_ip 127.0.0.1
+set username root
+set pwd qwer
+set vmusername root
+set vmpwd root
+set programpath /home/tailsice/v8/Foundation_v8pkg
+set programpath2 /home/tailsice/v8/Foundation_v8pkg
+set repairHostPath /home/tailsice/v8
+set repairGuestPath /mnt/v8/v8guest
+set vmpath /mnt/nfs
+set localMachine_ip 192.168.122.1
+set hostA_ip 192.168.122.100
+set hostB_ip 192.168.122.101
+set jenkins_path /var/lib/jenkins/jobs/TestRun/workspace
+set vmA_ip 192.168.122.202
+set send_slow {1 .01}
+set LocalTip "root@cssi-System-Product-Name"
+set HostTip "root@genericarmv8"
+set VMTip "root@vm"
+set timeout 6000
+#######################
+
+proc FAIL {} {
+  global username
+  global pwd
+  global login_ip
+  global jenkins_path
+  global jenkins_file
+  global LocalTip
+  spawn ssh $username@$login_ip
+  #set timeout 10
+  expect {
+    -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+    "assword:"     {send -s "$pwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex $LocalTip
+  }
+  send -s "\r"
+  expect $LocalTip { puts "##FAIL##"}
+  exit
+}
+
+proc PASS {} {
+  global username
+  global pwd
+  global login_ip
+  global jenkins_path
+  global jenkins_file
+  global LocalTip
+  spawn ssh $username@$login_ip
+  #set timeout 10
+  expect {
+    -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+    "assword:"     {send -s "$pwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex $LocalTip
+  }
+  send -s "\r"
+  expect $LocalTip { puts "##PASS##"}
+}
+
+proc START_HOST_1 {} {
+  global programpath
+  global repairHostPath
+  global repairGuestPath
+  global LocalTip
+  global HostTip
+  send -s "\r"
+  expect {
+   $LocalTip { send -s "killall Foundation\_v8\r" }
+   timeout {FAIL}
+  }
+  expect {
+   $LocalTip { send -s "cd $repairHostPath\r" }
+   timeout {FAIL}
+  }
+  expect {
+   $LocalTip { send -s "./disk\-fsck.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $LocalTip { send -s "cd $repairGuestPath\r" }
+   timeout {FAIL}
+  }
+  expect {
+   $LocalTip { send -s "./fsck\-all.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $LocalTip { send -s "cd $programpath\r" }
+   timeout {FAIL}
+  }
+  expect {
+   $LocalTip { send -s "./start\-with\-telnet.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   "no more processes left in this runlevel" { send -s "\r" }
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip {send -s "\r"}
+   timeout {FAIL}
+  }
+}
+
+proc START_HOST_2 {} {
+  global programpath
+  global LocalTip
+  global HostTip
+  #set timeout 250
+  send -s "\r"
+  expect {
+   $LocalTip { send -s "cd $programpath\r" }
+   timeout {FAIL}
+  }
+  expect {
+   $LocalTip { send -s "./start2\-with\-telnet.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   "no more processes left in this runlevel" { send -s "\r" }
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip {send -s "\r"}
+   timeout {FAIL}
+  }
+}
+
+proc START_HOSTA_VM_1 {} {
+  global LocalTip
+  global HostTip
+  global VMTip
+  global vmpath
+  global vmusername
+  global hostA_ip
+  send -s "\r"
+  expect {
+    $LocalTip {send -s "ssh $vmusername@$hostA_ip\r"}
+	timeout {FAIL}
+  }
+  send -s "\r"
+  expect {
+   $HostTip { send -s "cd $vmpath \r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "chmod \+x \*.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "./start.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $VMTip { send -s "\r"}
+   timeout {FAIL}
+  }
+}
+
+proc START_HOSTA_VM_2 {} {
+  global LocalTip
+  global HostTip
+  global VMTip
+  global vmpath
+  global vmusername
+  global hostA_ip
+  send -s "\r"
+  expect {
+    $LocalTip {send -s "ssh $vmusername@$hostA_ip\r"}
+	timeout {FAIL}
+  }
+  send -s "\r"
+  expect {
+   $HostTip { send -s "cd $vmpath \r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "chmod \+x \*.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "./start2.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $VMTip { send -s "\r"}
+   timeout {FAIL}
+  }
+}
+
+proc START_HOSTA_VM_3 {} {
+  global LocalTip
+  global HostTip
+  global VMTip
+  global vmpath
+  global vmusername
+  global hostA_ip
+  send -s "\r"
+  expect {
+    $LocalTip {send -s "ssh $vmusername@$hostA_ip\r"}
+	timeout {FAIL}
+  }
+  send -s "\r"
+  expect {
+   $HostTip { send -s "cd $vmpath \r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "chmod \+x \*.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "./start3.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $VMTip { send -s "\r"}
+   timeout {FAIL}
+  }
+}
+
+proc START_HOSTB_VM_1 {} {
+  global LocalTip
+  global HostTip
+  global VMTip
+  global vmpath
+  global vmusername
+  global hostB_ip
+  send -s "\r"
+  expect {
+    $LocalTip {send -s "ssh $vmusername@$hostB_ip\r"}
+	timeout {FAIL}
+  }
+  send -s "\r"
+  expect {
+   $HostTip { send -s "cd $vmpath \r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "chmod \+x \*.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "./start.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $VMTip { send -s "\r"}
+   timeout {FAIL}
+  }
+}
+
+proc START_HOSTB_VM_2 {} {
+  global LocalTip
+  global HostTip
+  global VMTip
+  global vmpath
+  global vmusername
+  global hostB_ip
+  send -s "\r"
+  expect {
+    $LocalTip {send -s "ssh $vmusername@$hostB_ip\r"}
+	timeout {FAIL}
+  }
+  send -s "\r"
+  expect {
+   $HostTip { send -s "cd $vmpath \r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "chmod \+x \*.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "./start2.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $VMTip { send -s "\r"}
+   timeout {FAIL}
+  }
+}
+
+proc START_HOSTB_VM_3 {} {
+  global LocalTip
+  global HostTip
+  global VMTip
+  global vmpath
+  global vmusername
+  global hostB_ip
+  send -s "\r"
+  expect {
+    $LocalTip {send -s "ssh $vmusername@$hostB_ip\r"}
+	timeout {FAIL}
+  }
+  send -s "\r"
+  expect {
+   $HostTip { send -s "cd $vmpath \r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "chmod \+x \*.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $HostTip { send -s "./start3.sh\r"}
+   timeout {FAIL}
+  }
+  expect {
+   $VMTip { send -s "\r"}
+   timeout {FAIL}
+  }
+}
+
+proc LOGIN_LOCAL {} {
+  global username
+  global pwd
+  global login_ip
+  global LocalTip
+  spawn ssh $username@$login_ip
+  expect {
+    -ex "(yes/no)?" {send -s "yes\r"; exp_continue}
+    "assword:"     {send -s "$pwd\r"; exp_continue}
+    "No route to host"      {exit; exp_continue}
+    timeout         {send_user "connect fail\r"; exit}
+    -ex $LocalTip
+  }
+  return $spawn_id
+}

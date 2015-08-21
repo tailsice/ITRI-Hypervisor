@@ -1,0 +1,37 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_LOCAL ]
+set cpu2 [ LOGIN_LOCAL ]
+set cpu3 [ LOGIN_LOCAL ]
+
+set spawn_id $cpu1
+START_HOST_1
+
+set spawn_id $cpu2
+
+START_HOSTA_VM_1
+send -s "\r"
+expect {
+ $VMTip { send -s "reboot \r"}
+ timeout {FAIL}
+}
+expect {
+ "command not found" {FAIL}
+ $VMTip {}
+ timeout {FAIL}
+}
+
+set spawn_id $cpu3
+START_HOSTA_VM_2
+send -s "\r"
+expect {
+ $VMTip { send -s "reboot \r"}
+ timeout {FAIL}
+}
+expect {
+ "command not found" {FAIL}
+ $VMTip {PASS}
+ timeout {FAIL}
+}
+puts "END"

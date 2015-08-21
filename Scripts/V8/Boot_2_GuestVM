@@ -1,0 +1,84 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_LOCAL ]
+set cpu2 [ LOGIN_LOCAL ]
+set cpu3 [ LOGIN_LOCAL ]
+
+set spawn_id $cpu1
+
+set timeout 250
+send -s "\r"
+START_HOST_1
+
+set spawn_id $cpu2
+
+send -s "\r"
+expect $LocalTip {send -s "ssh $vmusername@$hostA_ip\r"}
+send -s "\r"
+expect {
+ $HostTip { send -s "cd $vmpath \r"}
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "chmod \+x \*.sh\r"}
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "./start.sh\r"}
+ timeout {FAIL}
+}
+expect {
+ $VMTip { send -s "\r"}
+ timeout {FAIL}
+}
+expect {
+ $VMTip { send -s "ping $hostA_ip \r";sleep 3}
+ timeout {FAIL}
+}
+expect {
+ "64" { send -s "";send -s "ping $localMachine_ip\r";sleep 3}
+ timeout {FAIL}
+}
+expect {
+ "64" { send -s "" }
+ timeout {FAIL}
+}
+
+set spawn_id $cpu3
+
+send -s "\r"
+expect $LocalTip {send -s "ssh $vmusername@$hostA_ip\r"}
+send -s "\r"
+expect {
+ $HostTip { send -s "cd $vmpath \r"}
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "chmod \+x \*.sh\r"}
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "./start2.sh\r"}
+ timeout {FAIL}
+}
+expect {
+ $VMTip { send -s "\r"}
+ timeout {FAIL}
+}
+expect {
+ $VMTip { send -s "ping $hostA_ip \r";sleep 3}
+ timeout {FAIL}
+}
+expect {
+ "64" { send -s "";send -s "ping $localMachine_ip\r";sleep 3}
+ timeout {FAIL}
+}
+expect {
+ "64" { send -s ""; send -s "\r"}
+ timeout {FAIL}
+}
+expect {
+ $VMTip {PASS}
+ timeout {FAIL}
+}

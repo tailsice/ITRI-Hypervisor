@@ -1,0 +1,87 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_LOCAL ]
+set cpu2 [ LOGIN_LOCAL ]
+
+set spawn_id $cpu1
+
+set timeout 250
+send -s "\r"
+START_HOST_1
+
+set spawn_id $cpu2
+START_HOSTA_VM_1
+send -s "\r"
+expect {
+ $VMTip { send -s "ifconfig eth0 mtu 9000\r"}
+ timeout {FAIL}
+}
+expect {
+ $VMTip { send -s "ifconfig\r"}
+ timeout {FAIL}
+}
+expect {
+ $VMTip {}
+ timeout {FAIL}
+}
+
+set spawn_id $cpu1
+set timeout 10
+send -s "\r"
+expect {
+ $HostTip { send -s "ping $vmA_ip -s 56\r" }
+ timeout {FAIL}
+}
+expect {
+ "64" { send -s "";send -s "\r";send -s "ping $vmA_ip -s 64\r" }
+ timeout {FAIL}
+}
+expect {
+ "72" { send -s "";send -s "\r";send -s "ping $vmA_ip -s 128\r" }
+ timeout {FAIL}
+}
+expect {
+ "136" { send -s "";send -s "\r";send -s "ping $vmA_ip -s 512\r" }
+ timeout {FAIL}
+}
+expect {
+ "520" { send -s "";send -s "\r";send -s "ping $vmA_ip -s 1024\r" }
+ timeout {FAIL}
+}
+expect {
+ "1032" { send -s "";send -s "\r";send -s "ping $vmA_ip -s 1510\r" }
+ timeout {FAIL}
+}
+expect {
+ "1518" { send -s "";send -s "\r";send -s "ping $vmA_ip -s 2400\r" }
+ timeout {FAIL}
+}
+expect {
+ "byte" { send -s "";send -s "\r";send -s "ping $vmA_ip -s 3600\r" }
+ timeout {FAIL}
+}
+expect {
+ "byte" { send -s "";send -s "\r";send -s "ping $vmA_ip -s 4800\r" }
+ timeout {FAIL}
+}
+expect {
+ "byte" { send -s "";send -s "\r";send -s "ping $vmA_ip -s 6000\r" }
+ timeout {FAIL}
+}
+expect {
+ "byte" { send -s "";send -s "\r";send -s "ping $vmA_ip -s 7200\r" }
+ timeout {FAIL}
+}
+expect {
+ "byte" { send -s "";send -s "\r";send -s "ping $vmA_ip -s 8400\r" }
+ timeout {FAIL}
+}
+expect {
+ "byte" { send -s "";send -s "\r";send -s "ping $vmA_ip -s 9000\r" }
+ timeout {FAIL}
+}
+expect {
+ "byte" { PASS}
+ timeout { FAIL }
+}

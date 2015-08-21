@@ -1,0 +1,67 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_LOCAL ]
+set cpu2 [ LOGIN_LOCAL ]
+set cpu3 [ LOGIN_LOCAL ]
+
+set spawn_id $cpu1
+START_HOST_1
+
+set spawn_id $cpu2
+
+START_HOST_2
+send -s "\r"
+expect {
+ $HostTip { send -s "cd $vmpath\r" }
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "./start\-diskha\-b.sh\r" }
+ timeout {FAIL}
+}
+expect {
+ "0x200@0x400:34" {}
+ timeout {FAIL}
+}
+
+set spawn_id $cpu3
+send -s "\r"
+expect {
+ $LocalTip { send -s "ssh root@$hostA_ip\r" }
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "cd $vmpath\r" }
+ timeout {FAIL}
+}
+expect {
+ $HostTip { send -s "./start\-diskha\-a.sh\r" }
+ timeout {FAIL}
+}
+expect {
+ "HA Enable" {}
+ timeout {FAIL}
+}
+
+set spawn_id $cpu1
+send -s "\r"
+expect {
+ $HostTip { send -s "killall lkvm\r"}
+ timeout {FAIL}
+}
+expect {
+ "entered disabled state" {}
+ timeout {FAIL}
+}
+
+set spawn_id $cpu2
+send -s "\r"
+#expect {
+# "Mounting" { send -s "\r" }
+# timeout {FAIL}
+#}
+expect {
+ $VMTip {PASS}
+ timeout {FAIL}
+}

@@ -1,0 +1,50 @@
+#!/usr/bin/expect
+source configure
+
+set cpu1 [ LOGIN_LOCAL ]
+set cpu2 [ LOGIN_LOCAL ]
+
+set spawn_id $cpu1
+START_HOST_1
+
+set spawn_id $cpu2
+START_HOSTA_VM_1
+send -s "\r"
+expect {
+ $VMTip { send -s "ifconfig eth0 \r"}
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "ifconfig eth0 down \r"}
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "ifconfig eth0 hw ether 00 11 22 33 44 55\r"}
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "ifconfig eth0 up\r"}
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "ifconfig eth0 192.168.20.2\r"}
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "ifconfig eth0 \r"}
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "/etc/init.d/networking restart\r"}
+ timeout {FAIL;exit}
+}
+expect {
+ $VMTip { send -s "ping $localMachine_ip \r" }
+ timeout {FAIL;exit}
+}
+expect {
+ "Network is unreachable" {FAIL;exit}
+ timeout {FAIL;exit}
+ -ex "64"
+}
+PASS
